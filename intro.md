@@ -9,3 +9,8 @@ and also a few references we will be using during the course.
 
 ```{tableofcontents}
 ```
+
+## Contributors
+These notes have been written by
+* David De Sancho 
+* Txema Mercero
