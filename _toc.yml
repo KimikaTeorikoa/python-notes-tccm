@@ -5,7 +5,8 @@ format: jb-book
 root: intro
 chapters:
 - file: contents/setup
-- file: contents/markdown
-- file: contents/notebooks
-- file: contents/markdown-notebooks
-- file: contents/mymarkdownfile
+- file: contents/fundamentals
+- file: contents/forloops
+- file: contents/libraries
+- file: contents/plotting
+- file: contents/plotting
