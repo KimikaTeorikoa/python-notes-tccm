@@ -1,5 +1,4 @@
-# Markdown Files
-
+# Python Fundamentals
 Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
 in regular markdown files (`.md`), you'll write in the same flavor of markdown
 called **MyST Markdown**.
@@ -43,7 +42,7 @@ this: {cite}`holdgraf_evidence_2014`.
 Moreover, you can insert a bibliography into your page with this syntax:
 The `{bibliography}` directive must be used for all the `{cite}` roles to
 render properly.
-For example, if the references for your book are stored in `references.bib`,
+For example, if the references for your book are stored in `../references.bib`,
 then the bibliography is inserted with:
 
 ```{bibliography}
