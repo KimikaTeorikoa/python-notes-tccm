@@ -1,4 +1,4 @@
-# Setting yourself up for the Programming in Python Course
+# Programming in Python Course
 
 Welcome to the course. In the next few weeks we will try you with the
 tools to understand software programming and, speciphically, programming
