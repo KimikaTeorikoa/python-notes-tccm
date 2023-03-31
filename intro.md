@@ -1,8 +1,11 @@
-# Welcome to your Jupyter Book
+# Setting yourself up for the Programming in Python Course
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
+Welcome to the course. In the next few weeks we will try you with the
+tools to understand software programming and, speciphically, programming
+with Python. For this, it will be very convenient to have a user friendly
+environment to do the programming. Of course, you are free to choose from
+other alternatives that you prefer.
+
 It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
 
 Check out the content pages bundled with this sample book to see more.
