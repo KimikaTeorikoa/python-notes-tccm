@@ -3,7 +3,7 @@
 
 title: Programming in Python Lecture Notes 
 author: David De Sancho
-logo: logotipo_upv_ehu.jpg
+logo: images/logotipo_upv_ehu.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
