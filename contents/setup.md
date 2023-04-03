@@ -41,7 +41,17 @@ Windows](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10).
 ```
 ````
 
-## Text editor
+## Text editor or IDE
+In order to write new programs and modify existing ones,
+you will need a text editor or an integrated development
+environment 
+([IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)). While many developers 
+enjoy using traditional text editors like 
+[Vim](https://www.vim.org/) or 
+[Emacs](https://www.gnu.org/software/emacs/), we would
+recommend you to work with something closer to a
+professional IDE like Microsoft's 
+[Visual Studio Code](https://en.wikipedia.org/wiki/Visual_Studio_Code).
 
 ## The Anaconda Python distribution 
 Your computer may have a native Python installed with the operative
