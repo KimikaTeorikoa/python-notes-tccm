@@ -22,9 +22,9 @@ jobs:
           miniconda-version: 'latest'
           python-version: 3.8
 
-      - name: Build QuantEcon Mini Example
+      - name: Build Python book
         shell: bash -l {0}
-        run: jb build mini_book/
+        run: jb build python-notes-tccm/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
