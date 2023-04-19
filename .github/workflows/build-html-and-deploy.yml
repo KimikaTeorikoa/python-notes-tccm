@@ -21,6 +21,9 @@ jobs:
           auto-activate-base: false
           miniconda-version: 'latest'
           python-version: 3.8
+      - name: Install requirements
+        run: |
+          pip install -r python-notes-tccm/requirements.txt
 
       - name: Build Python book
         shell: bash -l {0}
