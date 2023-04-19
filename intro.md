@@ -46,7 +46,7 @@ references that we recommend.
 ## Contributors
 These notes have been written by
 * David De Sancho 
-* Txema Mercero
+* Txema Mercero Larraza
 
 ## Bibliography
 ```{bibliography}
