@@ -29,7 +29,7 @@ jobs:
         jupyter-book build .
 
     - name: Push html to github-pages        
-      uses: peaceiris/actions-gh-pages@v3.6.1
+      uses: peaceiris/actions-gh-pages@v3.9.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./_build/html
