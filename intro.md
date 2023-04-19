@@ -20,8 +20,8 @@ title: Programming in Python Course
 ::::
 
 # Welcome
-In the next few weeks we will try to help you understand 
-some fundamental principles of computer programming. 
+In this course we aim to help you understand some 
+fundamental principles of computer programming. 
 In this case, we will be using [**Python**](https://www.python.org/) as our programming
 language due to its widespread application in computational
 chemistry. This is not an easy choice, as you will 
