@@ -1,6 +1,6 @@
 # Object Oriented Programming 
 
-This is some sample text.
+Object oriented programming is fantastic in Python
 
 (section-label)=
 ## Here's my first section
