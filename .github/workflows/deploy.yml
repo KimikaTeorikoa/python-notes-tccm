@@ -12,10 +12,11 @@ jobs:
  
   deploy-book:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - uses: s-weigand/setup-conda@v1
+
+    - name: setup python
+      uses: s-weigand/setup-conda@v1
       with:
         python-version: 3.8
 
@@ -26,11 +27,9 @@ jobs:
     - name: Build book
       run: |
         jupyter-book build .
-        #
-        #    # Deploy html to gh-pages
-        #    - name: GitHub Pages action
-        #      uses: peaceiris/actions-gh-pages@v3.6.1
-        #      with:
-        #        github_token: ${{ secrets.GITHUB_TOKEN }}
-        #        publish_dir: my_book/my_book/_build/html
-        #        publish_branch: gh-pages
+
+    - name: Push html to github-pages        
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_build/html
