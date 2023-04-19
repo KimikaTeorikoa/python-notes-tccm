@@ -1,4 +1,4 @@
-name: deploy
+name: pages-build-deploy
 
 on:
   # Trigger the deploy on push to main branch
@@ -9,29 +9,24 @@ on:
     - cron: '0 0 1 * *'
 
 jobs: 
-  # This job deploys the pytccm book
+ 
   deploy-book:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: [3.8]
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
-    # Install CC
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+    - uses: s-weigand/setup-conda@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.8
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
 
-    - name: Build book
-      run: |
-        jupyter-book build python-notes-tccm/
-
+        #    - name: Build book
+        #      run: |
+        #        jupyter-book build python-notes-tccm/
+        #
         #    # Deploy html to gh-pages
         #    - name: GitHub Pages action
         #      uses: peaceiris/actions-gh-pages@v3.6.1
