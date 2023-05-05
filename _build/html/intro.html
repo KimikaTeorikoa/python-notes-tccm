@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to your Jupyter Book &#8212; My sample book</title>
+    <title>Welcome &#8212; Programming in Python Lecture Notes</title>
   
   
   
@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="Setting yourself up" href="contents/setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -149,15 +149,17 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to your Jupyter Book
+                    Welcome
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mymarkdownfile.html">Here’s my sample title</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/forloops.html">For loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/libraries.html">Using Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/ooprogramming.html">Object Oriented Programming</a></li>
 </ul>
 
     </div>
@@ -328,7 +330,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -339,11 +343,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to your Jupyter Book</h1>
+    <h1>Welcome</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -353,20 +366,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8 sd-fs-1 docutils">
+<p><strong>Programming in Python Lecture Notes</strong></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-2 sd-col-xs-2 sd-col-sm-2 sd-col-md-2 sd-col-lg-2 sd-width-25 docutils">
+<a class="reference internal image-reference" href="_images/Python-logo-notext.svg"><img alt="_images/Python-logo-notext.svg" class="align-center" src="_images/Python-logo-notext.svg" width="150px" /></a>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="welcome">
+<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">#</a></h1>
+<p>In the next few weeks we will try to help you understand
+some fundamental principles of computer programming.
+In this case, we will be using <a class="reference external" href="https://www.python.org/"><strong>Python</strong></a> as our programming
+language due to its widespread application in computational
+chemistry. This is not an easy choice, as you will
+hopefully learn throughout the course. Python is peculiar
+in a number of ways. It can be seen both a programming language
+as much as a scripting tool. It can be used to write
+software packages, but also for data analysis and
+visualization using a web browser as an interface. Python
+can be run locally in your computer in a number of
+different ways,
+but also on collaborative notebooks online. We will try to
+introduce you to all of these possibilities, which have made
+Python be dubbed a “Swiss army knife” of coding.</p>
+<p>Below, you can find the syllabus of the course, with the
+topics that we will be covering, and also a list of
+references that we recommend.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mymarkdownfile.html">Here’s my sample title</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/forloops.html">For loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/libraries.html">Using Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/ooprogramming.html">Object Oriented Programming</a></li>
 </ul>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">#</a></h2>
+<p>These notes have been written by</p>
+<ul class="simple">
+<li><p>David De Sancho</p></li>
+<li><p>Txema Mercero</p></li>
+</ul>
+</div>
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id1">
+<dl class="citation">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p>Allen Downey. <em>Think Python</em>. O'Reilly Media, Inc., 2012.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">2</span></dt>
+<dd><p>H Petter Langtangen. <em>A Primer on Scientific Programming with Python</em>. Springer, 2016. URL: <a class="reference external" href="https://hplgit.github.io/primer.html/doc/pub/half/book.pdf">https://hplgit.github.io/primer.html/doc/pub/half/book.pdf</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">3</span></dt>
+<dd><p>Mark Lutz. <em>Learning Python</em>. O'Reilly Media, Inc., 2013.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 
@@ -402,11 +464,11 @@ It does not go in-depth into any particular topic - check out <a class="referenc
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="markdown.html"
+       href="contents/setup.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Setting yourself up</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -419,6 +481,21 @@ It does not go in-depth into any particular topic - check out <a class="referenc
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

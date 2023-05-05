@@ -1,6 +1,7 @@
 # Object Oriented Programming 
 
-Object oriented programming is fantastic in Python
+Object oriented programming is fantastic in Python.
+Testing with Txema
 
 (section-label)=
 ## Here's my first section
