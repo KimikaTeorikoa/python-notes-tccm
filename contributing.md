@@ -25,7 +25,8 @@ When writing a Jupyter Book you can write your content in
 different types of format, mainly markdown files and
 jupyter-notebook files. Please go through the specifics of
 both of these types of file for generating contents reading
-the information [here](https://jupyterbook.org/en/stable/file-types/index.html). In general, in the Programming in Python Lecture Notes
+the information [here](https://jupyterbook.org/en/stable/file-types/index.html). 
+In general, in the Programming in Python Lecture Notes
 Jupyter Book we will use markdown for those files that are
 intended to be read-only, while files containing both text
 and code will be written as jupyter-notebooks.
@@ -40,7 +41,17 @@ Here is my nifty citation {cite}`perez2011python`.
  and
 the full citation in the `references.bib` file. You 
 can find more information about references
- in the Jupyter Book [webpage](Programming in Python Lecture Notes
+ in the Jupyter Book [webpage](Programming in Python Lecture Notes).
 
-).
-
+### Building the JupyterBook
+Once you have made changes locally, it is only natural that you will 
+want to take a look at how they look once they are integrated in the
+book. First, you may want to take a look locally. You can do this
+by running 
+```
+jupyter-book build python-notes-tccm
+```
+in the command line.
+Deployment online has been taken care of using Github Actions
+(specifically, this one 
+[here](https://github.com/KimikaTeorikoa/python-notes-tccm/actions/workflows/pages/pages-build-deployment)).
