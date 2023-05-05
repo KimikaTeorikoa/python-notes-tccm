@@ -55,3 +55,6 @@ in the command line.
 Deployment online has been taken care of using Github Actions
 (specifically, this one 
 [here](https://github.com/KimikaTeorikoa/python-notes-tccm/actions/workflows/pages/pages-build-deployment)).
+Once you push your changes, they should automatically appear in our
+Jupyter Book [webpage](https://kimikateorikoa.github.io/python-notes-tccm) 
+shortly.
