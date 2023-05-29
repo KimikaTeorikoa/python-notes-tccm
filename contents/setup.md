@@ -139,3 +139,10 @@ run a script in a supercomputing facility, you are likely going
 to run the program on the terminal. Instead, if you are using 
 Python to do some exploratory data analysis, a Python notebook
 will surely be preferable.
+
+## Python Documentation
+You will be able to find tons of documentation on the Python
+programming language. Also, we will introduce you to the topic on 
+how to write documentation yourself. For now, although it may
+feel a bit daunting, let us redirect you to the 
+[official Python documentation](https://docs.python.org/3/).
