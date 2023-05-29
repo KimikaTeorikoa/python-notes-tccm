@@ -1,17 +1,17 @@
 # Setting yourself up
-Welcome to the course. Before we start with programming as such
+Welcome to the course. Before we start programming,
 it is a good idea to have a working environment that will speed up
 your learning. This course will be highly interactive, and students
 will be doing a lot of typing. For this, it will be very convenient 
 to have a set of user-friendly tools ready to write programs and 
 run Python code efficiently. Of course, you are free to choose from 
 other alternatives if you prefer, particularly if you already have
-some prior experience. Hbere we present a minimal set of tools to work 
+some prior experience. Here we present a minimal set of tools to work 
 with.
 
-Additionally, as we have mentioned already, Python is a particular
-programming language in a number of ways. At the end of this Chapter
-we will focus in a number of different ways that you can use to 
+Additionally, as a programming language, Python is particular in a 
+number of ways, as we have already said. At the end of this Chapter
+we will focus in a number of different ways you can 
 run Python. But we will cross that bridge when we get there. Let's 
 not get ahead of ourselves and start speaking about one of the tools
 we will need: the **terminal**.
@@ -67,15 +67,17 @@ Windows](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10).
 
 ## The Anaconda Python distribution 
 Your computer may have a native Python installed with the operative
-system. However, we strongly recommend that you install the 
+system. However, in addition to this vanilla Python configuration
+that comes in Unix-based systems, you may want to install additional
+libraries or packages, as we will see later. This is made easy by 
+other Python distributions, which include different sets of packages.
+We strongly recommend that you install the 
 [**Anaconda Python distribution**](https://www.anaconda.com/products/distribution), 
 which comes with all you are likely to need
 in your first encounter with Python. Also, make sure that you 
-have **Python 3.x**. 
-
-In parts of the course, we will run Python on a
-web interface (e.g. using Jupyter notebooks). For this, you will need 
-a browser like Chrome, Safari or Firefox.
+have **Python 3.x**. You may still find programs written in Python
+2.7, but this version is no longer maintained and the syntax has
+changed somewhat.
 
 ## Text editor or IDE
 In order to write new programs and modify existing ones,
@@ -92,15 +94,15 @@ Both have community versions that you can install in your computer
 free of charge.
 
 ## Running Python
-As we have mentioned, Python is particular as a programming language.
+As we have mentioned, Python is a special programming language.
 As illustrated by an [XKCD](https://xkcd.com/) comic strip that is 
 famous within the community, emphasis is put in code readability.
 
 ![python-flying](https://imgs.xkcd.com/comics/python.png)
 
-Although we will get into more 
-details later in the course, an important thing for you to learn before
-we start is that Python programs can be run in different ways.
+Although we will get into more details later in the course, 
+an important thing for you to learn before we start is that 
+Python programs can be run in different ways.
 
 1. You can use a text editor to write a program in a file, e.g. 
 `my_program.py` and run it from the terminal typing
@@ -114,7 +116,9 @@ interpreter is called [IPython](https://ipython.org/).
 
 3. Finally, you can use a [Jupyter Notebook](https://jupyter-notebook.readthedocs.io)
 or [Jupyter-lab](https://jupyterlab.readthedocs.io/) to run an interactive
-Python session in your web browser. In your terminal, type for example,
+Python session in your web browser. For this, you will 
+need a browser like Chrome, Safari or Firefox.
+In your terminal, type 
 ```
 $ jupyter-notebook
 ```
@@ -122,12 +126,16 @@ Normally, you will see some information appearing in your terminal and
 a web browser window will pop up. It will look something like this
 ![jupyter](https://jupyter-notebook.readthedocs.io/en/latest/_images/notebook-running-code.png)
 Then, you will be able to run code in *cells*, very much like in 
-your IPython session. In fact, an IPython kernel is running in the 
+your IPython session. In fact, an IPython kernel is running
+under the hood, in the 
 terminal you used. You can save sessions using the `.ipynb` extension.
 
 If you know a more traditional programming language like Fortran, C or 
-C++, this may feel surprising.
-
-
-## Python Documentation
-
+C++, this flexibility may feel a bit surprising. And we are only 
+beginning to see possible ways to use Python. You will find that 
+depending on your application, one of the options above to run
+Python will feel more appropriate. For example, if you want to
+run a script in a supercomputing facility, you are likely going
+to run the program on the terminal. Instead, if you are using 
+Python to do some exploratory data analysis, a Python notebook
+will surely be preferable.
