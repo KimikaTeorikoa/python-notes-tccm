@@ -4,13 +4,13 @@
 format: jb-book
 root: intro
 chapters:
-  - file: contents/setup
-  - file: contents/fundamentals
-  - file: contents/datastructures.md
-  - file: contents/control	
-  - file: contents/forloops
-  - file: contents/libraries
-  - file: contents/plotting
-  - file: contents/ooprogramming
-  - file: contents/libraries
-  - file: contents/notebooks
+- file: contents/setup
+- file: contents/fundamentals
+- file: contents/datastructures.md
+- file: contents/control
+- file: contents/forloops
+- file: contents/libraries
+- file: contents/plotting
+- file: contents/ooprogramming
+- file: contents/libraries
+- file: contents/notebooks
