@@ -9,7 +9,7 @@ other alternatives if you prefer, particularly if you already have
 some prior experience. Here we present a minimal set of tools to work 
 with.
 
-Additionally, as a programming language, Python is particular in a 
+Additionally, as a programming language, Python is special in a 
 number of ways, as we have already said. At the end of this Chapter
 we will focus in a number of different ways you can 
 run Python. But we will cross that bridge when we get there. Let's 
@@ -94,32 +94,42 @@ Both have community versions that you can install in your computer
 free of charge.
 
 ## Running Python
-As we have mentioned, Python is a special programming language.
-As illustrated by an [XKCD](https://xkcd.com/) comic strip that is 
-famous within the community, emphasis is put in code readability.
-
-![python-flying](https://imgs.xkcd.com/comics/python.png)
-
-Although we will get into more details later in the course, 
+Although we will get into the details later in the course, 
 an important thing for you to learn before we start is that 
 Python programs can be run in different ways.
 
 1. You can use a text editor to write a program in a file, e.g. 
 `my_program.py` and run it from the terminal typing
-```
+```bash
 $ python my_program.py
 ```
 
 2. You can open a Python intepreter and run an interactive session
 where code is interpreted on-the-fly. A typical, feature-rich
-interpreter is called [IPython](https://ipython.org/).
+interpreter is called [IPython](https://ipython.org/). So, do 
+type the following in your command line:
+```bash
+$ ipython
+```
+The output will look something like this
+```python
+Python 3.9.16 | packaged by conda-forge | (main, Feb  1 2023, 21:42:20)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.12.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]:
+```
+There is already plenty of information for you to see: the Python
+version and distribution you are using, together with a number (`[1]`).
+This number is the index of Python command in the Python session
+you are running.
 
 3. Finally, you can use a [Jupyter Notebook](https://jupyter-notebook.readthedocs.io)
 or [Jupyter-lab](https://jupyterlab.readthedocs.io/) to run an interactive
 Python session in your web browser. For this, you will 
 need a browser like Chrome, Safari or Firefox.
 In your terminal, type 
-```
+```bash
 $ jupyter-notebook
 ```
 Normally, you will see some information appearing in your terminal and
@@ -139,6 +149,28 @@ run a script in a supercomputing facility, you are likely going
 to run the program on the terminal. Instead, if you are using 
 Python to do some exploratory data analysis, a Python notebook
 will surely be preferable.
+
+## Python style
+As we have mentioned, Python is a special programming language.
+As illustrated by an [XKCD](https://xkcd.com/) comic strip that is 
+famous within the community, Python syntax emphasizes the importance
+of code readability. Better Python code is typically more readable
+code.
+
+![python-flying](https://imgs.xkcd.com/comics/python.png)
+
+There are a few central tenets on writing Python code. You
+can find them out opening a Python session (for example, in iPython)
+and running  the following:
+
+```python
+import this
+```
+Read the output and think about it as you learn to code.
+
+Another source that may be interesting for you to look up or
+bookmark is [PEP8](https://peps.python.org/pep-0008/), the
+style guide for Python code.
 
 ## Python Documentation
 You will be able to find tons of documentation on the Python

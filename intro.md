@@ -25,7 +25,8 @@ fundamental principles of computer programming.
 In this case, we will be using [**Python**](https://www.python.org/) as our programming
 language due to its widespread application in computational
 chemistry. This is not an easy choice, as you will 
-hopefully learn throughout the course. Python is peculiar 
+hopefully learn throughout the course. Python is extremely 
+useful but it is also rather peculiar 
 in a number of ways. It can be seen both a programming language 
 as much as a scripting tool. It can be used to write 
 software packages, but also for data analysis and 
