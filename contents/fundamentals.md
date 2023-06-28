@@ -56,9 +56,17 @@ Now check whether the program has done as you intended it to.
 In your programs you will usually be defining lots of different
 variables. It is convenient to choose **variable names** that
 will be meaningful to you and any other potential user of your
-program (often your future self). Using cryptic variable 
-names will make everyone miserable, so it is a good investment
-to think ahead.
+program (often your future self). For example, if you are
+calculating the area of a circle, it would make sense to
+write something like this:
+```python
+area = pi*radius**2
+```
+Here we are using some stuff that you we have not covered yet,
+but you surely understand why we are using the code snippet as
+an example of using meaningful variable names. Using cryptic 
+variable names will make everyone miserable, so it is a good 
+investment to use names that seem sensible choices.
 
 Also, in Python some possibilities are forbidden, like
 starting a variable with a number. If you write code including 
@@ -81,21 +89,20 @@ def     for     lambda      try
 Additionally, in Python there are naming conventions
 that you should follow. These are described in
 [PEP8](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
-For example, variables are typically lowercase, and so 
-are functions. On the other hand, classes, which 
-we will learn about only in the future, use the so called
+For example, variables are typically written in lowercase, 
+and so are functions. On the other hand, classes, which 
+we will learn about in the future, use the so called
 CapWords style.
 
 ## Input / Output	
-In our first program above, we have already written to 
-something we call the "standard output", i.e. the display. 
-In Python there are many different ways to read input into
-a program and to write your output. You can, for example,
-prompt the user to write a set of input variables using
-the keyword for the program to read (this would be the
-"standard input") or make the program write the results of
-a calculation to a file. Here we explore the basics of
-Input / Output operations.
+In our first program `hello_world.py` above, we have already 
+written to something we call the "standard output", i.e. the 
+display. In Python there are many different ways to read input 
+into a program and to write your output. You can, for example,
+prompt the user to write a set of input variables using the 
+keyword for the program to read (this would be the "standard 
+input") or make the program write the results of a calculation
+to a file. Here we explore the basics of Input / Output operations.
 
 ### Opening and closing files
 Suppose that there is a file called `myfile.txt` from which you 
