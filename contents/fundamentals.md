@@ -192,6 +192,7 @@ c = a + b
 print (c)
 print (type(c))
 ```
+:::{note}
 In the past, there were problems with integer divisions,
 as you would recover an `int`, but that is no longer
 the case in Python 3, where they are converted into a float
@@ -201,6 +202,7 @@ c = a/b
 print (c)
 print (type(c))
 ```
+:::
 
 ### Arithmetic operations in Python 
 Using floats and integers you can do all sorts
