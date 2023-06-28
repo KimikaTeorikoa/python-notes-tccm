@@ -54,7 +54,16 @@ Now check whether the program has done as you intended it to.
 
 ### Writing Python code: names and cases
 In your programs you will usually be defining lots of different
-variables. It is convenient to choose **variable names** that
+variables. One of the things you must remember is that Python
+is **case sensitive**, so
+```python
+a = 10
+print (A)
+```
+will return an error (specifically, a `NameError`), as a variable
+named `A` does not exist.
+
+Also, it is convenient to choose **variable names** that
 will be meaningful to you and any other potential user of your
 program (often your future self). For example, if you are
 calculating the area of a circle, it would make sense to
@@ -112,8 +121,9 @@ write
 f = open("myfile.txt", "r")
 ```
 In this statement, we are using a **built-in function** called `open`.
-The first argument of this function is the filename, and the second
-argument indicates the **mode**. There are different modes available:
+The first argument of this function is the external filename (Python
+will assume that the file does exist). The second argument indicates 
+the processing **mode**. There are different modes available:
 * `r`: read only mode
 * `w`: write only mode
 * `a`: append mode
@@ -121,16 +131,100 @@ argument indicates the **mode**. There are different modes available:
 *  `t`: text mode
 * `b`: binary mode
 
-Depending on the data in the file or what you intend to use the file
-for, you will choose one of these ways of opening the file. Remember
-to close files once you no longer need to access them:
+Depending on the type of data in the file and what you intend to use 
+the file for, you will choose one of these ways of opening the file. 
+As a good programming habbit, remember to close files once you no 
+longer need to access them:
 ```python
 f.close()
 ```
+Another way of opening files in Python is using **file iterators**, i.e.
+employing the `with` statement, which works as
+```python
+with open("myfile.txt", "r") as f:
+    ...
+```
+In this case you do not need to close the file yourself. 
 
-## Data Types	
-### Integers	
-### Floats	
+### Reading and writing data into files 
+Once you have opened a file, you will many times want to read its 
+contents. You can do that line by line for the `myfile.txt` which 
+you have opened and named as `f` in your program doing
+```python
+f.readlines()
+```
+Alternatively, if you want to write into your file, you would be
+able to do the following
+```python
+f.write("hello world!\n")
+```
+where we are simply writing a text string.
+
+## Data Types
+Variables in Python can be of many different types,
+including text strings, lists, integers, floats and
+Boolean.
+Assignment is simply made using the equal operator 
+(`=`) in statements like
+```python
+a = 10
+```
+Because Python has **dynamic typing**, you do not 
+have to declare variables. Python will assign
+a type to each variable in your code. In order
+to know the type of a given variable, you can use
+the intrinsic function `type`.
+```python
+a = 10
+type(a)
+```
+In the case above, you might want a to be defined
+as a `float`. If that is the case, you can assign 
+the type explicitly
+```python
+a = float(10)
+```
+In Python, you can sometimes combine different types
+to perform arithmetic operations
+```python
+a = 10; b = 1.
+c = a + b
+print (c)
+print (type(c))
+```
+In the past, there were problems with integer divisions,
+as you would recover an `int`, but that is no longer
+the case in Python 3, where they are converted into a float
+```python
+a = 10; b = 3
+c = a/b
+print (c)
+print (type(c))
+```
+
+### Arithmetic operations in Python 
+Using floats and integers you can do all sorts
+of computations in Python, very much like you 
+would in a regular calculator. 
+You can for example use operators like `+` and `-`,
+which are called **unary operators**, because they
+act on a single numeric value. You can
+perform multiplications, using the operator `*`, 
+divisions with `/`, and integer divisions with `//`.
+Using `%` you will obtain the remainder of a division.
+Also you can exponentiate using the operator `**`.
+
+There are also some additional operations that you
+may want to know of, like the `+=` addition assignment
+or `-=` substraction assignment. You can also use
+relational operators, like `<`, `>`, `<=`, `>=` or `==`,
+to compare the values of two variables. For example,
+```python
+a = 10; b = 3
+a < b
+```
+These operators will return either `True` or `False`.
+
 ### Strings	
 ### Vectors (lists?, Tuples?, Dictionaries?)	
 ### Matrices	
@@ -139,5 +233,28 @@ f.close()
 ## Intrinsic functions (from Computational QM)	
 ### Using and writing functions
 ### Writing Python code: Indentation
+In Python, the way that a program looks is 
+very much determined by indentation. This 
+differs from what we will find in other languages
+like Fortran or C, where formatting is not so
+important. When you write an `if` statement in
+Python, you must respect the right indentation,
+e.g.
+```python
+if x < 12:
+    print (x)
+```
+And if not, the code will simply not run. 
+Different levels of indentation start where 
+we have colons (`:`), and these have to be 
+indented with respect to the previous level
+of indentation. Be 
+careful not to add white spaces where they do not
+belong and use consistently tabs or spaces
+(4 spaces is the preferred option in PEP8). 
+This may feel like a nuisance if you have
+experience in some other programming language, but
+will help orient yourself when reading code in the
+long run.
 
 ### Environments	
