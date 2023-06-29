@@ -171,7 +171,13 @@ will greatly expand our understanding of Input/Output operations.
 ## Data Types
 Variables in Python can be of many different types,
 including text strings, lists, integers, floats and
-Boolean.
+Boolean. An highly consequential thing we must say, 
+but we will not fully explain yet, is that in Python
+variables take the form of **objects**, which are the
+most fundamental notion in Python programming. For now,
+we will just say that objects are *pieces of memory, 
+with values and sets of associated operations*.
+
 Assignment of a value to a variable
 is simply made using the equal operator 
 (`=`) in statements like
@@ -213,7 +219,11 @@ print (type(c))
 ```
 :::
 
-### Arithmetic operations with floats and integers
+### Numeric types
+In the few lines of code above, we have already
+used the most straightforward types in Python, 
+which are **integers**, which lack a decimal part,
+and **floating-point** numbers.
 Using floats and integers you can do all sorts
 of computations in Python, very much like you 
 would in a regular calculator. 
@@ -252,10 +262,20 @@ is not exactly what you would expect. When writing a program,
 you should think about whether this actually matters for the
 problem at hand.
 
-### Strings
+Another type of numeric that you may need are *complex* numbers.
+In Python, you can define them using the character `j`.
+```python
+type(1 + 1j)
+```
+
+### Text strings
 The variable type we normally use to store text characters
-in Python are strings. In fact, we have already written 
+in Python are **strings**. In fact, we have already written 
 one such variable in our `hello_world.py` program above. 
+Strings are generated using single `'` or double quotes `"`
+around a set of characters. It is usually good to pick 
+a rule and stick to [either single or double 
+quotes](https://peps.python.org/pep-0008/#string-quotes).
 
 Python provides a number of intrinsic functions and operators
 that are specific to string manipulation. For example, if
@@ -280,9 +300,11 @@ verse1 = "Good morning\n"
 verse2 = "Nothing to do to save his life call his wife in"
 print (5*verse1 + verse2)
 ```
+Hence, addition for strings means *concatenation*, while
+multiplication means *repetition*.
 
 Another interesting thing you can do with strings that
-was not possible with `int` or `float` is slicing. You 
+was not possible with `int` or `float` is **indexing**. You 
 can access the *i*-th element of a string using
 ```python
 string[i]
@@ -293,10 +315,44 @@ accessed using the index 0, and so on. You can also
 access characters in a string backwards, using 
 negative numbers.
 
-### Lists 
+We can also perform **slicing** operations, which 
+extract sections (or slices) of the string
+```python
+val = 'spam'
+print (val[2:4])
+```
 
-# 
-## Vectors (lists?, Tuples?, Dictionaries?)	
+There is an interesting property of strings, which
+is called **immutability**. While you can redefine a
+string, you cannot change it. For example, you can
+do
+```python
+s = 'spam'
+s = 'ham'
+```
+but if you try
+```python
+s = 'spam'
+s[0] = 'h'
+```
+you will obtain a `TypeError`. What you can do instead
+is 
+```python
+s = 'h' + s[2:]
+```
+which will generate a new string using the old string.
+
+There are many other interesting manipulations that
+we can do with text strings, using *type-specific methods*.
+Strings are, for example, searchable
+```python
+s = 'david'
+s.
+```
+
+### Lists
+
+### Dictionaries	
 ## Matrices	
 ## Functions	
 
