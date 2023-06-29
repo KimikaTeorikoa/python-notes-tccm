@@ -1,7 +1,7 @@
 # Python Fundamentals
 In this chapter, we will introduce you to the very basics
 of computer programming with Python. We will first see
-some basics that will make you understand how a Python 
+some general notions that will make you understand how a Python 
 program looks. Then we will go through how to 
 write basic instructions for reading and writing
 inside a computer program. We will also explain the types
@@ -28,7 +28,8 @@ key differences between Python and those other programming
 languages is that Python is an **interpretive** language.
 Hence you will not have to compile the code as you
 modify it. The **Python interpreter** performs those 
-actions for you. Because Python is not compiled, your
+actions for you. But this comes with a caveat. 
+Because Python is not compiled, your
 programs written in Python will not be as fast as they 
 could be when written in Fortran or C.
 
@@ -52,7 +53,7 @@ $ python hello_world.py
 ```
 Now check whether the program has done as you intended it to.
 
-### Writing Python code: names and cases
+## Names and cases
 In your programs you will usually be defining lots of different
 variables. One of the things you must remember is that Python
 is **case sensitive**, so
@@ -71,8 +72,10 @@ write something like this:
 ```python
 area = pi*radius**2
 ```
-Here we are using some stuff that you we have not covered yet,
-but you surely understand why we are using the code snippet as
+Here we are using some stuff that you we have not covered yet.
+Also, we are assuming that you have given values to both `pi`
+and `radius`. 
+But you surely understand why we are using the code snippet as
 an example of using meaningful variable names. Using cryptic 
 variable names will make everyone miserable, so it is a good 
 investment to use names that seem sensible choices.
@@ -100,13 +103,14 @@ that you should follow. These are described in
 [PEP8](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
 For example, variables are typically written in lowercase, 
 and so are functions. On the other hand, classes, which 
-we will learn about in the future, use the so called
+we will learn about in the future, use the so-called
 CapWords style.
 
 ## Input / Output	
 In our first program `hello_world.py` above, we have already 
 written to something we call the "standard output", i.e. the 
-display. In Python there are many different ways to read input 
+display, using the `print` function. 
+In Python there are many different ways to read input 
 into a program and to write your output. You can, for example,
 prompt the user to write a set of input variables using the 
 keyword for the program to read (this would be the "standard 
@@ -138,8 +142,9 @@ longer need to access them:
 ```python
 f.close()
 ```
-Another way of opening files in Python is using **file iterators**, i.e.
-employing the `with` statement, which works as
+Another way of opening files in Python is using **file iterators**.
+You are using them when you open files using the 
+`with` statement, which works as
 ```python
 with open("myfile.txt", "r") as f:
     ...
@@ -151,20 +156,24 @@ Once you have opened a file, you will many times want to read its
 contents. You can do that line by line for the `myfile.txt` which 
 you have opened and named as `f` in your program doing
 ```python
-f.readlines()
+f.readline()
 ```
+You can bulk-read all the file using `readlines()` instead.
+
 Alternatively, if you want to write into your file, you would be
 able to do the following
 ```python
 f.write("hello world!\n")
 ```
-where we are simply writing a text string.
+where we are simply writing a text string. As we go along, we
+will greatly expand our understanding of Input/Output operations.
 
 ## Data Types
 Variables in Python can be of many different types,
 including text strings, lists, integers, floats and
 Boolean.
-Assignment is simply made using the equal operator 
+Assignment of a value to a variable
+is simply made using the equal operator 
 (`=`) in statements like
 ```python
 a = 10
@@ -194,7 +203,7 @@ print (type(c))
 ```
 :::{note}
 In the past, there were problems with integer divisions,
-as you would recover an `int`, but that is no longer
+as you would always recover an `int`, but that is no longer
 the case in Python 3, where they are converted into a float
 ```python
 a = 10; b = 3
@@ -204,7 +213,7 @@ print (type(c))
 ```
 :::
 
-### Arithmetic operations in Python 
+### Arithmetic operations with floats and integers
 Using floats and integers you can do all sorts
 of computations in Python, very much like you 
 would in a regular calculator. 
@@ -227,13 +236,72 @@ a < b
 ```
 These operators will return either `True` or `False`.
 
-### Strings	
-### Vectors (lists?, Tuples?, Dictionaries?)	
-### Matrices	
-### Functions	
+Something you must bear in mind when you are programming
+is the finite machine precision with which your machine
+works with. A case in point is the following:
+```python
+print (0.1 + 0.05)
+```
+Discouragingly, the result is 0.15000000000000002. There is,
+however, nothing wrong with that result. It is the consequence
+of the way real numbers are stored in your machine, which 
+results in **round-off or truncation errors**. Specifically,
+floats are written using 53 bits of precision. Because 0.1 and
+0.5 are truncated in floating-point representation, the result
+is not exactly what you would expect. When writing a program,
+you should think about whether this actually matters for the
+problem at hand.
+
+### Strings
+The variable type we normally use to store text characters
+in Python are strings. In fact, we have already written 
+one such variable in our `hello_world.py` program above. 
+
+Python provides a number of intrinsic functions and operators
+that are specific to string manipulation. For example, if
+you want to know the length of a string, you can use the
+`len` function.
+```python
+myname = 'david'
+print (len(myname))
+```
+
+Additionally, addition and multiplication work in a special
+way when applied to strings. For example,
+```python
+string1 = "hello"
+string2 = "world"
+space = " "
+print (string1 + space + string2)
+```
+Also,
+```python
+verse1 = "Good morning\n"
+verse2 = "Nothing to do to save his life call his wife in"
+print (5*verse1 + verse2)
+```
+
+Another interesting thing you can do with strings that
+was not possible with `int` or `float` is slicing. You 
+can access the *i*-th element of a string using
+```python
+string[i]
+```
+where you must remember that Python uses **zero-based
+indexing**. Hence, the 1st element in a string is 
+accessed using the index 0, and so on. You can also
+access characters in a string backwards, using 
+negative numbers.
+
+### Lists 
+
+# 
+## Vectors (lists?, Tuples?, Dictionaries?)	
+## Matrices	
+## Functions	
 
 ## Intrinsic functions (from Computational QM)	
-### Using and writing functions
+## Using and writing functions
 ### Writing Python code: Indentation
 In Python, the way that a program looks is 
 very much determined by indentation. This 
