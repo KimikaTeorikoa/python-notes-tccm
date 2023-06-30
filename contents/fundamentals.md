@@ -1,3 +1,13 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 # Python Fundamentals
 In this chapter, we will introduce you to the very basics
 of computer programming with Python. We will first see
@@ -56,13 +66,13 @@ Now check whether the program has done as you intended it to.
 ## Names and cases
 In your programs you will usually be defining lots of different
 variables. One of the things you must remember is that Python
-is **case sensitive**, so
-```python
+is **case sensitive**, so when you try
+```{code-cell} python
 a = 10
 print (A)
 ```
-will return an error (specifically, a `NameError`), as a variable
-named `A` does not exist.
+things do not go well. Python returns an error (specifically, 
+a `NameError`), as a variable named `A` does not exist.
 
 Also, it is convenient to choose **variable names** that
 will be meaningful to you and any other potential user of your
@@ -189,7 +199,7 @@ have to declare variables. Python will assign
 a type to each variable in your code. In order
 to know the type of a given variable, you can use
 the intrinsic function `type`.
-```python
+```{code-cell} python
 a = 10
 type(a)
 ```
@@ -201,7 +211,7 @@ a = float(10)
 ```
 In Python, you can sometimes combine different types
 to perform arithmetic operations
-```python
+```{code-cell} python
 a = 10; b = 1.
 c = a + b
 print (c)
@@ -210,7 +220,8 @@ print (type(c))
 :::{note}
 In the past, there were problems with integer divisions,
 as you would always recover an `int`, but that is no longer
-the case in Python 3, where they are converted into a float
+the case in Python 3, where they are converted into a float.
+Try the following:
 ```python
 a = 10; b = 3
 c = a/b
@@ -240,7 +251,7 @@ may want to know of, like the `+=` addition assignment
 or `-=` substraction assignment. You can also use
 relational operators, like `<`, `>`, `<=`, `>=` or `==`,
 to compare the values of two variables. For example,
-```python
+```{code-cell} python
 a = 10; b = 3
 a < b
 ```
@@ -249,10 +260,11 @@ These operators will return either `True` or `False`.
 Something you must bear in mind when you are programming
 is the finite machine precision with which your machine
 works with. A case in point is the following:
-```python
+```{code-cell} python
 print (0.1 + 0.05)
 ```
-Discouragingly, the result is 0.15000000000000002. There is,
+Discouragingly, the result is not what one would expect. 
+There is,
 however, nothing wrong with that result. It is the consequence
 of the way real numbers are stored in your machine, which 
 results in **round-off or truncation errors**. Specifically,
@@ -264,7 +276,7 @@ problem at hand.
 
 Another type of numeric that you may need are *complex* numbers.
 In Python, you can define them using the character `j`.
-```python
+```{code-cell} python
 type(1 + 1j)
 ```
 
@@ -281,21 +293,21 @@ Python provides a number of intrinsic functions and operators
 that are specific to string manipulation. For example, if
 you want to know the length of a string, you can use the
 `len` function.
-```python
+```{code-cell} python
 myname = 'david'
 print (len(myname))
 ```
 
 Additionally, addition and multiplication work in a special
 way when applied to strings. For example,
-```python
+```{code-cell} python
 string1 = "hello"
 string2 = "world"
 space = " "
 print (string1 + space + string2)
 ```
 Also,
-```python
+```{code-cell} python
 verse1 = "Good morning\n"
 verse2 = "Nothing to do to save his life call his wife in"
 print (5*verse1 + verse2)
@@ -317,7 +329,7 @@ negative numbers.
 
 We can also perform **slicing** operations, which 
 extract sections (or slices) of the string
-```python
+```{code-cell} python
 val = 'spam'
 print (val[2:4])
 ```
@@ -331,16 +343,18 @@ s = 'spam'
 s = 'ham'
 ```
 but if you try
-```python
+```{code-cell} python
 s = 'spam'
 s[0] = 'h'
 ```
 you will obtain a `TypeError`. What you can do instead
 is 
-```python
+```{code-cell} python
 s = 'h' + s[2:]
+print (s)
 ```
-which will generate a new string using the old string.
+This construction generates a new string using the old string,
+but importantly, it does not change the old string.
 
 There are many other interesting manipulations that
 we can do with text strings, using *type-specific methods*.
