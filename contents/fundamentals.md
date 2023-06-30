@@ -357,12 +357,27 @@ This construction generates a new string using the old string,
 but importantly, it does not change the old string.
 
 There are many other interesting manipulations that
-we can do with text strings, using *type-specific methods*.
+we can do with text strings, using **type-specific methods**.
 Strings are, for example, searchable
-```python
+```{code-cell} python
 s = 'david'
-s.
+s.find('d')
 ```
+and you can generate new strings making intuitive changes
+like making uppercase what was lowercase
+```{code-cell} python
+s = 'peter'
+s.upper()
+```
+You can also split a string into parts, based on a given
+element.
+hable
+```{code-cell} python
+s = 'bread, butter, flour, milk'
+s.split(',')
+```
+But this takes us directly into the next type of variable
+we want to consider.
 
 ### Lists
 
