@@ -256,6 +256,7 @@ a = 10; b = 3
 a < b
 ```
 These operators will return either `True` or `False`.
+This is what we call a **Boolean**.
 
 Something you must bear in mind when you are programming
 is the finite machine precision with which your machine
@@ -313,7 +314,12 @@ verse2 = "Nothing to do to save his life call his wife in"
 print (5*verse1 + verse2)
 ```
 Hence, addition for strings means *concatenation*, while
-multiplication means *repetition*.
+multiplication means *repetition*. You can also perform
+membership operators, to check whether an element is present
+in a string.
+```{code-cell} python
+'a' in 'Antonio'
+```
 
 Another interesting thing you can do with strings that
 was not possible with `int` or `float` is **indexing**. You 
@@ -326,7 +332,6 @@ indexing**. Hence, the 1st element in a string is
 accessed using the index 0, and so on. You can also
 access characters in a string backwards, using 
 negative numbers.
-
 We can also perform **slicing** operations, which 
 extract sections (or slices) of the string
 ```{code-cell} python
@@ -379,10 +384,77 @@ s.split(',')
 But this takes us directly into the next type of variable
 we want to consider.
 
-### Lists
+### Lists, tuples and dictionaries
+**Lists** are a very important type of **sequence**, which
+in Python are data structures that contain a collection
+of elements. In the last section, we have generated one 
+such object
+```python
+['bread', ' butter', ' flour', ' milk']
+```
+which is of course a list of strings. Lists are defined
+when the list of elements is written inside square
+brackets (`[ ]`). If you were using parenthesis instead,
+(`( )`) then you would be defining what we call a **tuple**.
+Finally, there are **dictionaries**, which are defined
+using curly brackets (`{ }`).
 
-### Dictionaries	
-## Matrices	
+Lists and tuples can contain all sorts of data types. You
+can for example combine numerics and strings.
+```python
+mylist = ["I", "am", 30, "years", "old"]
+```
+Also, you can easily convert between lists and tuples
+```python
+mytuple = tuple(mylist)
+```
+The main difference between lists and tuples is that the
+latter are immutable, while you are allowed to change
+lists.
+
+Operators work with lists and tuples like they did with
+strings. Addition is concatenation and multiplication is
+repetition. For example,
+```{code-cell} python
+['one', 'two'] + ['three', 'four']
+```
+or 
+```{code-cell} python
+(1, 2)*3
+```
+Membership operators are also similar to what we saw for
+lists
+```{code-cell} python
+1 in [10, 20, 30]
+```
+As are the slicing operations, which are again accessing
+elements of the list using zero-based indexing
+```{code-cell} python
+decades = list(range(10, 110, 10))
+print (decades[2:-2])
+```
+Here we are using something called a `range` object,
+which we are using to build a list. The syntax is worth
+discussing: using `range(start, stop, step)` we enumerate 
+integers from the 
+first argument (`start`), to the second argument (`stop`), 
+in steps of size given by the third argument (`step`).
+
+You can interrogate lists using intrinsic functions.
+For example, you can find how many elements there are
+in a list using `len()` 
+```{code-cell} python
+names = ['pedro', 'jose', 'felipe', 'mariano']
+print (len(names))
+```
+and you can sort its contents with `sorted()`
+```{code-cell} python
+names = ['pedro', 'jose', 'felipe', 'mariano']
+print (sorted(names))
+```
+which, as you sure have noticed, sorts strings
+alphabetically.
+
 ## Functions	
 
 ## Intrinsic functions (from Computational QM)	
