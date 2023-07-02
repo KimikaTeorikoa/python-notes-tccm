@@ -386,9 +386,9 @@ we want to consider.
 
 ### Lists, tuples and dictionaries
 **Lists** are a very important type of **sequence**, which
-in Python are data structures that contain a collection
-of elements. In the last section, we have generated one 
-such object
+in Python is a type of data structures that contain a 
+collection of elements. In the last section, we have generated 
+one such object
 ```python
 ['bread', ' butter', ' flour', ' milk']
 ```
@@ -451,37 +451,60 @@ and you can sort its contents with `sorted()`
 ```{code-cell} python
 names = ['pedro', 'jose', 'felipe', 'mariano']
 print (sorted(names))
+print (names)
 ```
 which, as you sure have noticed, sorts strings
 alphabetically.
 
-## Functions	
-
-## Intrinsic functions (from Computational QM)	
-## Using and writing functions
-### Writing Python code: Indentation
-In Python, the way that a program looks is 
-very much determined by indentation. This 
-differs from what we will find in other languages
-like Fortran or C, where formatting is not so
-important. When you write an `if` statement in
-Python, you must respect the right indentation,
-e.g.
-```python
-if x < 12:
-    print (x)
+To finalize we will say that as objects, lists
+have associated **methods** that are particularly
+useful. For example, you can easily add an element
+to a list 
+```{code-cell} python
+names = ['pedro', 'jose', 'felipe', 'mariano']
+names.append('yolanda')
+print (names)
 ```
-And if not, the code will simply not run. 
-Different levels of indentation start where 
-we have colons (`:`), and these have to be 
-indented with respect to the previous level
-of indentation. Be 
-careful not to add white spaces where they do not
-belong and use consistently tabs or spaces
-(4 spaces is the preferred option in PEP8). 
-This may feel like a nuisance if you have
-experience in some other programming language, but
-will help orient yourself when reading code in the
-long run.
+remove elements from a list
+```{code-cell} python
+names = ['pedro', 'jose', 'felipe', 'mariano']
+names.remove('pedro')
+print (names)
+```
+reverse the order of the elements
+```{code-cell} python
+names = ['pedro', 'jose', 'felipe', 'mariano']
+names.reverse()
+print (names)
+```
+or sort them. Remember that before we have used the function
+`sorted()`. There is an equivalent method:
+```{code-cell} python
+numbers = [30, 1,  100]
+numbers.sort()
+print (numbers)
+```
 
-### Environments	
+**Dictionaries** are a more sofisticated type of sequence,
+with elements having multiple entries called **keys** and
+their corresponing **values**. Their structure is hence
+```python
+mydict = {key1: val1, key2: val2, key3: val3}
+```
+There is great flexibility in terms of what can be a key
+or a value
+```python
+presidents = {'Adolfo': [1976, 1977, 1979], 'Leopoldo': [1981], \
+              'Felipe': [1982, 1986, 1989, 1993]}
+```
+You can access dictionaries in many different ways, for
+example using the `items()`, `keys()` or `values()` method
+```{code-cell} python
+presidents = {'Adolfo': [1976, 1977, 1979], 'Leopoldo': [1981], \
+              'Felipe': [1982, 1986, 1989, 1993]}
+print (presidents.items())
+print (presidents.keys())
+print (presidents.values())
+```
+In the next few lessons we will put all these data structures 
+to good use.
