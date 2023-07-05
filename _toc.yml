@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: contents/setup
+- file: contents/fundamentals
 - file: contents/functions
 - file: contents/control
 - file: contents/forloops
