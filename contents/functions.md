@@ -95,4 +95,85 @@ by the function (`d = a - val`), we are getting a `NameError`. Because
 code.
 
 ## Types of arguments
-### Environments	
+So far we have used arguments in the simplest of ways. But arguments can
+be of different types. Check the following example
+```{code-cell} python
+def power_of_n(x,n):
+    return x**n
+    
+print (power_of_n(2, 3))
+```
+Here, both arguments `x` and `n` must be 
+passed in all function calls. Failure to state a value for one of them
+argument would return a `SyntaxError`.
+
+However, we can write a function in a different way, if, for example,
+one of the arguments has a typical value
+```{code-cell} python
+def power(x, n=2):
+    return x**n
+    
+print ("n = 2 (default); result = %i"%power(2))
+print ("n = 3 (non-default); result = %i"%power(2,3))
+```
+In this case, the function has a different behaviour for 
+the argument `n`, which has a default value of 2
+if it is not explicitly defined. 
+
+In the last function above, `n` is a **keyword argument**,
+because it has a name. When using keyword arguments, you
+do not have to remember the order we call them.
+For example
+```{code-cell} python
+def power(x=None, n=2):
+    return x**n
+    
+print (power(x=2, n=3))
+print (power(n=3, x=2))
+```
+
+When functions can accept an **arbitrary number of arguments**, you
+can mark them with an asterisk `*`. For example, to sum
+of numbers, irrespective of how many there are, you could write
+```{code-cell} python
+def sum_args(*args):
+    result = 0
+    for v in args:
+        result += v
+    return result
+    
+print (sum_args(1, 2))
+print (sum_args(1, 2, 3))
+```
+
+Additionally, we may want to have an arbitrary number of keyword
+arguments. In this case, you invoke the function using two
+asterisks `**` instead of just one and call your function using
+```python
+def my_fun(*args, **kwargs):
+    for i in args:
+        # do something
+        ...
+    for k, v in kwargs:
+        # do something else
+        ...
+```
+You see that the `kwargs` are being unwrapped like a **dictionary**.
+
+## Anonymous functions
+In Python there is an alternative way of defining functions that
+does not require the syntax we have used so far (with a `def` 
+statement). You can instead use a `lambda` statement and use
+a following syntax:
+```python
+my_function = lambda arg, [arg2, [arg3, ...]]: expression
+```
+An example of this type of function to calculate powers would be
+```{code-cell} python
+power = lambda x,y: x**y
+print (power(2,3))
+```
+You see that we have compressed into a single line what we were doing 
+before using a few more. As you probably guessed, anonymous functions
+are particularly useful as one-liners, but may become cumbersome
+to use for more sofisticated actions.
