@@ -6,7 +6,7 @@ root: intro
 chapters:
 - file: contents/setup
 - file: contents/fundamentals
-- file: contents/control
+- file: contents/flowcontrol
 - file: contents/functions
 - file: contents/libraries
 - file: contents/plotting
