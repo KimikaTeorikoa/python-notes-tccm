@@ -13,14 +13,19 @@ kernelspec:
 We have already explored many things that can be done using Python, and
 specifically in the [previous chapter](flowcontrol.md), how to do
 them over and over again. Sometimes, as your code gets more complicated
-it will make sense to **abstract** some of the things that you are doing
+it will make sense to **abstract** some of the computations that you are doing
 and isolate them into a separate piece of code, called a **function**.
 
 ## Built-in functions
 In fact, we have been using functions since the beginning of our
 journey with Python. The functions that can be used in any moment
 in time just by typing them are called **built-in functions**.
-The first one we used is the `print()`function. There are many others, 
+The first one we used is the `print()`function. Incidentally, since
+we have used it, we can check what type of object `print()` is
+```{code-cell} python
+print (type(print))
+```
+There are many other built-in functions, 
 like `abs()`, `all()`, `any()`, `dir()`, `enumerate()`, `int()`, 
 `len()`, `range()` or `type()`. A complete list of built-in 
 functions can be found in the [Python official
@@ -50,11 +55,28 @@ def my_function(argument1, argument2, ...):
     return value1, value2
 ```
 As you see, to write a function we must first use the `def` statement,
-after which the name of your function, with parenthesis, and its function
+after which come the name of your function, with parenthesis, and its function
 arguments, will follow. Then starts an indented block that can be as long
 as required. The function usually will end with a `return` statement, 
 which can return one or multiple values, or nothing at all. In that case,
 you can omit the `return` statement altogether.
+
+Functions must be defined before they are used. This will normally mean
+that the function is written *above* the main code we are running.
+If one function calls another function, then it does not matter which
+order they appear as long as the code is not executed. For example,
+in this code, 
+```{code-cell} python
+def call_tell_me_yes():
+    tell_me_yes()
+    
+def tell_me_yes():
+    print ("yes")
+    
+call_tell_me_yes()
+```
+it does not matter that the first function is calling the second
+function, as both are defined at runtime.
 
 ## Scope of variables
 It is important to note that whatever happens outside the function
@@ -79,7 +101,6 @@ b = 20
 c = test_scope(b)
 print ("c = %i"%c)
 print ("d = %i"%d)
-
 ```
 Let's analyze what just happened. First, we are defining a function, 
 `test_scope()` that takes an argument called `val`. Then, in the main
@@ -95,7 +116,17 @@ by the function (`d = a - val`), we are getting a `NameError`. Because
 code.
 
 ## Types of arguments
-So far we have used arguments in the simplest of ways. But arguments can
+So far we have used arguments in the simplest of ways. There
+can be functions without arguments, in which case the function
+call would be done with an empty parenthesis. 
+```{code-cell} python
+def say_hello():
+    print ('Hello!')
+    
+say_hello()
+```
+
+Also, arguments can
 be of different types. Check the following example
 ```{code-cell} python
 def power_of_n(x,n):
