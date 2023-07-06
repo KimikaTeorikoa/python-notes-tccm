@@ -222,3 +222,47 @@ You see that we have compressed into a single line what we were doing
 before using a few more. As you probably guessed, anonymous functions
 are particularly useful as one-liners, but may become cumbersome
 to use for more sofisticated actions.
+
+## Documenting functions
+An important detail that we have left to the side so far is the need
+to write documentation for your functions. In Python, function
+(and module, and class) documentation comes in the form of **docstrings**. 
+As you may expect, there are detailed recommendations on how to write
+docstrings. You can find them in [PEP 257](https://peps.python.org/pep-0257/).
+One of them is that we use triple quotes (`"""`) to write docstrings.
+
+In summary, if we stick to functions for now, docstrings can consist on 
+a **single line** --these are typical for very obvious actions--.
+```python
+def print_dog():
+    """ Prints man's best friend """
+    print ("dog")
+```
+Or, they can be longer, if there is need for greater detail. Typically,
+**multi-line docstrings** start with a summary line, which is followed
+by a blank line, and then the rest of the required documentation.
+This often includes a description of the function arguments and returns.
+Here is an example that we borrow from PEP 257
+```python
+def complex(real=0.0, imag=0.0):
+    """Form a complex number.
+
+    Keyword arguments:
+    real -- the real part (default 0.0)
+    imag -- the imaginary part (default 0.0)
+    """
+    if imag == 0.0 and real == 0.0:
+        return complex_zero
+    ...
+```
+
+Above, we saw that functions are objects too, hence having attributes.
+The documentation becomes one of the function attributes, called
+`__doc__`. For example, you can do the following
+```{code-cell} python
+def tell_me_your_name(*args):
+    """Prompts user for name """
+    print ("What's your name?")
+    
+print (tell_me_your_name.__doc__)
+```
