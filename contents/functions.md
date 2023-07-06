@@ -15,6 +15,11 @@ specifically in the [previous chapter](flowcontrol.md), how to do
 them over and over again. Sometimes, as your code gets more complicated
 it will make sense to **abstract** some of the computations that you are doing
 and isolate them into a separate piece of code, called a **function**.
+Functions are useful for a number of reasons:
+* They make your code more *readable*.
+* Using functions you may *shorten* your code, avoiding repetitive actions.
+* They make your code easier to *debug*.
+* Functions may be *reused* in different programs.
 
 ## Built-in functions
 In fact, we have been using functions since the beginning of our
@@ -49,17 +54,19 @@ into `y`.
 But in addition to the built-in functions that are always available,
 you can write your own functions. The basic syntax is as follows:
 ```python
-def my_function(argument1, argument2, ...):
+def my_function(arg1, arg2, ...):
     # A number of actions that take place inside the function
     ...
     return value1, value2
 ```
 As you see, to write a function we must first use the `def` statement,
 after which come the name of your function, with parenthesis, and its function
-arguments, will follow. Then starts an indented block that can be as long
+arguments, `arg1` and `arg2`, will follow. Then starts an indented block 
+that can be as long
 as required. The function usually will end with a `return` statement, 
-which can return one or multiple values, or nothing at all. In that case,
-you can omit the `return` statement altogether.
+which can return one or multiple values, or nothing at all. We call this type
+of function with no returns **void function**.  When we write one of
+them  we can omit the `return` statement altogether.
 
 Functions must be defined before they are used. This will normally mean
 that the function is written *above* the main code we are running.
@@ -85,7 +92,14 @@ Variables defined in the main program are said to have **global scope**.
 But variables defined inside the function have **local scope**,
 so whatever happens in a function remains inside the function. To
 make variables global in scope you can declare them as a **global** or
-return them as a result.
+return them as a result. To make a variable `x`inside a function global,
+you just need to type
+```python
+def my_function(arg):
+    global x 
+    # Perform a number of actions
+    ...
+```
 
 Let's look carefully at the following example
 ```{code-cell} python
@@ -112,7 +126,7 @@ but named as `val` internally (the function would still know who is `b`).
 Finally, `c` is returned by the function as the sum of the other
 two variables. However, when trying to print the other variable calculated
 by the function (`d = a - val`), we are getting a `NameError`. Because
-`d` is local in scope, it is not part of the namespace known to the main
+`d` is local in scope, it is not part of the **namespace** known to the main
 code.
 
 ## Types of arguments
