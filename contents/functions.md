@@ -266,3 +266,7 @@ def tell_me_your_name(*args):
     
 print (tell_me_your_name.__doc__)
 ```
+
+## Advanced topics
+* Functional programming: `map`, `filter`
+* Recursion
