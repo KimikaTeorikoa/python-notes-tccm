@@ -31,6 +31,9 @@ long run.
 
 ## Conditionals (if)
 
+Conditional statements are used to execute a block 
+of code depending on a condition.
+
 ## Loops (for while)
 
 ## 	
