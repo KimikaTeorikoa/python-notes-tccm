@@ -46,6 +46,8 @@ else:
     ...
 ```
 
+### Logical tests and conditional operators
+At this point, some words on logical tests and conditional operators are in order.
 Logical tests are expressions that evaluate to `True` or `False` 
 and correspond to variables of type `bool`. 
 Conditional expressions are built using conditional operators. 
@@ -60,6 +62,37 @@ For instance:
 1 > 2 # False
 ```
 
+:::{note}
+There is another operator, `is`, that is similar to `==` but checks if two variables
+are the same **object** (point to the same address in memory). 
+In general, for two different variables with the same value ,this operator evaluates to `False`.
+For instance, if we compare two different float variables with the same value.
+
+```python
+x = 1.0
+y = 1.0
+x == y # True
+x is y # False
+```
+
+But this is not always the case for integers, because Python caches the most commonly used
+integers, so that they are the same object in memory.
+
+```python
+x = 1
+y = 1
+x == y # True
+x is y # True
+# But with larger integers this is not the case:
+x = 1554223641
+y = 1554223641
+x == y # True
+x is y # False
+```
+
+So, in general, we use `==` to compare values and `is` to compare objects.
+:::
+
 Another useful operator is `in`, which checks if a value is contained in a list,
 tuple or dictionary.
 
@@ -72,7 +105,6 @@ For instance:
 Logical tests can be combined using the logical operators `and`, `or` and `not`. 
 They work as follows:
 
-For instance:
 ```python
 True and False # False
 True or False # True
@@ -80,7 +112,21 @@ not True # False
 not False # True
 ```
 
+Finally, it is also worth mentioning that some non-boolean values can be evaluated
+as `True` or `False`. For instance, the number `0` is evaluated as `False`, while
+any other number is evaluated as `True`. Similarly, the empty string `""` is evaluated
+as `False`, while any other string is evaluated as `True`. An empty list also evaluates
+as `False`, while any other list evaluates as `True`.
+Such equivalences can be made explicit using the `bool` function.
 
+```python
+bool(0) # False
+bool(1) # True
+bool("") # False
+bool("Hello") # True
+bool([]) # False
+bool([1, 2, 3]) # True
+```
 
 
 ## Loops (for while)
