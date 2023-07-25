@@ -32,12 +32,69 @@ long run.
 ## Conditionals (if)
 
 Conditional statements are used to execute a block 
-of code depending on a condition.
+of code depending on the results of one or more logical tests. The basic syntax 
+is as follows:
+```python
+if condition1:
+    # A number of actions that take place if condition1 is True
+    ...
+elif condition2:
+    # A number of actions that take place if condition2 is True
+    ...
+else:
+    # A number of actions that take place if none of the above is True
+    ...
+```
+
+Logical tests are expressions that evaluate to `True` or `False` 
+and correspond to variables of type `bool`. 
+Conditional expressions are built using conditional operators. 
+The most common ones are `==` (equal), `!=` (not equal), `>` (greater than), 
+`<` (less than), `>=` (greater than or equal to), `<=` (less than or equal to).
+
+For instance:
+```python
+1 == 2 # False
+1 != 2 # True
+1 < 2 # True
+1 > 2 # False
+```
+
+Another useful operator is `in`, which checks if a value is contained in a list,
+tuple or dictionary.
+
+For instance:
+```python
+1 in [1, 2, 3] # True
+1 in [2, 3, 4] # False
+```
+
+Logical tests can be combined using the logical operators `and`, `or` and `not`. 
+They work as follows:
+
+For instance:
+```python
+True and False # False
+True or False # True
+not True # False
+not False # True
+```
+
+
+
 
 ## Loops (for while)
 
-## 	
+Loops are used to execute a block of code repeatedly.
 
+## 	Iterators and generators
+
+Iterators are objects that can be iterated upon.
+
+
+## 	Comprehensions
+
+Lists and dictionaries can be created in a very handy way.
 
 ## Error and exception handling
 

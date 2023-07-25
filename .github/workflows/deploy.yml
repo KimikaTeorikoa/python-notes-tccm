@@ -4,7 +4,7 @@ on:
   # Trigger the deploy on push to main branch
   push:
     branches:
-      - master
+      - uam_node
   schedule:
     - cron: '0 0 1 * *'
 
