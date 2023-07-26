@@ -95,6 +95,7 @@ x = 1
 y = 1
 x == y # True
 x is y # True
+
 # But with larger integers this is not the case:
 x = 1554223641
 y = 1554223641
@@ -174,6 +175,28 @@ as follows:
 ```python
 squares = [x**2 for x in range(1, 11) if x % 2 == 0]
 ```
+Comprehensions can also be used to create dictionaries. For instance, we can create
+
+```python
+squares = {x: x**2 for x in range(1, 11)}
+```
+
+Note that we need to iterate over keys and values. This can also be done generating 
+a list of tuples in-place. For instance, we can create a dictionary that maps letters
+to their position in the alphabet as follows:
+
+```{code-cell} python
+letters = { chr(j):i for (i,j) in enumerate(range(65,65+26), start=1) }
+print('A:',letters['A'])
+print('Z:',letters['Z'])
+```
+
+In the above example, `enumerate` is a built-in function that returns a list of tuples
+(actually an iterator)
+over a sequence of values (in this case, another iterator, `range`), together with 
+their index (starting from 1 as specified with the `start` argument). The `chr()` function
+converts an integer to the corresponding ASCII character.
+
 
 ## Error and exception handling
 
@@ -240,11 +263,14 @@ name error as follows:
 
 ```{code-cell} python
 try:
-    x/0
+    print(x)
 except ZeroDivisionError:
     print("Division by zero!")
-except NameError:
-    print("Variable not defined!")
+except TypeError:
+    print("Incorrect type!")
+except:
+    print("Something else went wrong!")
+    # In this case we had a NameError, but we don't handle it specifically
 ```
 
 Moreover, `else` and `finally` statements can also be added to the
