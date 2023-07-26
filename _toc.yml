@@ -9,6 +9,7 @@ chapters:
 - file: contents/flowcontrol
 - file: contents/functions
 - file: contents/libraries
+- file: contents/useful_libs
 - file: contents/plotting
 - file: contents/ooprogramming
 - file: contents/notebooks

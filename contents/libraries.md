@@ -4,5 +4,4 @@
 ## Introduction	
 ## Input/Output	
 ## Arrays	
-## Operations	
-## Some useful libraries for computational chemistry
+## Operations
