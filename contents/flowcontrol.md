@@ -1,3 +1,14 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Control structures
 
 ## A note on indentation
@@ -46,7 +57,8 @@ else:
     ...
 ```
 
-### Logical tests and conditional operators
+**Logical tests and conditional operators**
+
 At this point, some words on logical tests and conditional operators are in order.
 Logical tests are expressions that evaluate to `True` or `False` 
 and correspond to variables of type `bool`. 
@@ -65,7 +77,7 @@ For instance:
 :::{note}
 There is another operator, `is`, that is similar to `==` but checks if two variables
 are the same **object** (point to the same address in memory). 
-In general, for two different variables with the same value ,this operator evaluates to `False`.
+In general, for two different variables with the same value, this operator evaluates to `False`.
 For instance, if we compare two different float variables with the same value.
 
 ```python
@@ -140,8 +152,133 @@ Iterators are objects that can be iterated upon.
 
 ## 	Comprehensions
 
-Lists and dictionaries can be created in a very handy way.
+Lists and dictionaries can be created in a very compact way using comprehensions.
+The list is created based on another list, dictionary or iterable object, and
+a condition can be added to filter the elements that are included in the new list.
+The syntax is as follows:
+
+```python
+new_list = [expression for item in iterable if condition == True]
+```
+
+For instance, we can create a list with the squares of the numbers from 1 to 10
+as follows:
+
+```python
+squares = [x**2 for x in range(1, 11)]
+```
+
+We can also create a list with the squares of the even numbers from 1 to 10
+as follows:
+
+```python
+squares = [x**2 for x in range(1, 11) if x % 2 == 0]
+```
 
 ## Error and exception handling
 
+While running the code, some errors may occur, e.g. divide by zero, trying to open
+a non-existing file... Python raises a specific object that identifies the error. 
+These are called exceptions. 
 
+For instance the `ZeroDivisionError` exception is raised
+when trying to divide by zero.
+
+```{code-cell} python
+1/0
+```
+
+And `FileNotFoundError` is raised when trying to open a non-existing file.
+
+```{code-cell} python
+f = open('missing_file.txt')
+```
+
+As shown above, when an exception is raised, the code stops running and an informative error 
+message is printed. Some context information is also provided, e.g. the call stack, which shows
+the sequence of function calls that led to the error.
+
+Built-in exceptions are listed in the [Python documentation](https://docs.python.org/3/library/exceptions.html#bltin-exceptions).
+Some of the most commonly raised exceptions are:
+
+- `ZeroDivisionError`: raised when trying to divide by zero.
+- `NameError`: raised when a variable is not defined.
+- `TypeError`: raised when an operation or function is applied to an object of inappropriate type.
+- `ValueError`: raised when a built-in operation or function receives an argument that has the 
+   right type but an inappropriate value.
+- `IndexError`: raised when trying to access an element in a list using an invalid index.
+- `KeyError`: raised when a dictionary key is not found.
+- `FileNotFoundError`: raised when trying to open a non-existing file.
+- `ImportError`: raised when an import statement fails.
+- `SyntaxError`: raised when there is an error in Python syntax.
+- `IndentationError`: raised when indentation is not correct.
+
+Errors raised while running the code can be handled using the `try` and `except` statements.
+The basic syntax is as follows:
+
+```python
+try:
+    # Code that may raise an exception
+    ...
+except ExceptionName:
+    # Code that is executed if the exception ExceptionName is raised
+```
+
+For instance, we can handle a division by zero error as follows:
+
+```python
+try:
+    1/0
+except ZeroDivisionError:
+    print("Division by zero!")
+```
+
+The `try` statement can be followed by multiple `except` statements, to handle different
+types of exceptions specifically. If no exception is specified, the `except` statement
+will handle any exception. For instance, we can handle a division by zero error and a
+name error as follows:
+
+```{code-cell} python
+try:
+    x/0
+except ZeroDivisionError:
+    print("Division by zero!")
+except NameError:
+    print("Variable not defined!")
+```
+
+Moreover, `else` and `finally` statements can also be added to the
+`try` statement. The `else` statement is executed if no exception is raised, and the
+`finally` statement is always executed, regardless of whether an exception is raised or not.
+The general syntax is as follows:
+
+```python
+try:
+    # Code that may raise an exception
+    ...
+except ExceptionName1:
+    # Code that is executed if the exception ExceptionName1 is raised
+    ...
+except ExceptionName2:
+    # Code that is executed if the exception ExceptionName2 is raised
+    ...
+except:
+    # Code that is executed if any other exception is raised
+    ...
+else:
+    # Code that is executed if no exception is raised
+    ...
+finally:
+    # Code that is always executed, regardless of whether an exception is raised or not
+    ...
+```
+
+We can also raise exceptions in oru code using the `raise` statement, using one of the built-in
+exceptions or a custom exception (we are not going to cover custom exceptions in this course).
+For instance:
+
+```{code-cell} python
+x = -1
+if x < 0:
+    raise ValueError("x cannot be negative")
+```
