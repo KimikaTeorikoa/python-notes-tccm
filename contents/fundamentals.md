@@ -257,6 +257,8 @@ a < b
 ```
 These operators will return either `True` or `False`.
 This is what we call a **Boolean**.
+We will discuss Booleans and logical operations in the
+[next chapter](flowcontrol.md).
 
 Something you must bear in mind when you are programming
 is the finite machine precision with which your machine

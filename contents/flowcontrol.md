@@ -42,9 +42,10 @@ long run.
 
 ## Conditionals (if)
 
-Conditional statements are used to execute a block 
-of code depending on the results of one or more logical tests. The basic syntax 
-is as follows:
+In many cases, we want to execute a piece of code
+depending on the results of one or more conditions (which we will call logical tests).
+This is actually one of the main control flow structures in Python (and most
+programming languages). The basic syntax in Python is as follows:
 ```python
 if condition1:
     # A number of actions that take place if condition1 is True
@@ -61,12 +62,14 @@ else:
 
 At this point, some words on logical tests and conditional operators are in order.
 Logical tests are expressions that evaluate to `True` or `False` 
-and correspond to variables of type `bool`. 
-Conditional expressions are built using conditional operators. 
+and correspond to variables of type `bool` (Booleans, as seen in the 
+[previous chapter](fundamentals.md)).
+
+Logical tests are built using conditional operators. 
 The most common ones are `==` (equal), `!=` (not equal), `>` (greater than), 
 `<` (less than), `>=` (greater than or equal to), `<=` (less than or equal to).
+As you would expect, these comparison operators give the following results:
 
-For instance:
 ```python
 1 == 2 # False
 1 != 2 # True
@@ -103,7 +106,7 @@ x == y # True
 x is y # False
 ```
 
-So, in general, we use `==` to compare values and `is` to compare objects.
+So, in general, we use `==` to compare values (i.e., what we normally intend to do) and `is` to compare objects.
 :::
 
 Another useful operator is `in`, which checks if a value is contained in a list,
@@ -258,8 +261,8 @@ except ZeroDivisionError:
 
 The `try` statement can be followed by multiple `except` statements, to handle different
 types of exceptions specifically. If no exception is specified, the `except` statement
-will handle any exception. For instance, we can handle a division by zero error and a
-name error as follows:
+will handle any exception. For instance, we can handle a division by zero error, a
+name error, specifically, and then any other exception as follows:
 
 ```{code-cell} python
 try:
@@ -299,7 +302,7 @@ finally:
     ...
 ```
 
-We can also raise exceptions in oru code using the `raise` statement, using one of the built-in
+We can also raise exceptions in our code using the `raise` statement, using one of the built-in
 exceptions or a custom exception (we are not going to cover custom exceptions in this course).
 For instance:
 
