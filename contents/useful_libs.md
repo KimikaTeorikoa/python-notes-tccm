@@ -9,7 +9,7 @@ kernelspec:
   name: python3
 ---
 
-# Other useful libraries
+# Useful libraries for scientific computing
 
 In this section we review some additional libraries that are very useful for scientific computing.
 
@@ -28,13 +28,13 @@ import scipy.submodulename
 from scipy import submodulename
 ```
 
-The submodules that normally fulfill the needs of a computatonal chemist are:
+The submodules that normally fulfill the needs of a computational chemist are:
 
 - `integrate`: Integration and ordinary differential equation solvers
 - `interpolate`: Interpolation and smoothing splines
+- `optimize`: Optimization and root-finding routines
 - `linalg`: Linear algebra, which actually provides an interface to BLAS and LAPACK libraries.
 Note that it generally supports all `numpy.linalg` functions, and `scipy.linalg` versions are preferred.
-- `optimize`: Optimization and root-finding routines
 
 The list of submodules is completed with:
 
@@ -51,11 +51,13 @@ The list of submodules is completed with:
 - `io`: Input and Output
 - `misc`: Miscellaneous utilities that don’t have another home.
 
-Let's see some examples of the most useful submodules in `scipy`.
+In the following, we will take a deeper look at the submodules
+`integrate`, `interpolate` and `optimize`.
 
 ### `scipy.integrate`
 
-This submodule provides several integration routines, including an ordinary differential equation integrator.
+This submodule provides several integration routines, including an ordinary 
+differential equation integrator.
 
 **Integration** of a 1D function, can be done with the `quad` method, which uses the
 [QUADPACK](https://en.wikipedia.org/wiki/QUADPACK) Fortran library. For instance
@@ -93,13 +95,13 @@ y = gaussian(x, mu, sigma)
 print(simps(y, x=x))
 ```
 
-Integration of a multidimensional function can be done with the following methods:
+Functions for multidimensional integration are also available:
 
 - `dblquad`: General purpose double integration.
 - `tplquad`: General purpose triple integration.
 - `nquad`: General purpose n-integration.
 
-This module also provides methods to integrate **ordinary differential equations**. 
+This submodule also provides methods to integrate **ordinary differential equations**. 
 The recommended method is `solve_ivp` (solve initial value problem), 
 which is a modern integrator for ordinary differential equations.
 
@@ -111,12 +113,12 @@ $$
 \frac{dy}{dt} &= x
 \end{align}
 $$
-
 we can use the following code,
 
-```python
+```{code-cell} python
 from scipy.integrate import solve_ivp
 import numpy as np
+import matplotlib.pyplot as plt
 
 def f(t, y):
     return [-y[1], y[0]]
@@ -126,6 +128,11 @@ tf = 10
 y0 = [1, 0]
 t_eval = np.linspace(t0, tf, 100)
 sol = solve_ivp(f, [t0, tf], y0, t_eval=t_eval)
+
+plt.plot(sol.t, sol.y[0], label='x')
+plt.plot(sol.t, sol.y[1], label='y')
+plt.legend()
+plt.show()
 ```
 The integration algorithm is set with the `method` attribute. Available methods are
 summarized in the following table.
@@ -141,7 +148,7 @@ summarized in the following table.
 
 The  older `odeint` function is also available, and provides a robust integrator
 for ordinary differential equations based on the
-using the FORTRAN library [odepack](https://computing.llnl.gov/projects/odepack).
+FORTRAN library [odepack](https://computing.llnl.gov/projects/odepack).
 It is still extensively used, mainly in legacy code.
 
 ### `scipy.interpolate`
@@ -215,7 +222,7 @@ plt.show()
 ```
 
 As you can see, we use some kind of *advanced* `matplotlib` features in this example. 
-You might be not familiar to them yet, but you will learn about them in the next chapter.
+You can refresh them going back to the [previous chapter](plotting.md).
 We also use the `np.meshgrid` function, which is very useful to generate 2D arrays with 
 the grid points, (`x`,`y`), from the 1D arrays, `x` and `y`. The interpolation method is
 specified with the `kind` argument, which can take the same values as in the 1D case.
@@ -224,8 +231,8 @@ The above example uses a regular grid, but this is not a requirement. Actually, 
 we can use the function `RectBivariateSpline`, which is more efficient. This function takes
 the same arguments as `interp2d`.
 
-Finally, it is worth mentioning the function to interpolated unstructured data: `griddata`. 
-This function takes as arguments the coordinates of the data points as a tuple of 1D arrays,
+To interpolate unstructured data we can use the function `griddata`. 
+It takes as arguments the coordinates of the data points as a tuple of 1D arrays,
 `(x,y)` and the values at these points, `z`, also a 1D array. 
 It also takes the coordinates of the points where the interpolation is required, `(Xi,Yi)`. 
 In this case, it returns the interpolated values at these points as a 2D array `Zi`.
@@ -234,12 +241,96 @@ The interpolation method is specified with the `method` argument. Possible value
 
 ### `scipy.optimize`
 
-This module provides several optimization algorithms. The most common one is `minimize`,
+This module provides several algorithms for optimization (locating minima and maxima) and 
+root-finding.
+
+The function `minimize` provides a common interface to all the **optimization** algorithms.
+It takes as arguments the function to be minimized, `f(x)`, the initial guess, `x0`, and
+the method to be used, `method`. The function to be minimized must take as argument a 1D array
+with the values of the variables to be optimized, and return a scalar. For instance,
+
+```{code-cell} python 
+from scipy.optimize import minimize
+import numpy as np
+
+def f(x):
+    return np.sum(x**2)
+    
+x0 = np.array([1, 2, 3])
+res = minimize(f, x0, method='Nelder-Mead')
+print(res.x)
+```
+
+As shown above, the `minimize` function returns an object with the results of the optimization.
+The `x` attribute contains the values of the variables that minimize the function. Other 
+attributes of the result object are `fun`, which contains the value of the function at the
+minimum, `success`, which is a boolean indicating if the optimization was successful, or the
+number of iterations, `nit`, among others.
+
+Possible methods are `Nelder-Mead`, `Powell`, `CG`, `BFGS`, `Newton-CG`, `L-BFGS-B`, `TNC`,
+`COBYLA`, `SLSQP` and `trust-constr`. The default method is `BFGS`. The choice of the method
+depends on the problem (stiffness, dimensionality, etc.), and the need of adding constraints,
+as not all the methods are compatible with constraints.
+More details can
+be found in the [documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize).
+
+For **root-finding** of scalar functions (univariate functions, i.e., which depend on only 
+one variable), we can use the general interface function `root_scalar`.
+It takes as arguments the function to be solved, `f(x)`, the initial guess, `x0`, and
+the method to be used, `method`. The function to be solved must take as argument a scalar
+and return a scalar. For instance,
+
+```{code-cell} python
+from scipy.optimize import root_scalar
+import numpy as np
+
+def f(x):
+    return x**2 - 1
+    
+res = root_scalar(f, x0=0.5, method='bisect')
+print(res.root)
+```
+
+Again, the `root_scalar` function returns an object with the results of the root-finding.
+The `root` attribute contains the value of the variable that solves the equation.
+
+The function `root` provides a common interface to all the root-finding algorithms
+for vector functions (i.e, a system of `N` equations that depend on `N` variables).
+It takes as arguments the function to be solved, `f(x)`, which depends on a 1D array (vector) 
+of `N` variables, `x`, the initial guess, `x0`, and
+the method to be used, `method`. The function to be solved must take as argument a 1D array
+with the values of the variables to be solved, and returns a 1D array with the same shape.
+For instance, the following system of equations:
+
+$$
+\begin{align}
+x^2 + y^2 = 1 \\
+x - y = 0
+\end{align}
+$$
+can be solved as follows:
+
+```{code-cell} python
+from scipy.optimize import root
+import numpy as np
+
+def f(x):
+    return np.array([x[0]**2 + x[1]**2 - 1, x[0] - x[1]])
+
+x0 = np.array([1, 2])
+res = root(f, x0, method='hybr')
+print(res.x)
+```
+
+Available methods are summarized in the [documentation](https://docs.scipy.org/doc/scipy/reference/optimize.html#root-finding)
+of this function.
 
 ## `sympy`
 
 This module is a computer algebra system (CAS), such as [Maxima](https://maxima.sourceforge.io) 
-or Mathematica.
+or Mathematica. In allows to perform symbolic calculations, such as derivatives, integrals,
+solving equations, etc. It might not be as powerful as the other CAS, but it is very useful 
+to integrate simple calculations in your python workflow.
 
 ## `pandas`
 
@@ -252,5 +343,5 @@ a format specifically designed to store large amounts of numerical data.
 There are other formats that are also very useful for this purpose, such as
 [netCDF](https://www.unidata.ucar.edu/software/netcdf/),
 [JSON](https://en.wikipedia.org/wiki/JSON) or
-[XML](https://en.wikipedia.org/wiki/XML),
+[XML](https://en.wikipedia.org/wiki/XML), which are also supported by Python modules.
 
