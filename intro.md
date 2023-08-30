@@ -22,7 +22,8 @@ title: Programming in Python Course
 # Welcome
 In this course we aim to help you understand some 
 fundamental principles of computer programming. 
-In this case, we will be using [**Python**](https://www.python.org/) as our programming
+In this case, we will be using [**Python**](https://www.python.org/)
+ as our programming
 language due to its widespread application in computational
 chemistry. This is not an easy choice, as you will 
 hopefully learn throughout the course. Python is extremely 
@@ -47,6 +48,9 @@ references that we recommend.
 ## Contributors
 These notes have been written by
 * David De Sancho 
+* Kirill Zinovjev
+* Javier Cerezo
+* Juan Jose Omiste
 * Txema Mercero Larraza
 
 ## Bibliography

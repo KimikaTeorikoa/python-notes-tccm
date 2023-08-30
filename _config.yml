@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Programming in Python Lecture Notes 
-author: David De Sancho \& Txema Mercero
+author: David De Sancho, Kirill Zinovjev, Javier Cerezo, Juan Jose Omiste & Txema Mercero
 logo: images/tccm.png
 
 # Force re-execution of notebooks on each build.
