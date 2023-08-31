@@ -11,5 +11,6 @@ chapters:
 - file: contents/libraries
 - file: contents/numpy
 - file: contents/plotting
+- file: contents/useful_libs
 - file: contents/ooprogramming
 - file: contents/notebooks
