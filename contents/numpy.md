@@ -318,6 +318,123 @@ The result is a 2D array `c` with the same shape `(3, 2)` as `a`, and it
 contains the sum of the corresponding elements from `a` and the virtually 
 broadcasted `b`.
 
+## Matrix Operations and the linalg Module
+In this section, we'll explore some of the most common matrix operations that
+NumPy offers. Particularly, we will take a look at some  functions from `linalg`
+module which provides a wide range of functions for performing linear algebra
+operations. These operations are essential for various scientific and
+engineering applications.
+
+### Matrix Multiplication
+Matrix multiplication is a fundamental operation in linear algebra. NumPy makes
+it easy to multiply matrices using the dot function or the @ operator, as you've
+seen in the previous section. Let's revisit matrix multiplication with NumPy:
+
+```{code-cell} python
+# Create two matrices
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+result_dot = np.dot(A, B)
+print("Matrix Multiplication using dot:\n", result_dot)
+
+result_at = A @ B
+print("Matrix Multiplication using @ operator:\n", result_at)
+```
+
+Both methods yield the same result, which is the product of matrices A and B.
+
+### Matrix Inversion
+Matrix inversion is another common operation in linear algebra. You can
+calculate the inverse of a square matrix using NumPy's `inv` function from the
+`linalg module`. However, not all matrices are invertible, so it's essential to
+check for invertibility before attempting the inversion.
+
+Here's how you can calculate the inverse of a matrix:
+
+```{code-cell} python
+def print_inverse(A, name):
+    try:
+        A_inv = np.linalg.inv(A)
+        print(f"Matrix {name}:\n", A)
+        print(f"Inverse of {name}:\n", A_inv)
+    except np.linalg.LinAlgError:
+        print(f"Matrix {name} is not invertible.\n") 
+
+# Create a square matrix
+M1 = np.array([[1, 2], [3, 4]])
+M2 = np.array([[2, 3], [4, 6]])
+
+print_inverse(M1, "M1")
+print_inverse(M2, "M2")
+```
+Here we first define a function that would print a given matrix and it's
+inverse. Then, we call this function on two matrices: one that is invertible
+and one that is not. As yu can see, in the latter case the function informs us
+that the inverse cannot be taken.
+
+### Determinant and Eigenvalues
+You can compute the determinant of a square matrix and its eigenvalues using
+NumPy's `det` and `eig` functions. The determinant of a matrix provides valuable
+information about its properties, and eigenvalues are crucial in various
+applications, such as solving differential equations and analyzing dynamic
+systems.
+
+Here's how you can calculate the determinant and eigenvalues of a matrix:
+
+```{code-cell} python
+# Create a square matrix
+D = np.array([[2, 1], [1, 3]])
+
+# Calculate the determinant
+det_D = np.linalg.det(D)
+print("Determinant of D:", det_D)
+
+# Calculate eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(D)
+print("Eigenvalues of D:", eigenvalues)
+print("Eigenvectors of D:\n", eigenvectors)
+```
+
+### Solving a System of Linear Equations
+
+NumPy's `linalg` module also provides a convenient way to solve systems of
+linear equations of the form `Ax = b`, where `A` is a matrix, `x` is a vector of
+unknowns, and `b` is a vector of constants. Solving such systems is a common
+task in various fields, including engineering and physics.
+
+Here's an example of how to use `numpy.linalg.solve` to solve a system of linear
+equations:
+
+```{code-cell} python
+# Define the coefficient matrix A and the constants vector b
+A = np.array([[2, 1], [1, 3]])
+b = np.array([5, 8])
+
+# Solve the system of linear equations Ax = b
+x = np.linalg.solve(A, b)
+
+print("Solution x:", x)
+```
+In this example, we have a system of two linear equations:
+
+```
+2x + y = 5
+x + 3y = 8
+```
+The `numpy.linalg.solve` function takes the coefficient matrix A and the constants
+vector b as input and returns the solution vector x. The solution x represents
+the values of the unknown variables that satisfy all the equations in the
+system.
+
+You can use this method to efficiently solve larger systems of linear equations
+as well, making it a powerful tool for numerical simulations and data analysis.
+
+
+These are just a few examples of the many linear algebra operations you can
+perform with NumPy and its `linalg` module. Understanding and utilizing these
+operations is crucial for a wide range of scientific and engineering tasks.
+
+
 ## Input/Output
 In real applications, you often want to read some numeric data from an external
 file or write out the results. NumPy provides useful functions to make
