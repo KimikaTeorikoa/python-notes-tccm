@@ -236,32 +236,36 @@ print("The sum of numbers until the cumulative sum exceeds 10 is:", total_sum)
 
 **Iterators** and **generators** are both mechanisms in Python for working with sequences of data. They allow you to iterate through a collection of items one at a time. However, they have different implementations and use cases:
 
-**Iterators:**
+**Iterators**
 
-1. **Definition:** An iterator is an object that represents a stream of data. It allows you to traverse a sequence of elements one at a time without loading the entire sequence into memory.
+An iterator is an object that represents a stream of data. It allows you to traverse a sequence of elements one at a time without loading the entire sequence into memory.
 
-2. **Implementation:** In Python, an iterator is implemented using two methods: `__iter__()` and `__next__()`.
+In Python, an iterator is implemented using two methods: `__iter__()` and `__next__()`.
 
    - `__iter__()`: Returns the iterator object itself and is called when you create an iterator from an iterable object (e.g., a list or a custom class).
    
    - `__next__()`: Retrieves the next element from the iterator and raises the `StopIteration` exception when there are no more elements.
 
-3. **Creation:** You can create your own custom iterators by defining classes with `__iter__()` and `__next__()` methods, or you can use built-in Python functions like `iter()` and `next()` with iterable objects.
 
-**Generators:**
-
-1. **Definition:** A generator is a concise way to create iterators. It is a function that contains one or more `yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
-
-2. **Implementation:** Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution state between calls.
-
-3. **Creation:** You create a generator function by defining a function with one or more `yield` statements. When you call this function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by calling the generator's `__next__()` method or using a `for` loop.
-
-Here's a simple example of both an iterator and a generator:
-
-**Iterator Example:**
+**Iterator Example**
 
 ```python
-class MyIterator:
+lista=['Charles','John','Python','pato',3]
+a=iter(lista)
+print(a)
+print(next(a))
+
+while True:
+    try:
+        print(next(a)) # fetch the the position in the array
+    except: 
+        break # exit the loop on error
+```
+
+You can also create your own custom iterators by defining classes with `__iter__()` and `__next__()` methods, or you can use built-in Python functions like `iter()` and `next()` with iterable objects.
+
+```python
+class Doublen:
     def __init__(self, start, end):
         self.current = start
         self.end = end
@@ -270,15 +274,39 @@ class MyIterator:
         return self
 
     def __next__(self):
-        if self.current >= self.end:
+        if self.current > self.end:
             raise StopIteration
-        self.current = self.current + 1
-        return self.current - 1
+        x=2*self.current
+        self.current += 1
+        return x
 
-my_iterator = MyIterator(1, 5)
-for num in my_iterator:
-    print(num)
+my_iterator = Doublen(1, 8)
+print(my_iterator)
+
+for ii in my_iterator:
+    print(ii)
 ```
+The output will be
+
+```python
+<__main__.Doublen object at 0x106b4de10>
+2
+4
+6
+8
+10
+12
+14
+16
+```
+
+**Generators**
+
+A generator is a concise way to create iterators. It is a function that contains one or more `yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
+
+Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution state between calls.
+
+You create a generator function by defining a function with one or more `yield` statements. When you call this function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by calling the generator's `__next__()` method or using a `for` loop.
 
 **Generator Example**
 
