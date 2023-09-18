@@ -1,4 +1,4 @@
-# Creating Ptyhon Packages
+# Creating Python Packages
 In this final chapter, we will introduce how to generate Python packages. 
 Packages are a way to organize and distribute Python code. They can be used 
 to share code with others, or to create reusable components for your own projects.
@@ -15,9 +15,7 @@ my_package/
 
 Although it can be empty, the `__init__.py` file is essential for Python to recognize 
 the directory as a package. It can also be used to import specific modules from 
-the package.
-
-Each module in the package can contain any Python code, such as functions, 
+the package.  Each module can contain any type of Python code, such as functions, 
 classes, and variables. For example, the following `__init__.py` file would import 
 the `module1` and `module2` modules from the `my_package` package:
 ```python
@@ -34,16 +32,13 @@ my_package.function1()
 
 # Create an instance of a class from the module2 module
 my_package.class2()
-
 ```
 
-## Packaging with setuptools
 If your package depends on other Python packages, you can specify these 
-dependencies in the `setup.py` file. This will ensure that the required 
-dependencies are installed when your package is installed.
-To specify a dependency, you can use the `install_requires` keyword in the 
-`setup.py` file. For example, the following `setup.py` file would specify a 
-dependency on the numpy package:
+dependencies in the `setup.py` file. This will ensure that you have everything
+you need for your code to run. To specify a dependency, you can use the 
+`install_requires` keyword in the `setup.py` file. For example, the following
+`setup.py` file would specify a dependency on the numpy package:
 ```python
 from setuptools import setup
 
@@ -53,7 +48,7 @@ setup(
     install_requires=["numpy"],
 )
 ```
-When your package is installed, the `numpy` package will also be installed automatically.
+When your package is installed, `numpy` will also be installed automatically.
 
 Once you have created your package structure and written your code, you can generate the distribution 
 archives using the following command:
