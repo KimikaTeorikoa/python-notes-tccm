@@ -133,3 +133,49 @@ uploaded, it can be installed by anyone using the following command:
 ```
 conda install -c anaconda my_package
 ```
+
+## Testing your code
+It is important to test your package thoroughly before releasing it. 
+You can do this by writing a test suite. A test suite is a collection of
+tests that are used to verify the functionality of your package.
+
+You can use any Python testing framework to write a test suite. 
+Some popular testing frameworks include unittest, pytest, and nose.
+unittest is the default Python testing framework. It is a simple and 
+easy-to-use framework that provides a number of features for writing 
+and running tests. To write a unittest test, you need to create a 
+subclass of the unittest.TestCase class. Each test is defined as a 
+method of the subclass. The name of the test method must start with 
+the prefix test_.
+
+Within the test method, you can use the various assertion methods
+provided by unittest to verify the expected behavior of your code. 
+For example, the following test method uses the assertEqual() 
+method to verify that the sum of two numbers is equal to a third number:
+import unittest
+
+```python
+class MyTestCase(unittest.TestCase):
+    def test_sum(self):
+        self.assertEqual(1 + 2, 3)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+Once you have written a test suite, you can run it using the following command:
+```python
+python -m unittest discover
+```
+This will run all of the tests in your test suite. If any of the tests fail, 
+the command will exit with a non-zero status code.
+
+You can calculate the test coverage for your package using the following command:
+```
+python -m coverage run -m unittest discover
+python -m coverage report
+```
+This will generate a report that shows how much of your code is covered by your tests.
+
+
+
