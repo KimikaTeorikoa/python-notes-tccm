@@ -2,9 +2,14 @@
 In this final chapter, we will introduce how to generate Python packages. 
 Packages are a way to organize and distribute Python code. They can be used 
 to share code with others, or to create reusable components for your own projects.
+For more on how to write, distribute and install Python packages, we 
+recommend reading the [Python Packaging User Guide](https://packaging.python.org/).
+Here we will limit ourselves to a few general ideas that will get you started
+and also will be useful to understand packages written by others.
 
-To generate a Python package, you will need to create a directory structure and write a few files. 
-The basic structure of a Python package is as follows:
+## Directory structure
+To generate a Python package, you will need to create a directory structure
+and write a few files. The basic structure of a Python package is as follows:
 ```
 my_package/
 ├── __init__.py
@@ -12,7 +17,6 @@ my_package/
 ├── module2.py
 └── ...
 ```
-
 Although it can be empty, the `__init__.py` file is essential for Python to recognize 
 the directory as a package. It can also be used to import specific modules from 
 the package.  Each module can contain any type of Python code, such as functions, 
@@ -48,8 +52,43 @@ setup(
     install_requires=["numpy"],
 )
 ```
+As you can see, here we are making use of the 
+[`setuptools`](http://pypi.python.org/pypi/setuptools) package.
 When your package is installed, `numpy` will also be installed automatically.
 
+You can include many other things in your package. We recommend writing a `README`
+file, where you can describe what the package does, who are the developers
+and provide some installation instructions. Additionally, it is often useful
+to provide a [`LICENSE`](https://choosealicense.com/), 
+so that it is clear to users which conditions apply to
+use, modify and redistribute the code. For example, below you can see the
+text that you should include if you want to use the short and simple permissive
+MIT license
+```
+MIT License
+
+Copyright (c) [year] [fullname]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## Deployment
 Once you have created your package structure and written your code, you can generate the distribution 
 archives using the following command:
 ```python
