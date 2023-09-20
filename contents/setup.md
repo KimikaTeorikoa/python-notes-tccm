@@ -110,6 +110,10 @@ Both have community versions that you can install in your computer
 free of charge.
 
 ## Running Python
+Two sections above, we have already started a Python session.
+You could simply start typing and running your code there.
+But this is not the only way of programming Python code, 
+and it is definitely not the best.
 Although we will get into the details later in the course, 
 an important thing for you to learn before we start is that 
 Python programs can be run in different ways.
