@@ -190,7 +190,7 @@ and running  the following:
 import this
 ```
 
-```{note}
+```{hint}
 Read the output and think about it as you learn to code.
 ```
 
