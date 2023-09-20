@@ -182,6 +182,99 @@ plt.show()
 In this example, we use `plt.errorbar` to create a plot with error bars. The
 `fmt='o'` argument specifies that we want to plot data points as circles.
 
+## 2D and 3D plots
+
+Matplotlib also provides some basic plotting functions to represent bivariate 
+functions creating 2D and 3D plots. 
+
+A simple matrix (2D array) can be plotted point-by-point with functions like
+`plt.imshow` or `plt.pcolormesh`. It is also possible to generate a countour 
+plot of the underlying function with `plt.contour` or `plt.contourf`.
+Let's see an example of each of these functions:
+
+```{code-cell} python
+# Create a 2D array
+z = [[1,2],
+     [2,3]]
+
+# Plot with imshow
+plt.imshow(z)
+plt.title('imshow')
+plt.show()
+
+# Plot with pcolormesh
+plt.pcolormesh(z)
+plt.title('pcolormesh')
+plt.show()
+
+# Plot with contourf
+plt.contourf(z)
+plt.title('contourf')
+plt.colorbar()
+plt.show()
+```
+
+The first plot uses `plt.imshow` to plot the matrix as an image,
+while the second plot uses `plt.pcolormesh` to plot the matrix as a grid of
+colored cells, and the third plot uses `plt.contourf`, where the matrix is
+treated as a topographic surface and the values are plotted as contour lines.
+They also differ on the way data are arranged, with `plt.imshow` displaying the
+matrix as it is, while `plt.pcolormesh` and `plt.contourf` assumes that the matrix
+represents values over coordinates with the origin in the lower left corner
+(i.e., better suited to represent functions of two variables).
+We can also notice that `plt.imshow` renders a plot with equal aspect ratio , 
+while `plt.pcolormesh` and `plt.contourf` stretch the plot to fill the whole figure
+(this behaviour can also be tuned for these functions).
+
+Of course, a more useful usage of this feature is to plot the result of a
+function of two variables over a grid. In the following example, we first
+generate a grid with `np.meshgrid`, evaluate the function over the grid, and
+then plot the result using `plt.pcolormesh`:
+
+```{code-cell} python
+# Create a 2D array
+x = np.arange(-5, 5, 0.1)
+y = np.arange(-6, 4, 0.1)
+xx, yy = np.meshgrid(x, y)
+z = np.sin(xx**2 + yy**2) / (xx**2 + yy**2)
+
+# Plot with pcolormesh
+plt.pcolormesh(x,y,z)
+plt.title('pcolormesh')
+plt.show()
+```
+
+In the previous example, we have also explicitly specified the $x$ and $y$ axes, which
+can be given as 1D arrays (`x` and `y`, as in this case) or as 2D arrays (`xx` 
+and `yy`). In the latter case, the arrays must have the same shape as `z`, and
+the values in the arrays are used to label the axes.
+
+It is also possible to plot bivariate functions in 3D using `plot_surface` 
+function, which can be called as an method of an `Axes3D` object. Note that
+in this section, we have preferred to use the functional interface of Matplotlib,
+but it is also possible to use the object-oriented interface, which is more
+flexible and allows creating more complex plots. We are not going to go 
+further on this topic, but simply show an example of a 3D plot for the records:
+
+```{code-cell} python
+# Create a 2D array
+x = np.arange(-5, 5, 0.1)
+y = np.arange(-6, 4, 0.1)
+xx, yy = np.meshgrid(x, y)
+z = np.sin(xx**2 + yy**2) / (xx**2 + yy**2)
+
+# Plot with plot_surface
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+ax.plot_surface(xx, yy, z)
+plt.title('plot_surface')
+plt.show()
+```
+
+Compared to the powerful 2D features, matplotlib's 3D plotting capabilities are
+somewhat limited. Actually, for 3D plotting, it is often better to use other
+libraries, such as [Mayavi](https://docs.enthought.com/mayavi/mayavi/).
+
 ## Saving Plots
 You can save your plots to various image formats using Matplotlib. For example,
 to save the above plot as a PNG file:
