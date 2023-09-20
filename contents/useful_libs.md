@@ -210,11 +210,10 @@ xnew = np.linspace(0, 10, 100)
 ynew = np.linspace(0, 10, 100)
 znew = f(xnew, ynew)
 
-plt.subplot(1, 2, 1)
 plt.pcolormesh(X, Y, Z)
 plt.colorbar()
 plt.title('Original')
-plt.subplot(1, 2, 2)
+plt.show()
 plt.pcolormesh(xnew, ynew, znew)
 plt.colorbar()
 plt.title('Interpolated')
@@ -276,8 +275,11 @@ be found in the [documentation](https://docs.scipy.org/doc/scipy/reference/gener
 
 For **root-finding** of scalar functions (univariate functions, i.e., which depend on only 
 one variable), we can use the general interface function `root_scalar`.
-It takes as arguments the function to be solved, `f(x)`, the initial guess, `x0`, and
-the method to be used, `method`. The function to be solved must take as argument a scalar
+It takes as arguments the function to be solved, `f(x)` and some other arguments depending
+on the method to be used, `method`. For instance, with `method=bisect`, we need to provide
+the closed interval where the solution lies, `bracket`. Other methods may require the
+derivative of the function, `fprime` and/or an initial guess, `x0`.
+The function to be solved must take as argument a scalar
 and return a scalar. For instance,
 
 ```{code-cell} python
@@ -285,9 +287,9 @@ from scipy.optimize import root_scalar
 import numpy as np
 
 def f(x):
-    return x**2 - 1
+    return np.exp(x) + x
     
-res = root_scalar(f, x0=0.5, method='bisect')
+res = root_scalar(f, bracket=[-2.0,2.0], method='bisect')
 print(res.root)
 ```
 
