@@ -38,33 +38,40 @@ key differences between Python and those other programming
 languages is that Python is an **interpretive** language.
 Hence you will not have to compile the code as you
 modify it. The **Python interpreter** performs those 
-actions for you. But this comes with a caveat. 
+actions for you. 
+
+All of these comes with a caveat. 
 Because Python is not compiled, your
 programs written in Python will not be as fast as they 
 could be when written in Fortran or C.
-
 Below you can see a comparison between speeds of various
 programming languages 
+
 ![performance-speed](https://niklas-heer.github.io/speed-comparison/assets/latest/combined_results.png)
+
 ```{hint}
 Clearly, Python is not the fastest language in town. 
 ```
 
-Let's see how this works in practice, writing our first
-program in Python. In your terminal, open a text editor
+
+## Writing your first Python program
+Let's see how running a simple Python program works in 
+practice. In your terminal, open a text editor
 and write the following:
 
 ```python
 #!/usr/bin/env python
-# Our fisrt Python program
+# Our first Python program
 print ("Hello World!")
 ```
-You will notice that the first couple of lines start with 
-a hash symbol (#). This means that whatever follows will
-not be read by the Python interpreter and is what we 
-usually regard as a **comment**.
+You will notice that the first couple of lines 
+that we have written start with a hash symbol (#). 
+This means that whatever follows will not be read by the 
+Python interpreter. This is what we usually regard as 
+a **comment**.
+
 Now close the file, save it as `hello_world.py` and run 
-the following command
+the following command on your terminal
 ```bash
 $ python hello_world.py
 ```
