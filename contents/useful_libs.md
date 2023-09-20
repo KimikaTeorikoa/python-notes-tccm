@@ -334,6 +334,20 @@ or Mathematica. In allows to perform symbolic calculations, such as derivatives,
 solving equations, etc. It might not be as powerful as the other CAS, but it is very useful 
 to integrate simple calculations in your python workflow.
 
+We will not go into details here, but we will show some examples of the capabilities of this
+module. For instance, lets compute the derivative of the function $f(x) = \sin(x) \cos(x)$:
+
+```{code-cell} python
+from sympy import symbols, sin, cos, diff
+
+x = symbols('x')
+f = sin(x)*cos(x)
+df = diff(f, x)
+df
+```
+
+Many other symbolic operations are possible, such as integrals, limits, series expansions, etc.
+
 ## `pandas`
 
 This module provides high-performance, easy-to-use data structures and data analysis tools.
