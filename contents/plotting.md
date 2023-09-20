@@ -264,9 +264,8 @@ xx, yy = np.meshgrid(x, y)
 z = np.sin(xx**2 + yy**2) / (xx**2 + yy**2)
 
 # Plot with plot_surface
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-ax.plot_surface(xx, yy, z)
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+ax.plot_surface(xx, yy, z, cmap=plt.colormaps['viridis'])
 plt.title('plot_surface')
 plt.show()
 ```
