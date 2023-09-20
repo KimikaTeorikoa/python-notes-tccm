@@ -79,6 +79,22 @@ have **Python 3.x**. You may still find programs written in Python
 2.7, but this version is no longer maintained and the syntax has
 changed somewhat.
 
+Hence, if you type `python` in your terminal, you should find something
+like
+```sh
+$ python
+Python 3.9.16 | packaged by conda-forge | (main, Feb  1 2023, 21:42:20)
+[Clang 14.0.6 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+As you can see, we immediately start a Python session and we are 
+prompted with the version of Python we are running. If you do not 
+see the `packaged by conda-forge` bit, it is likely you are using
+the native Python installation instead of the one you just installed.
+Fixing this will require fidling with configuration files for your
+terminal.
+
 ## Text editor or IDE
 In order to write new programs and modify existing ones,
 you will need a text editor or an integrated development
