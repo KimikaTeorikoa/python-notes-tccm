@@ -43,6 +43,13 @@ Because Python is not compiled, your
 programs written in Python will not be as fast as they 
 could be when written in Fortran or C.
 
+Below you can see a comparison between speeds of various
+programming languages 
+![performance-speed](https://niklas-heer.github.io/speed-comparison/assets/latest/combined_results.png)
+```{hint}
+Clearly, Python is not the fastest language in town. 
+```
+
 Let's see how this works in practice, writing our first
 program in Python. In your terminal, open a text editor
 and write the following:
