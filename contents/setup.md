@@ -189,7 +189,10 @@ and running  the following:
 ```python
 import this
 ```
+
+```{note}
 Read the output and think about it as you learn to code.
+```
 
 Another source that may be interesting for you to look up or
 bookmark is [PEP8](https://peps.python.org/pep-0008/), the
