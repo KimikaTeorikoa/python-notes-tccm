@@ -79,6 +79,22 @@ have **Python 3.x**. You may still find programs written in Python
 2.7, but this version is no longer maintained and the syntax has
 changed somewhat.
 
+Hence, if you type `python` in your terminal, you should find something
+like
+```sh
+$ python
+Python 3.9.16 | packaged by conda-forge | (main, Feb  1 2023, 21:42:20)
+[Clang 14.0.6 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+As you can see, we immediately start a Python session and we are 
+prompted with the version of Python we are running. If you do not 
+see the `packaged by conda-forge` bit, it is likely you are using
+the native Python installation instead of the one you just installed.
+Fixing this will require fiddling with configuration files for your
+terminal.
+
 ## Text editor or IDE
 In order to write new programs and modify existing ones,
 you will need a text editor or an integrated development
@@ -94,6 +110,10 @@ Both have community versions that you can install in your computer
 free of charge.
 
 ## Running Python
+Two sections above, we have already started a Python session.
+You could simply start typing and running your code there.
+But this is not the only way of programming Python code, 
+and it is definitely not the best.
 Although we will get into the details later in the course, 
 an important thing for you to learn before we start is that 
 Python programs can be run in different ways.
@@ -104,7 +124,7 @@ Python programs can be run in different ways.
 $ python my_program.py
 ```
 
-2. You can open a Python intepreter and run an interactive session
+2. You can open a Python interpreter and run an interactive session
 where code is interpreted on-the-fly. A typical, feature-rich
 interpreter is called [IPython](https://ipython.org/). So, do 
 type the following in your command line:
@@ -137,11 +157,14 @@ a web browser window will pop up. It will look something like this
 ![jupyter](https://jupyter-notebook.readthedocs.io/en/latest/_images/notebook-running-code.png)
 Then, you will be able to run code in *cells*, very much like in 
 your IPython session. In fact, an IPython kernel is running
-under the hood, in the 
-terminal you used. You can save sessions using the `.ipynb` extension.
+under the hood, in the terminal you used. Jupyter notebooks have 
+become extremely popular in the last few years because they are
+excellent for exploratory data analysis. Also, you can document
+your work using [Markdown](https://www.markdownguide.org/) cells.
+You can save sessions using the `.ipynb` extension.
 
-If you know a more traditional programming language like Fortran, C or 
-C++, this flexibility may feel a bit surprising. And we are only 
+If you know a more traditional programming language like Fortran,
+ C or  C++, this flexibility may feel a bit surprising. And we are only 
 beginning to see possible ways to use Python. You will find that 
 depending on your application, one of the options above to run
 Python will feel more appropriate. For example, if you want to
@@ -166,7 +189,10 @@ and running  the following:
 ```python
 import this
 ```
+
+```{hint}
 Read the output and think about it as you learn to code.
+```
 
 Another source that may be interesting for you to look up or
 bookmark is [PEP8](https://peps.python.org/pep-0008/), the

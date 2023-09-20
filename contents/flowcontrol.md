@@ -302,11 +302,11 @@ The output will be
 
 **Generators**
 
-A generator is a concise way to create iterators. It is a function that contains one or more `yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
+A generator is a concise way to create iterators. The main difference is that it is a function that contains one or more `yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
 
 Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution state between calls.
 
-You create a generator function by defining a function with one or more `yield` statements. When you call this function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by calling the generator's `__next__()` method or using a `for` loop.
+You may create a generator function by defining a function with one or more `yield` statements. When you call this function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by calling the generator's `__next__()` method or using a `for` loop.
 
 **Generator Example**
 
@@ -316,8 +316,9 @@ def number_generator(start, end):
     while current < end:
         yield current
         current = current + 1
-
+        
 my_generator = number_generator(1, 5)
+print(my_generator)
 for num in my_generator:
     print(num)
 ```
