@@ -92,7 +92,7 @@ As you can see, we immediately start a Python session and we are
 prompted with the version of Python we are running. If you do not 
 see the `packaged by conda-forge` bit, it is likely you are using
 the native Python installation instead of the one you just installed.
-Fixing this will require fidling with configuration files for your
+Fixing this will require fiddling with configuration files for your
 terminal.
 
 ## Text editor or IDE
@@ -120,7 +120,7 @@ Python programs can be run in different ways.
 $ python my_program.py
 ```
 
-2. You can open a Python intepreter and run an interactive session
+2. You can open a Python interpreter and run an interactive session
 where code is interpreted on-the-fly. A typical, feature-rich
 interpreter is called [IPython](https://ipython.org/). So, do 
 type the following in your command line:
