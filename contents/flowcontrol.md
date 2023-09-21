@@ -302,11 +302,16 @@ The output will be
 
 **Generators**
 
-A generator is a concise way to create iterators. The main difference is that it is a function that contains one or more `yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
+A generator is a concise way to create iterators. The main difference is that it is a function that contains one or more
+`yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate
+through the values produced by the `yield` statements.
 
-Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution state between calls.
+Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution
+state between calls.
 
-You may create a generator function by defining a function with one or more `yield` statements. When you call this function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by calling the generator's `__next__()` method or using a `for` loop.
+You may create a generator function by defining a function with one or more `yield` statements. When you call this
+function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by
+calling the generator's `__next__()` method or using a `for` loop.
 
 **Generator Example**
 
@@ -323,7 +328,9 @@ for num in my_generator:
     print(num)
 ```
 
-In summary, both iterators and generators allow you to work with sequences of data, but generators provide a more concise and memory-efficient way to create iterators, especially for situations where data generation is dynamic or resource-intensive.
+In summary, both iterators and generators allow you to work with sequences of data, but generators provide a more
+concise and memory-efficient way to create iterators, especially for situations where data generation is dynamic or
+resource-intensive.
 
 ## 	Comprehensions
 
