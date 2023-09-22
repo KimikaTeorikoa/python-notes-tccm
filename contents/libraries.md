@@ -192,7 +192,7 @@ In order to create an CLI we first need to use the __ArgumentParser__ class of t
 ```python
 import argparse
 
-parser=argparse.ArgumentParser(description=’Hello world! This is my custom command-line program’, 
+parser=argparse.ArgumentParser(description=’Hello world, this is my custom command-line program’, 
 usage=’%(prog)s [options]’)
 ```
 
@@ -244,7 +244,117 @@ python script.py input.txt --output output.txt
 where `input.txt` is provided as the value for the input_file positional argument.
 and `--output` stands for an optional argument, being `output.txt` is provided as its value.
 
-* #### `shutil
+* #### shutil
+
+The ability to work with files is a mandatory skill when using Python. Proficiency in file
+manipulation, which includes tasks like copying, creating, and updating files through code, enables automation. Here we 
+briefly explain the strength of `shutil` to manage this issues. First of all we need to import the
+`shutil` library
+
+```python
+import shutil
+```
+
+Remarkable submodules are `copy()`, `copy2()`, `copystat()`, `which()`, `copytree()`, among others. Let us briefly
+describe them
+
+The `shutil.copy()` function in Python is used to duplicate the contents of a source file to either a destination file or 
+directory. While the file's permission mode is preserved during the copying process, other metadata such as the file's 
+creation and modification timestamps are not retained.
+
+It's important to note that the source must be a file, but the destination can be either a file or a directory. If the
+destination is a directory, the file will be copied into the directory while retaining its original filename.
+Additionally, ensure that the final destination is writable. If the destination is an existing file, it will be
+replaced by the source file; otherwise, a new file will be created. The syntax is as follows
+
+```python
+shutil.copy(src, dest, *, follow_symlinks = True)
+```
+where
+
+* _src_: represents the source file path
+* _dest_: represents the path of the destination 
+* _follow_symlinks_: This is an optional parameter, and the default value of this parameter is _True_. If its value is 
+_False_, and _src_ is a symbolic link, the _dest_ will be created as a symbolic link. 
+
+__Example of `shutil.copy`__
+
+```python
+print("The destination directory contents before",os.listdir('./Apurv/Work'))
+src = './Docs/A.txt'
+dest = './Docs/Work'
+
+print(shutil.copy(src,dest))
+
+print("The destination directory contents after",os.listdir('./Apurv/Work'))
+```
+
+and the output
+
+```python
+The destination directory contents before ['Hi']
+./Docs/Work\A.txt
+The destination directory contents after ['A.txt', 'Hi']
+```
+
+The `shutil.copy2()` function in Python is designed to duplicate the contents of a source file to a specified destination,
+whether it's a file or a directory. This function shares similarities with shutil.copy(), but it goes a step further by 
+attempting to preserve the original file's metadata during the copying process.
+
+Python also offers the `shutil.copyfile()` function, which serves the purpose of duplicating the contents of a 
+source file into a designated destination file. During this process, the file's metadata is not transferred. 
+It's important to note that both the source and the destination must be file paths, and the destination must have
+write permissions. If the destination file already exists, it will be replaced by the source file; otherwise, 
+a new file will be generated. If the source and destination files are identical, the `SameFileError` exception is thrown. 
+
+The syntax is similar to `shutil.copy()` and `shutil.copy2()`
+
+__Example of `shutil.copyfile()`__
+
+The output of this function is the path of the file
+
+```python
+import os, shutil
+
+src = './Docs/A.txt'
+dest = './Docs/Work/B.txt'
+
+final = shutil.copyfile(src,dest)
+print("Destination: ",final)
+```
+
+Resulting in 
+
+```python
+Destination:  ./Docs/Work/B.txt
+```
+
+If we move to directories, we find very useful tools as `shutil.copytree()` and `shutil.rmtree()`
+
+The `shutil.copytree()` function is used to replicate an entire directory tree that originates from a 
+specified source (_src_) and place it into a target destination directory. This process is conducted recursively, 
+ensuring that all contents within the source directory are copied. The syntax is as follows
+
+```python
+shutil.copytree(src, dest, symlinks = False, ignore = None, copy_function = copy2, ignore_dangling_symlinks = False)
+```
+where
+
+* _src_: represents the source file path
+* _dest_: represents the path of the destination 
+* _symlinks_: (optional) _True_ or _False_, depending on whether the metadata of the original links or related links 
+* will be 
+transferred to the new tree.
+* _ignore_ (optional): If _ignore_ is specified, it must be a callable that takes as arguments the directory that 
+`copytree()` is visiting and a list of its contents, as produced by `os.listdir()`.
+* _copy_function_ (optional): This parameter's default value is _copy2_. For this argument, we may also use other 
+* copy methods, such as the `copy()` method.
+* _ignore_dangling_symlinks_ (optional): When this argument is set to _True_, the exception thrown if the file 
+referenced by the symlink does not exist is silenced.
+
+`shutil.copytree()` returns the path of the newly created file. 
+
+To remove a directory we may use the `shutil.rmtree()` function.
 
 <!--## String Manipulation -->	
 <!--## Numpy (different Section ?) -->	
