@@ -84,7 +84,7 @@ For instance
 Among the huge variety of libraries in the Python ecosystem, let us remark the most basic, which are commonly used in 
 many transversed areas
 
-### sys 
+### `sys` 
 
 The `sys` module provides access to some variables used or maintained by the interpreter and to functions that interact
 strongly with the interpreter. It is always available. The `sys` module can be used to obtain information about the
@@ -92,7 +92,7 @@ Python runtime environment, such as the version of the interpreter, the command-
 and the amount of free memory on the system. The `sys` module can also be used to control the behavior of the
 interpreter, such as setting the recursion limit and exiting the interpreter.
 
-##### Common uses of the sys module
+##### Common uses 
 
 * **Get information about the Python runtime environment:**
     * `sys.version`: Returns the version number of the Python interpreter.
@@ -105,7 +105,7 @@ interpreter, such as setting the recursion limit and exiting the interpreter.
     * `sys.stdout.write()`: Writes a string to standard output.
     * `sys.stdin.readline()`: Reads a line from standard input.
 
-#### Example
+##### Example
 
 ```python
 import sys
@@ -123,7 +123,7 @@ The `os` module provides a portable way of using operating system dependent func
 creating and removing files and directories, navigating the file system, changing the current working directory, 
 and more.
 
-#### Common uses of the os module
+##### Common uses 
 
 * **Create and remove files and directories:**
     * `os.mkdir()`: Creates a new directory.
@@ -145,7 +145,7 @@ and more.
     * `os.system()`: Executes a shell command.
     * `os.sleep()`: Suspends execution for a specified period of time.
 
-#### Example
+##### Example
 
 Here is an example of how to use the `os` module to create a new directory:
 
@@ -213,7 +213,7 @@ which displays a text at the end of the help message.
 
 Once it is done, the command line arguments are parsed using the __parse_args()__ method.
 
-#### Basic Usage
+##### Basic Usage
 
 A basic example of how to use `argparse` in a Python script
 
