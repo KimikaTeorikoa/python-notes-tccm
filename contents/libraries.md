@@ -81,12 +81,10 @@ For instance
 
    Now, you can use `sqrt()` directly without referencing the `math` module.
 
-### Most common libraries in Python
-
 Among the huge variety of libraries in the Python ecosystem, let us remark the most basic, which are commonly used in 
 many transversed areas
 
-#### sys 
+### sys 
 
 The `sys` module provides access to some variables used or maintained by the interpreter and to functions that interact
 strongly with the interpreter. It is always available. The `sys` module can be used to obtain information about the
@@ -119,7 +117,7 @@ print(sys.version)
 sys.exit()
 ```
 
-* #### os
+### `os`
 
 The `os` module provides a portable way of using operating system dependent functionality. It provides functions for
 creating and removing files and directories, navigating the file system, changing the current working directory, 
@@ -133,11 +131,15 @@ and more.
     * `os.open()`: Opens a file for reading or writing.
     * `os.close()`: Closes a file.
     * `os.remove()`: Removes a file.
+
+
 * **Navigate the file system:**
     * `os.getcwd()`: Returns the current working directory.
     * `os.chdir()`: Changes the current working directory.
     * `os.listdir()`: Returns a list of the files and directories in the current directory.
     * `os.path.join()`: Joins two or more path components together.
+
+
 * **Other common functions:**
     * `os.getenv()`: Gets the value of an environment variable.
     * `os.system()`: Executes a shell command.
@@ -167,7 +169,7 @@ for file_or_dir in files_and_dirs:
     print(file_or_dir)
 ```
 
-* #### `argparse` 
+### `argparse` 
 
 Writing user-friendly command-line interfaces (CLIs) is easy thanks to the `argparse` module. The `argparse`module also generates
 help and usage messages, providing issue error when invalid arguments are given.
@@ -244,7 +246,7 @@ python script.py input.txt --output output.txt
 where `input.txt` is provided as the value for the input_file positional argument.
 and `--output` stands for an optional argument, being `output.txt` is provided as its value.
 
-* #### shutil
+### `shutil`
 
 The ability to work with files is a mandatory skill when using Python. Proficiency in file
 manipulation, which includes tasks like copying, creating, and updating files through code, enables automation. Here we 
