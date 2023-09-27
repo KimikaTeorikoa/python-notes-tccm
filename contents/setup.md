@@ -148,24 +148,28 @@ version and distribution you are using, together with a number (`[1]`).
 This number is the index of Python command in the Python session
 you are running.
 
-3. Finally, you can use a [Jupyter Notebook](https://jupyter-notebook.readthedocs.io)
-or [Jupyter-lab](https://jupyterlab.readthedocs.io/) to run an interactive
-Python session in your web browser. For this, you will 
+3. Finally, you can use a 
+[Jupyter Notebook](https://jupyter-notebook.readthedocs.io)
+or [Jupyter-lab](https://jupyterlab.readthedocs.io/) to run an
+ interactive Python session in your web browser. For this, you will 
 need a browser like Chrome, Safari or Firefox.
+
 In your terminal, type 
 ```bash
 $ jupyter-notebook
 ```
 Normally, you will see some information appearing in your terminal and
 a web browser window will pop up. It will look something like this
+
 ![jupyter](https://jupyter-notebook.readthedocs.io/en/latest/_images/notebook-running-code.png)
+
 Then, you will be able to run code in *cells*, very much like in 
 your IPython session. In fact, an IPython kernel is running
 under the hood, in the terminal you used. Jupyter notebooks have 
 become extremely popular in the last few years because they are
 excellent for exploratory data analysis. Also, you can document
-your work using [Markdown](https://www.markdownguide.org/) cells.
-You can save sessions using the `.ipynb` extension.
+your work using [Markdown](https://www.markdownguide.org/) cells
+and can save sessions using the `.ipynb` extension.
 
 If you know a more traditional programming language like Fortran,
  C or  C++, this flexibility may feel a bit surprising. And we are only 
