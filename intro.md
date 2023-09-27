@@ -24,8 +24,8 @@ In this course we aim to help you understand some
 fundamental principles of computer programming. 
 In this case, we will be using 
 [**Python**](https://www.python.org/) as our programming
-language due to its widespread application in computational
-chemistry. Python can be seen as a programming language 
+language due to its widespread application in Computational
+Chemistry. Python can be seen as a programming language 
 but also as a scripting tool. It can be used to write 
 software packages, but also for data analysis and 
 visualization using a web browser as an interface. Python
