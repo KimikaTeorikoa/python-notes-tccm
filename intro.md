@@ -43,11 +43,11 @@ references that we recommend.
 
 ## Contributors
 These notes have been written by
-* David De Sancho 
-* Kirill Zinovjev
-* Javier Cerezo
-* Juan Jose Omiste
-* Txema Mercero Larraza
+* [David De Sancho](https://github.com/daviddesancho) (UPV-EHU)
+* [Kirill Zinovjev](https://github.com/kzinovjev) (UV)
+* [Javier Cerezo](https://github.com/jcerezochem) (UAM)
+* [Juan Jose Omiste](https://github.com/jjomiste) (UCM)
+* [Txema Mercero Larraza](https://github.com/pobmelat) (UPV-EHU)
 
 ## Bibliography
 ```{bibliography}
