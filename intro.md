@@ -10,7 +10,7 @@ title: Programming in Python Course
 **Programming in Python Lecture Notes**
 :::
 :::{grid-item}
-:columns: 2 
+:columns: 4 
 :class: sd-width-25
 ```{image} images/Python-logo-notext.svg
 :width: 150px
