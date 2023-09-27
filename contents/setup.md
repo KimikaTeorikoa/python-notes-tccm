@@ -10,7 +10,7 @@ some prior experience. Here we present a minimal set of tools to work
 with.
 
 Additionally, as a programming language, Python is special in a 
-number of ways, as we have already said. At the end of this Chapter
+number of ways. At the end of this Chapter
 we will focus in a number of different ways you can 
 run Python. But we will cross that bridge when we get there. Let's 
 not get ahead of ourselves and start speaking about one of the tools
@@ -19,7 +19,11 @@ we will need: the **terminal**.
 ## The terminal
 In order to run Python code and receive its output, we will need 
 to interact with a program called the **command line interface** 
-or **terminal**. Although there are different types of terminals,
+or **terminal**, which looks like the one in the figure below
+![terminal](https://en.wikipedia.org/wiki/Command-line_interface#/media/File:Linux_command-line._Bash._GNOME_Terminal._screenshot.png)
+
+
+Although there are different types of terminals,
 here we will always refer to the 
 [Unix shell](https://en.wikipedia.org/wiki/Unix_shell).
 If you are not familiar with a few basic commands to navigate
