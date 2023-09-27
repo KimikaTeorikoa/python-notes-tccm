@@ -22,21 +22,17 @@ title: Programming in Python Course
 # Welcome
 In this course we aim to help you understand some 
 fundamental principles of computer programming. 
-In this case, we will be using [**Python**](https://www.python.org/)
- as our programming
+In this case, we will be using 
+[**Python**](https://www.python.org/) as our programming
 language due to its widespread application in computational
-chemistry. This is not an easy choice, as you will 
-hopefully learn throughout the course. Python is extremely 
-useful but it is also rather peculiar 
-in a number of ways. It can be seen both a programming language 
-as much as a scripting tool. It can be used to write 
+chemistry. Python can be seen as a programming language 
+but also as a scripting tool. It can be used to write 
 software packages, but also for data analysis and 
 visualization using a web browser as an interface. Python
 can be run locally in your computer in a number of 
-different ways,
-but also on collaborative notebooks online. We will try to 
-introduce you to all of these possibilities, which have made 
-Python be dubbed a "Swiss army knife" of coding.
+different ways, but also on collaborative notebooks online. 
+We will try to introduce you to all of these possibilities, 
+which have made Python be dubbed a "Swiss army knife" of coding.
 
 Below, you can find the syllabus of the course, with the
 topics that we will be covering, and also a list of
