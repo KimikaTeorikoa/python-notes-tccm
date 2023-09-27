@@ -171,11 +171,22 @@ excellent for exploratory data analysis. Also, you can document
 your work using [Markdown](https://www.markdownguide.org/) cells
 and can save sessions using the `.ipynb` extension.
 
-The jupyter lab landing page is more fully fledged than that
+The jupyterlab landing page is more fully fledged than that
 of notebooks, as it comes with additional features, a richer
 set of menus that will appear on the left hand side of your window.
 
 ![jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png)
+
+```{exercise}
+Create and explore a jupyter-notebook and jupyter-lab, navigate 
+their environments. 
+
+In a notebook, generate cells of code or markdown text, and see
+ how it is rendered. 
+
+Using a Markdown cell, use Latex syntax to write your favourite
+equation.
+```
 
 If you know a more traditional programming language like Fortran,
  C or  C++, this flexibility may feel a bit surprising. And we are only 
