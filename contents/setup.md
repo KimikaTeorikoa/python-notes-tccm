@@ -213,7 +213,7 @@ and running  the following:
 import this
 ```
 
-```{hint}
+```{exercise}
 Read the output and think about it as you learn to code.
 ```
 
