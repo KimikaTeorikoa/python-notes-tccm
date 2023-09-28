@@ -180,10 +180,8 @@ set of menus that will appear on the left hand side of your window.
 ```{exercise}
 Create and explore a jupyter-notebook and jupyter-lab, navigate 
 their environments. 
-
 In a notebook, generate cells of code or markdown text, and see
  how it is rendered. 
-
 Using a Markdown cell, use Latex syntax to write your favourite
 equation.
 ```
