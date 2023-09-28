@@ -4,3 +4,4 @@ numpy
 scipy
 sympy
 sphinx
+sphinx-exercise
