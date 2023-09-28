@@ -25,7 +25,9 @@ bibtex_bibfiles:
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
+  extra_extensions:
+    - sphinx_exercise
+    
 # Information about where the book exists on the web
 repository:
   url: https://github.com/KimikaTeorikoa/python-notes-tccm  # Online location of your book
