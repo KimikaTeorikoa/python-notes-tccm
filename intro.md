@@ -5,7 +5,7 @@ title: Programming in Python Course
 :gutter: 2
 
 :::{grid-item}
-:columns: 8
+:columns: 6 
 :class: sd-fs-1
 **Programming in Python Lecture Notes**
 :::
