@@ -20,6 +20,7 @@ we will need: the **terminal**.
 In order to run Python code and receive its output, we will need 
 to interact with a program called the **command line interface** 
 or **terminal**, which looks like the one in the figure below
+
 ![terminal](https://upload.wikimedia.org/wikipedia/commons/2/29/Linux_command-line._Bash._GNOME_Terminal._screenshot.png)
 
 
