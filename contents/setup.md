@@ -85,7 +85,7 @@ changed somewhat.
 
 Hence, if you type `python` in your terminal, you should find something
 like
-```console
+```shell
 foo@bar:~$ python
 Python 3.9.16 | packaged by conda-forge | (main, Feb  1 2023, 21:42:20)
 [Clang 14.0.6 ] on darwin
@@ -125,7 +125,7 @@ Python programs can be run in different ways.
 1. You can use a text editor to write a program in a file, e.g. 
 `my_program.py` and run it from the terminal typing
 ```bash
-$ python my_program.py
+foo@bar:~$ python my_program.py
 ```
 
 2. You can open a Python interpreter and run an interactive session
@@ -133,7 +133,7 @@ where code is interpreted on-the-fly. A typical, feature-rich
 interpreter is called [IPython](https://ipython.org/). So, do 
 type the following in your command line:
 ```bash
-$ ipython
+foo@bar:~$ ipython
 ```
 The output will look something like this
 ```python
@@ -156,7 +156,7 @@ need a browser like Chrome, Safari or Firefox.
 
 In your terminal, type 
 ```bash
-$ jupyter-notebook
+foo@bar:~$ jupyter-notebook
 ```
 Normally, you will see some information appearing in your terminal and
 a web browser window will pop up. It will look something like this
