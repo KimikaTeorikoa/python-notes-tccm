@@ -40,6 +40,9 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  home_page_in_navbar: true
+  extra_navbar: Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>
+  extra_footer: Programming in Python Lecture Notes is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
 
 launch_buttons:
   notebook_interface: classic  # The interface interactive links will activate ["classic", "jupyterlab"]
