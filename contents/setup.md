@@ -1,3 +1,9 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+---
 # Setting yourself up
 Welcome to the course. Before we start programming,
 it is a good idea to have a working environment that will speed up
@@ -106,7 +112,7 @@ environment
 ([IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)). 
 While many developers enjoy using traditional text editors like 
 [Vim](https://www.vim.org/) or 
-[Emacs](https://www.gnu.org/software/emacs/), we would
+[Emacs](https://www.gnu.org/software/emacs/), we 
 recommend you to work with something closer to a professional IDE like 
 [Pycharm](https://www.jetbrains.com/pycharm/) or Microsoft's 
 [Visual Studio Code](https://en.wikipedia.org/wiki/Visual_Studio_Code).
@@ -114,9 +120,9 @@ Both have community versions that you can install in your computer
 free of charge.
 
 ## Running Python
-Two sections above, we have already started a Python session.
-You could simply start typing and running your code there.
-But this is not the only way of programming Python code, 
+Two sections above, we have started a Python session.
+You could simply start typing and running your Python code there.
+But this is not the only way of running Python code, 
 and it is definitely not the best.
 Although we will get into the details later in the course, 
 an important thing for you to learn before we start is that 
@@ -178,6 +184,9 @@ set of menus that will appear on the left hand side of your window.
 ![jupyter-lab](https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png)
 
 ```{exercise}
+:nonumber:
+:class: dropdown
+
 Create and explore a jupyter-notebook and jupyter-lab, navigate 
 their environments. 
 In a notebook, generate cells of code or markdown text, and see
@@ -214,6 +223,9 @@ import this
 ```
 
 ```{exercise}
+:nonumber:
+:class: dropdown
+
 Read the output and think about it as you learn to code.
 ```
 

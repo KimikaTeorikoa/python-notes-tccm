@@ -32,7 +32,13 @@ machine-readable format.
 If you have ever done any programming before using 
 languages like Fortran, C or C++, you surely adopted
 a workflow where you first wrote code and then 
-compiled using another program called **compiler**.
+compiled using another program called **compiler**,
+wich generated a binary, machine-readable file. 
+It would look something like this
+
+![compiling](https://hpc-wiki.info/mediawiki/hpc_images/8/8a/Compiler_Shematic.png)
+
+
 That will not be the case with Python. One of the
 key differences between Python and those other programming
 languages is that Python is an **interpretive** language.
@@ -43,20 +49,21 @@ actions for you.
 All of these comes with a caveat. 
 Because Python is not compiled, your
 programs written in Python will not be as fast as they 
-could be when written in Fortran or C.
+could be when written in Fortran, C or C++.
 Below you can see a comparison between speeds of various
 programming languages 
 
 ![performance-speed](https://niklas-heer.github.io/speed-comparison/assets/latest/combined_results.png)
 
 ```{hint}
-Clearly, Python is not the fastest language in town. 
+Clearly, Python is not the fastest language in town. There
+are workarounds for this, like linking Python and C or Fortran
+code, or using [Cython](https://cython.org/).
 ```
-
 
 ## Writing your first Python program
 Let's see how running a simple Python program works in 
-practice. In your terminal, open a text editor
+practice. Using your IDE or terminal, open a text editor
 and write the following:
 
 ```python
@@ -64,22 +71,31 @@ and write the following:
 # Our first Python program
 print ("Hello World!")
 ```
+
+Now let's examine what we have just written. 
 You will notice that the first couple of lines 
 that we have written start with a hash symbol (#). 
 This means that whatever follows will not be read by the 
 Python interpreter. This is what we usually regard as 
-a **comment**.
+a **comment**. Then there is a `print` statement 
+followed by a parentheses `()` with a piece of text
+inside.
 
 Now close the file, save it as `hello_world.py` and run 
 the following command on your terminal
 ```bash
-$ python hello_world.py
+foo@bar:~$ python hello_world.py
 ```
 Now check whether the program has done as you intended it to.
 
 ## Names and cases
 In your programs you will usually be defining lots of different
-variables. One of the things you must remember is that Python
+variables. Variables are names for values and the naming of 
+variables follow some conventions. For example, they can 
+be formed by letters, numbers and only one symbol, the 
+underscore `_`.
+
+Something else you must remember is that Python
 is **case sensitive**, so when you try
 ```{code-cell} python
 a = 10
@@ -88,21 +104,11 @@ print (A)
 things do not go well. Python returns an error (specifically, 
 a `NameError`), as a variable named `A` does not exist.
 
-Also, it is convenient to choose **variable names** that
-will be meaningful to you and any other potential user of your
-program (often your future self). For example, if you are
-calculating the area of a circle, it would make sense to
-write something like this:
-```python
-area = pi*radius**2
+```{hint}
+Always try to read error messages from Python. They are
+highly informative and often direct you to the exact line
+where the problem is.
 ```
-Here we are using some stuff that you we have not covered yet.
-Also, we are assuming that you have given values to both `pi`
-and `radius`. 
-But you surely understand why we are using the code snippet as
-an example of using meaningful variable names. Using cryptic 
-variable names will make everyone miserable, so it is a good 
-investment to use names that seem sensible choices.
 
 Also, in Python some possibilities are forbidden, like
 starting a variable with a number. If you write code including 
@@ -122,6 +128,22 @@ in      raise   continue    is      return
 def     for     lambda      try
 ```
 
+It is convenient to choose **variable names** that
+will be meaningful to you and any other potential user of your
+program (often your future self). For example, if you are
+calculating the area of a circle, it would make sense to
+write something like this:
+```python
+area = pi*radius**2
+```
+Here we are using some stuff that you we have not covered yet.
+Also, we are assuming that you have given values to both `pi`
+and `radius`. 
+But you surely understand why we are using the code snippet as
+an example of using meaningful variable names. Using cryptic 
+variable names will make everyone miserable, so it is a good 
+investment to use names that seem sensible choices.
+
 Additionally, in Python there are naming conventions
 that you should follow. These are described in
 [PEP8](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
@@ -133,18 +155,22 @@ CapWords style.
 ## Input / Output	
 In our first program `hello_world.py` above, we have already 
 written to something we call the "standard output", i.e. the 
-display, using the `print` function. 
-In Python there are many different ways to read input 
-into a program and to write your output. You can, for example,
-prompt the user to write a set of input variables using the 
-keyword for the program to read (this would be the "standard 
-input") or make the program write the results of a calculation
-to a file. Here we explore the basics of Input / Output operations.
+display, using the `print` function. The `print` function
+displays values as text.
+
+ 
+In Python there are many other ways to write your output
+and also to read input into a program. You can, for example,
+make your program write the results of a calculation
+to a file instead of to your screen, or prompt the user to 
+write a set of input variables using the keyword for the 
+program to read (this would be the "standard input"). 
+Here we explore the basics of Input / Output operations.
 
 ### Opening and closing files
-Suppose that there is a file called `myfile.txt` from which you 
-want to read some contents. In order to do that, you will have to
-write 
+Suppose that there is a file in your working directory
+ called `myfile.txt` from which you want to read its contents. 
+In order to do that, you will have to write 
 ```python
 f = open("myfile.txt", "r")
 ```
@@ -173,7 +199,9 @@ You are using them when you open files using the
 with open("myfile.txt", "r") as f:
     ...
 ```
-In this case you do not need to close the file yourself. 
+In this case you do not need to close the file yourself.
+
+ 
 
 ### Reading and writing data into files 
 Once you have opened a file, you will many times want to read its 
@@ -184,45 +212,61 @@ f.readline()
 ```
 You can bulk-read all the file using `readlines()` instead.
 
-Alternatively, if you want to write into your file, you would be
-able to do the following
+Alternatively, if you want to write into your file, you will
+first have to open for writing. Then, you will be able to write
+into the file using the following statement
 ```python
+f = open("test.txt")
 f.write("hello world!\n")
+f.close()
 ```
 where we are simply writing a text string. As we go along, we
 will greatly expand our understanding of Input/Output operations.
 
+```{exercise}
+:nonumber:
+:class: dropdown
+Do you remember our first Python program called `hello_world.py`?
+In a IPython session or using a Jupyter-notebook, open that
+file using both `open` and an iterator and write its contents
+in your display. Pay attention to how these are written.
+```
+
 ## Data Types
 Variables in Python can be of many different types,
-including text strings, lists, integers, floats and
-Boolean. An highly consequential thing we must say, 
-but we will not fully explain yet, is that in Python
-variables take the form of **objects**, which are the
-most fundamental notion in Python programming. For now,
-we will just say that objects are *pieces of memory, 
+including **text strings**, **lists**, **integers**, **floats**
+ and **Boolean**. In Python variables take the form of **objects**, 
+although we will not explain what this highly consequential fact
+ entails just yet. 
+For now, we will just say that objects are *pieces of memory, 
 with values and sets of associated operations*.
 
-Assignment of a value to a variable
-is simply made using the equal operator 
-(`=`) in statements like
+In Python, a variable is created when you assign a value to it.
+Assignment of a value to a variable is simply made using the equal
+ operator (`=`) in statements like
 ```python
 a = 10
 ```
-Because Python has **dynamic typing**, you do not 
-have to declare variables. Python will assign
-a type to each variable in your code. In order
-to know the type of a given variable, you can use
-the intrinsic function `type`.
+Because Python has **dynamic typing**, you do not have to declare 
+variables. Python will assign a type to each variable in your code. 
+In order to know the type of a given variable, you can use
+the intrinsic function `type`. For the variable you just created
+you can find the type using
 ```{code-cell} python
-a = 10
 type(a)
 ```
-In the case above, you might want a to be defined
-as a `float`. If that is the case, you can assign 
+In the case above, you might want `a` to be defined
+as a float instead of an integer. If that is the case, you can assign 
 the type explicitly
 ```python
 a = float(10)
 ```
+Alternatively, you can add a point at the end
+```python
+a = 10.
+```
+The result will be the same.
+
 In Python, you can sometimes combine different types
 to perform arithmetic operations
 ```{code-cell} python
@@ -245,20 +289,16 @@ print (type(c))
 :::
 
 ### Numeric types
-In the few lines of code above, we have already
-used the most straightforward types in Python, 
-which are **integers**, which lack a decimal part,
+In the few lines of code above, we have used the most straightforward 
+types in Python, **integers**, which lack a decimal part,
 and **floating-point** numbers.
-Using floats and integers you can do all sorts
-of computations in Python, very much like you 
-would in a regular calculator. 
-You can for example use operators like `+` and `-`,
-which are called **unary operators**, because they
-act on a single numeric value. You can
-perform multiplications, using the operator `*`, 
-divisions with `/`, and integer divisions with `//`.
-Using `%` you will obtain the remainder of a division.
-Also you can exponentiate using the operator `**`.
+Using floats and integers you can do all sorts of computations in Python,
+ very much like you would in a regular calculator. You can for example 
+use operators like `+` and `-`, which are called **unary operators**, 
+because they act on a single numeric value. You can perform multiplications,
+ using the operator `*`, divisions with `/`, and integer divisions with `//`.
+Using `%` you will obtain the remainder of a division. Also you can 
+exponentiate using the operator `**`.
 
 There are also some additional operations that you
 may want to know of, like the `+=` addition assignment
@@ -296,6 +336,22 @@ In Python, you can define them using the character `j`.
 ```{code-cell} python
 type(1 + 1j)
 ```
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create two integer or floating point variables, `a` and `b`, and 
+assign them values. Perform the following operations and print the 
+results:
+* Addition of `a` and `b`.
+* Subtraction of `b  from `a`.
+* Multiplication of `a` and `b`.
+* Integer division of `a` by `b`.
+* Modulus (remainder) of `a` divided by `b`.
+* Exponentiation of `a` raised to the power of `b`.
+Check at every stage the types of the results.
+```
+
 
 ### Text strings
 The variable type we normally use to store text characters
@@ -330,8 +386,10 @@ verse2 = "Nothing to do to save his life call his wife in"
 print (5*verse1 + verse2)
 ```
 Hence, addition for strings means *concatenation*, while
-multiplication means *repetition*. You can also perform
-membership operators, to check whether an element is present
+multiplication means *repetition*. 
+
+You can also perform
+*membership* operators, to check whether an element is present
 in a string.
 ```{code-cell} python
 'a' in 'Antonio'
@@ -400,6 +458,23 @@ s.split(',')
 But this takes us directly into the next type of variable
 we want to consider.
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+* Create a string variable `text` and assign it a text of your choice.
+Use string methods to calculate the length of the string, 
+convert the string to uppercase or lowercase and capitalize the first letter.
+
+* Using string slicing, extract a substring from the middle of the `text` 
+variable.
+
+* Create two string variables, `str1` and `str2`, and assign them different 
+text values. Concatenate `str1` and `str2` to create a new string.
+
+* Use the `split()` method to split the text variable into a list of words.
+```
+
 ### Lists, tuples and dictionaries
 **Lists** are a very important type of **sequence**, which
 in Python is a type of data structures that contain a 
@@ -408,8 +483,9 @@ one such object
 ```python
 ['bread', ' butter', ' flour', ' milk']
 ```
-which is of course a list of strings. Lists are defined
-when the list of elements is written inside square
+which is of course a list of strings. 
+
+Lists are defined when the list of elements is written inside square
 brackets (`[ ]`). If you were using parenthesis instead,
 (`( )`) then you would be defining what we call a **tuple**.
 Finally, there are **dictionaries**, which are defined
@@ -500,6 +576,15 @@ numbers = [30, 1,  100]
 numbers.sort()
 print (numbers)
 ```
+```{exercise}
+:nonumber:
+:class: dropdown
+
+ Create a list called fruits with three fruit names, and print the first and
+ last elements of the fruits list. Add a new fruit to the list and 
+remove a fruit. At every stage, print the length of the fruits list.
+
+```
 
 **Dictionaries** are a more sofisticated type of sequence,
 with elements having multiple entries called **keys** and
@@ -524,3 +609,13 @@ print (presidents.values())
 ```
 In the next few lessons we will put all these data structures 
 to good use.
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create a dictionary called student with your name and age.
+Print the student dictionary. Update the age to your current age.
+Add your university as a new key.
+Remove the "age" key. Print the updated student dictionary.
+```
