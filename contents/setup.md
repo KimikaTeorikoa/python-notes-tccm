@@ -23,7 +23,6 @@ or **terminal**, which looks like the one in the figure below
 
 ![terminal](https://upload.wikimedia.org/wikipedia/commons/2/29/Linux_command-line._Bash._GNOME_Terminal._screenshot.png)
 
-
 Although there are different types of terminals,
 here we will always refer to the 
 [Unix shell](https://en.wikipedia.org/wiki/Unix_shell).
@@ -86,8 +85,8 @@ changed somewhat.
 
 Hence, if you type `python` in your terminal, you should find something
 like
-```sh
-$ python
+```console
+foo@bar:~$ python
 Python 3.9.16 | packaged by conda-forge | (main, Feb  1 2023, 21:42:20)
 [Clang 14.0.6 ] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
