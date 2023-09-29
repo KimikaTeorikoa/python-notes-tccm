@@ -1,4 +1,4 @@
-name: pages-build-deploy
+name: my-pages-build-deploy
 
 on:
   # Trigger the deploy on push to main branch
