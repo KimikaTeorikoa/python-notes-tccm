@@ -218,10 +218,10 @@ f.readline()
 You can *bulk-read* all the file using `readlines()` instead.
 
 Alternatively, if you want to write into your file, you will
-first have to open for writing. Then, you will be able to write
+first have to open it for writing. Then, you will be able to write
 into the file using the following statement
 ```python
-f = open("test.txt")
+f = open("test.txt", "w")
 f.write("hello world!\n")
 f.close()
 ```
@@ -234,7 +234,7 @@ will greatly expand our understanding of Input/Output operations.
 Do you remember our first Python program called `hello_world.py`?
 In a IPython session or using a Jupyter-notebook, open that
 file using both `open` and an iterator and write its contents
-in your display. Pay attention to how these are written.
+as text. Pay attention to how these are written.
 ```
 
 ## Data Types
@@ -246,7 +246,7 @@ although we will not explain what this highly consequential fact
 For now, we will just say that objects are *pieces of memory, 
 with values and sets of associated operations*.
 
-In Python, a variable is created when you assign a value to it.
+In Python, *a variable is created when you assign a value to it*.
 Assignment of a value to a variable is simply made using the equal
  operator (`=`) in statements like
 ```python
