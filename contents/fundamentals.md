@@ -215,7 +215,7 @@ you have opened and named as `f` in your program doing
 ```python
 f.readline()
 ```
-You can bulk-read all the file using `readlines()` instead.
+You can *bulk-read* all the file using `readlines()` instead.
 
 Alternatively, if you want to write into your file, you will
 first have to open for writing. Then, you will be able to write
