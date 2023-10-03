@@ -231,6 +231,7 @@ will greatly expand our understanding of Input/Output operations.
 ```{exercise}
 :nonumber:
 :class: dropdown
+
 Do you remember our first Python program called `hello_world.py`?
 In a IPython session or using a Jupyter-notebook, open that
 file using both `open` and an iterator and write its contents
@@ -367,7 +368,7 @@ around a set of characters. It is usually good to pick
 a rule and stick to [either single or double 
 quotes](https://peps.python.org/pep-0008/#string-quotes).
 
-Python provides a number of intrinsic functions and operators
+Python provides a number of **intrinsic functions and operators**
 that are specific to string manipulation. For example, if
 you want to know the length of a string, you can use the
 `len` function.
