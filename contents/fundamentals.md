@@ -210,7 +210,7 @@ In this case you do not need to close the file yourself.
 
 ### Reading and writing data into files 
 Once you have opened a file, you will many times want to read its 
-contents. You can do that line by line for the `myfile.txt` which 
+contents. You can do that *line by line* for the `myfile.txt` which 
 you have opened and named as `f` in your program doing
 ```python
 f.readline()
