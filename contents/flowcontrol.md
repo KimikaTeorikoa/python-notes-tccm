@@ -10,23 +10,41 @@ kernelspec:
 ---
 
 # Control structures
+Now that we have learnt the different types of data that
+we can use in Python programs, it is time to start working
+with them in **statements** that perform actions. Using flow 
+control, we may be able to repeat something written in a 
+statement for a number of iterations or act in one
+way or another depending on the fulfillment of a condition.
 
 ## A note on indentation
 In Python, the way that a program looks is 
-very much determined by indentation. This 
+very much determined by **indentation**. This 
 differs from what we will find in other languages
 like Fortran or C, where formatting is not so
 important. In this chapter we will use indentation
 exhaustively, because as you will see it is essential
-for flow control. 
-When you write an `if` statement in
-Python, you must respect the right indentation,
-e.g.
+for flow control.
+
+Let's look at an `if` statement in
+Python:
 ```python
 if x < 12:
     print (x)
 ```
-And if not, the code will simply not run. 
+As you can see, we have indented the `print`
+statement four positions to the right.
+Had we not done this, the code simply would not run. 
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Explore what happens when you do not respect
+indentation. Can you use more or less spaces?
+Can you write the code in a single line?
+```
+
 Different levels of indentation start where 
 we have colons (`:`), and these have to be 
 indented with respect to the previous level
@@ -35,30 +53,36 @@ careful not to add white spaces where they do not
 belong and use consistently tabs or spaces
 (4 spaces is the preferred option in 
 [PEP8](https://peps.python.org/pep-0008/#indentation)). 
+
+
+```{hint}
 This may feel like a nuisance if you have
 experience in some other programming language, but
 will help orient yourself when reading code in the
 long run.
+```
 
-## Conditionals (if)
-
+## Conditionals (if statements)
 In many cases, we want to execute a piece of code
-depending on the results of one or more conditions (which we will call logical tests).
-This is actually one of the main control flow structures in Python (and most
-programming languages). The basic syntax in Python is as follows:
+depending on the results of one or more conditions. 
+We will call this type of statement **logical tests**.
+This is one of the main control flow structures in Python and 
+most other programming languages. 
+
+The basic syntax in Python is as follows:
 ```python
 if condition1:
-    # A number of actions that take place if condition1 is True
+    # Actions that take place if condition1 is True
     ...
 elif condition2:
-    # A number of actions that take place if condition2 is True
+    # Actions that take place if condition2 is True
     ...
 else:
-    # A number of actions that take place if none of the above is True
+    # Actions that take place if none of the above is True
     ...
 ```
 
-**Logical tests and conditional operators**
+### Logical tests and conditional operators
 
 At this point, some words on logical tests and conditional operators are in order.
 Logical tests are expressions that evaluate to `True` or `False` 
@@ -144,9 +168,14 @@ bool([]) # False
 bool([1, 2, 3]) # True
 ```
 
+```{exercise}
+:nonumber:
+:class: dropdown
 
-## Loops (for while)
+Exercise to explore logical tests
+```
 
+## Loops (for / while)
 
 Loops play a crucial role in automating repetitive tasks, such as executing code repetitively. 
 Therefore, loops become essential tools for processing data and performing calculations. Imagine you have a 
