@@ -320,8 +320,8 @@ We will discuss Booleans and logical operations in the
 [next chapter](flowcontrol.md).
 
 Something you must bear in mind when you are programming
-is the finite machine precision with which your machine
-works with. A case in point is the following:
+is the *finite machine precision* with which your computer
+works. A case in point is the following:
 ```{code-cell} python
 print (0.1 + 0.05)
 ```
