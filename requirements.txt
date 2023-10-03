@@ -5,4 +5,5 @@ scipy
 sympy
 sphinx
 sphinx-book-theme
+sphinx_togglebutton
 sphinx-exercise
