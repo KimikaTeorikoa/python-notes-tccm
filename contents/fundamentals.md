@@ -32,14 +32,14 @@ machine-readable format.
 If you have ever done any programming before using 
 languages like Fortran, C or C++, you surely adopted
 a workflow where you first wrote code and then 
-compiled using another program called **compiler**,
+compiled it using another program called **compiler**,
 wich generated a binary, machine-readable file. 
 It would look something like this
 
 ![compiling](https://hpc-wiki.info/mediawiki/hpc_images/8/8a/Compiler_Shematic.png)
 
 
-That will not be the case with Python. One of the
+That will *not* be the case with Python. One of the
 key differences between Python and those other programming
 languages is that Python is an **interpretive** language.
 Hence you will not have to compile the code as you
@@ -74,12 +74,13 @@ print ("Hello World!")
 
 Now let's examine what we have just written. 
 You will notice that the first couple of lines 
-that we have written start with a hash symbol (#). 
+that we have written start with a hash symbol (`#`). 
 This means that whatever follows will not be read by the 
 Python interpreter. This is what we usually regard as 
 a **comment**. Then there is a `print` statement 
 followed by a parentheses `()` with a piece of text
-inside.
+inside. And that is all there is to our first Python
+program.
 
 Now close the file, save it as `hello_world.py` and run 
 the following command on your terminal
@@ -90,18 +91,20 @@ Now check whether the program has done as you intended it to.
 
 ## Names and cases
 In your programs you will usually be defining lots of different
-variables. Variables are names for values and the naming of 
+variables. *Variables are names for values* and the naming of 
 variables follow some conventions. For example, they can 
 be formed by letters, numbers and only one symbol, the 
 underscore `_`.
 
 Something else you must remember is that Python
-is **case sensitive**, so when you try
+is **case sensitive**, so when you try to use 
+a variable without regard to the case you used to 
+assign it a value, things will not go well.
 ```{code-cell} python
 a = 10
 print (A)
 ```
-things do not go well. Python returns an error (specifically, 
+As we see, Python returns an error (specifically, 
 a `NameError`), as a variable named `A` does not exist.
 
 ```{hint}
