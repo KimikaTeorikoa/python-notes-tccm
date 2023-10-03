@@ -106,6 +106,8 @@ print (A)
 ```
 As we see, Python returns an error (specifically, 
 a `NameError`), as a variable named `A` does not exist.
+The only variable that we assigned a value to is `a`, and
+in Python `a` and `A` are different things.
 
 ```{hint}
 Always try to read error messages from Python. They are
