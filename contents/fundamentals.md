@@ -336,7 +336,7 @@ is not exactly what you would expect. When writing a program,
 you should think about whether this actually matters for the
 problem at hand.
 
-Another type of numeric that you may need are *complex* numbers.
+Another type of numeric that you may need are **complex** numbers.
 In Python, you can define them using the character `j`.
 ```{code-cell} python
 type(1 + 1j)
