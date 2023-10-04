@@ -546,9 +546,3 @@ x = -1
 if x < 0:
     raise ValueError("x cannot be negative")
 ```
-
-```{exercise}
-:nonumber:
-:class: dropdown
-
-```
