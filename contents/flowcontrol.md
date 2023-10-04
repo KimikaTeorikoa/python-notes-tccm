@@ -267,24 +267,23 @@ Compare the results obtained from both loops.
 
 ## 	Iterators and generators
 
-**Iterators** and **generators** are both mechanisms in Python for working with sequences of data. They allow you to iterate through a collection of items one at a time. However, they have different implementations and use cases:
+**Iterators** and **generators** are both mechanisms in Python for working with sequences of data. They allow you to iterate through a collection of items one at a time. 
+They both allow you to loop through a sequence of values, but they differ in how they are implemented and when they generate values.
 
-**Iterators**
+### Iterators
 
-An iterator is an object that represents a stream of data. It allows you to traverse a sequence of elements one at a time without loading the entire sequence into memory.
-
-In Python, an iterator is implemented using two methods: `__iter__()` and `__next__()`.
-
+An iterator is an object that represents a *stream of data*. 
+It allows you to traverse a sequence of elements one at a time without loading the entire sequence into memory. 
+In Python, an iterator is implemented using two methods: `__iter__()` and `__next__()`
+.
    - `__iter__()`: Returns the iterator object itself and is called when you create an iterator from an iterable object (e.g., a list or a custom class).
    
    - `__next__()`: Retrieves the next element from the iterator and raises the `StopIteration` exception when there are no more elements.
 
-
-**Iterator Example**
-
+Below is an example of a simple iterator:
 ```python
-lista=['Charles','John','Python','pato',3]
-a=iter(lista)
+lista = ['Charles', 'John', 'Python', 'pato', 3]
+a = iter(lista)
 print(a)
 print(next(a))
 
@@ -295,7 +294,8 @@ while True:
         break # exit the loop on error
 ```
 
-You can also create your own custom iterators by defining classes with `__iter__()` and `__next__()` methods, or you can use built-in Python functions like `iter()` and `next()` with iterable objects.
+You can also create your own custom iterators by defining **classes**
+ with `__iter__()` and `__next__()` methods, or you can use built-in Python functions like `iter()` and `next()` with iterable objects.
 
 ```python
 class Doublen:
@@ -332,21 +332,19 @@ The output will be
 14
 16
 ```
+We will look in greater detail into how to write your own classes in the
+[Object Oriented Programming](ooprogramming.md) chapter.
 
-**Generators**
+### Generators
+A generator is a concise way to create iterators. 
+The main difference is that a generator is a function that contains one or more `yield` statements. 
+When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the `yield` statements.
+Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution state between calls.
 
-A generator is a concise way to create iterators. The main difference is that it is a function that contains one or more
-`yield` statements. When you call a generator function, it returns a generator object, which you can use to iterate
-through the values produced by the `yield` statements.
-
-Generator functions use the `yield` keyword to yield values one at a time, and they automatically retain their execution
-state between calls.
-
-You may create a generator function by defining a function with one or more `yield` statements. When you call this
-function, it doesn't execute immediately but returns a generator object. You can then iterate through the values by
+You may create a generator function by defining a function with one or more `yield` statements. 
+When you call this function, it doesn't execute immediately but returns a generator object. 
+You can then iterate through the values by
 calling the generator's `__next__()` method or using a `for` loop.
-
-**Generator Example**
 
 ```python
 def number_generator(start, end):
@@ -361,15 +359,13 @@ for num in my_generator:
     print(num)
 ```
 
-In summary, both iterators and generators allow you to work with sequences of data, but generators provide a more
-concise and memory-efficient way to create iterators, especially for situations where data generation is dynamic or
-resource-intensive.
+In summary, both iterators and generators allow you to work with sequences of data, but generators provide a more concise and memory-efficient way to create iterators, especially for situations where data generation is dynamic or resource-intensive.
 
 ## 	Comprehensions
 
 Lists and dictionaries can be created in a very compact way using comprehensions.
-The list is created based on another list, dictionary or iterable object, and
-a condition can be added to filter the elements that are included in the new list.
+The list is created based on another list, dictionary or iterable object. 
+A condition can be added to filter the elements that are included in the new list.
 The syntax is as follows:
 
 ```python
@@ -411,32 +407,40 @@ over a sequence of values (in this case, another iterator, `range`), together wi
 their index (starting from 1 as specified with the `start` argument). The `chr()` function
 converts an integer to the corresponding ASCII character.
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a list comprehension that generates a list of squares for even numbers from 1 to 10.
+
+```
 
 ## Error and exception handling
 
-While running the code, some errors may occur, e.g. divide by zero, trying to open
-a non-existing file... Python raises a specific object that identifies the error. 
-These are called exceptions. 
-
-For instance the `ZeroDivisionError` exception is raised
+While running your code, some errors are bound to occur. 
+For example, when you divide
+a value by zero or when you try to open a non-existing file... 
+Python raises a specific object that identifies the error. 
+These are called **exceptions**. 
+Exceptions are a crucial mechanism for dealing with errors, unexpected behavior, and exceptional cases in Python programs.
+For instance, the `ZeroDivisionError` exception is raised
 when trying to divide by zero.
 
 ```{code-cell} python
 1/0
 ```
-
 And `FileNotFoundError` is raised when trying to open a non-existing file.
-
 ```{code-cell} python
 f = open('missing_file.txt')
 ```
 
 As shown above, when an exception is raised, the code stops running and an informative error 
-message is printed. Some context information is also provided, e.g. the call stack, which shows
+message is printed. 
+Some context information is also provided, e.g. the call stack, which shows
 the sequence of function calls that led to the error.
 
 Built-in exceptions are listed in the [Python documentation](https://docs.python.org/3/library/exceptions.html#bltin-exceptions).
-Some of the most commonly raised exceptions are:
+Some of the most commonly raised exception classes are:
 
 - `ZeroDivisionError`: raised when trying to divide by zero.
 - `NameError`: raised when a variable is not defined.
@@ -444,13 +448,14 @@ Some of the most commonly raised exceptions are:
 - `ValueError`: raised when a built-in operation or function receives an argument that has the 
    right type but an inappropriate value.
 - `IndexError`: raised when trying to access an element in a list using an invalid index.
+- `OSError`: raised when a system function returns a system-related error, including I/O failures such as “file not found” or “disk full”.
 - `KeyError`: raised when a dictionary key is not found.
 - `FileNotFoundError`: raised when trying to open a non-existing file.
 - `ImportError`: raised when an import statement fails.
 - `SyntaxError`: raised when there is an error in Python syntax.
 - `IndentationError`: raised when indentation is not correct.
 
-Errors raised while running the code can be handled using the `try` and `except` statements.
+Errors raised while running the code can be caught and handled using the `try` and `except` statements.
 The basic syntax is as follows:
 
 ```python
@@ -470,10 +475,29 @@ except ZeroDivisionError:
     print("Division by zero!")
 ```
 
-The `try` statement can be followed by multiple `except` statements, to handle different
-types of exceptions specifically. If no exception is specified, the `except` statement
-will handle any exception. For instance, we can handle a division by zero error, a
-name error, specifically, and then any other exception as follows:
+As you see, when an exception is handled, the code continues running
+without crashing the program.
+However, we may be missing some information from the original error message.
+In this type of situations we may use a slightly different syntax:
+```python
+try:
+    file = open("non_existent_file.txt", "r")
+    content = file.read()
+    file.close()
+except FileNotFoundError as e:
+    print(f"An error occurred: {e}")
+```
+As you see, using `except <ExceptionType> as e` we are catching the exception and 
+printing the original error message.
+
+The `try` block contains the code that might raise an exception,
+and it can be followed by multiple `except` statements to handle different
+types of exceptions with specific actions. 
+If no exception is specified, the `except` statement
+will handle any exception. 
+
+In the example below, we handle a division by zero error and a
+name error specifically, and then any other exception:
 
 ```{code-cell} python
 try:
@@ -497,28 +521,34 @@ try:
     # Code that may raise an exception
     ...
 except ExceptionName1:
-    # Code that is executed if the exception ExceptionName1 is raised
+    # Executed if the exception ExceptionName1 is raised
     ...
 except ExceptionName2:
-    # Code that is executed if the exception ExceptionName2 is raised
+    # Executed if the exception ExceptionName2 is raised
     ...
 except:
-    # Code that is executed if any other exception is raised
+    # Executed if any other exception is raised
     ...
 else:
-    # Code that is executed if no exception is raised
+    # Executed if no exception is raised
     ...
 finally:
-    # Code that is always executed, regardless of whether an exception is raised or not
+    # Always executed, regardless of whether an exception is raised or not
     ...
 ```
 
-We can also raise exceptions in our code using the `raise` statement, using one of the built-in
-exceptions or a custom exception (we are not going to cover custom exceptions in this course).
+
+We can also raise exceptions in our code using the `raise` statement, using one of the built-in exceptions or a custom exception (we are not going to cover custom exceptions in this course).
 For instance:
 
 ```{code-cell} python
 x = -1
 if x < 0:
     raise ValueError("x cannot be negative")
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
 ```
