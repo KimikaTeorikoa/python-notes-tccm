@@ -4,4 +4,4 @@ numpy
 scipy
 sympy
 sphinx
-sphinx-exercise=0.4.0
+sphinx-exercise==0.4.0
