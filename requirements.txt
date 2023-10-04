@@ -3,7 +3,4 @@ matplotlib
 numpy
 scipy
 sympy
-sphinx
-sphinx-book-theme
-sphinx_togglebutton
-sphinx-exercise
+sphinx<=6.2.1
