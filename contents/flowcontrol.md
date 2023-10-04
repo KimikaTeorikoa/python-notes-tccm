@@ -168,38 +168,31 @@ bool([]) # False
 bool([1, 2, 3]) # True
 ```
 
-```{exercise}
-:nonumber:
-:class: dropdown
-
-Exercise to explore logical tests
-```
-
 ## Loops (for / while)
 
-Loops play a crucial role in automating repetitive tasks, such as executing code repetitively. 
-Therefore, loops become essential tools for processing data and performing calculations. Imagine you have a 
-list of numbers, and you want to calculate their sum. 
+Loops play a crucial role in automating repetitive tasks. Many times, we
+will want to do the same thing over and over. Occasionally, we may want to 
+stop when a condition is or is not fulfilled. In these situations, loops become
+ essential tools for processing data and performing calculations. 
 
-For instance, consider the following list:
-
+Imagine you have a list of numbers, and you want to calculate their sum. 
 ```python
 numbers = [1, 2, 3, 4, 5]
 ```
-
 To find the sum of these numbers, you could manually add them up:
-
 ```python
 numbers = [1, 2, 3, 4, 5]
-Sum = numbers[0]+numbers[1]+numbers[2]+numbers[3]+numbers[4]
+Sum = numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4]
 ```
 
-However, what if you had a list with hundreds or thousands of numbers? Performing this calculation manually would be 
+However, what if you had a list with hundreds or thousands of numbers? 
+Performing this calculation manually would be 
 impractical. This is precisely where loops come into play.
 
-**For loops**
+### For loops
 
-Let's explore a `for` loop in Python to calculate the sum of numbers in a list. The for loop iterates over each element
+Let's explore a `for` loop in Python to calculate the sum of numbers in a list.
+ The for loop iterates over each element
 in the list and accumulates the sum.
 
 ```python
@@ -260,6 +253,17 @@ while total_sum <= 10:
 
 print("The sum of numbers until the cumulative sum exceeds 10 is:", total_sum)
 ```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a code snippet that calculates and prints the sum of all even numbers from 1 to
+ a given positive integer using both a for loop and a while loop. 
+Compare the results obtained from both loops.
+
+```
+
 
 ## 	Iterators and generators
 
