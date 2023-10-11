@@ -103,6 +103,16 @@ the same type, unlike Python lists.
 
 Let's go through all those differences step by step.
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create a NumPy array called `my_array` containing the numbers from 1 to 10. 
+Then, print the elements in reverse order (from 10 down to 1).
+
+Hint: You can use slicing to reverse the array.
+```
+
 ## Multidimensional numpy arrays
 
 First let's see how to create a 2D array:
@@ -136,6 +146,16 @@ print("First column:", first_column)
 sub_matrix = two_d_array[0:2, 0:2]
 print("Sub-matrix (first two rows and columns):")
 print(sub_matrix)
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create a 5x5 NumPy array called `matrix` with random values. Then extract the 
+first three elements of the second column of the matrix and print them.
+
+Hint: use `np.random.rand` to generate a random matrix
 ```
 
 ## NumPy array built-in properties and functions
@@ -223,6 +243,13 @@ print("Maximum: ", np.max(a))
 print("Minimum: ", np.min(a))
 print("Sum: ", np.sum(a))
 print("Mean: ", np.mean(a))
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Calculate the average of all integers less than 100 divisible by 8. 
 ```
 
 ## Performance
@@ -317,6 +344,19 @@ c = a + virtual_b
 The result is a 2D array `c` with the same shape `(3, 2)` as `a`, and it 
 contains the sum of the corresponding elements from `a` and the virtually 
 broadcasted `b`.
+
+```{exercise}
+:nonumber:
+:class: dropdown
+Create the following matrix using broadcasting:
+
+[[0, 1, 2],
+ [0, 1, 2],
+ [0, 1, 2]]
+
+Hint: you can create a matrix of zeros with `np.zeros`.
+```
+
 
 ## Matrix Operations and the linalg Module
 In this section, we'll explore some of the most common matrix operations that
@@ -435,6 +475,14 @@ perform with NumPy and its `linalg` module. Understanding and utilizing these
 operations is crucial for a wide range of scientific and engineering tasks.
 
 
+```{exercise}
+:nonumber:
+:class: dropdown
+Create a random 5x5 matrix and show that a product of this matrix with its 
+inverse is an identity matrix.
+```
+
+
 ## Input/Output
 In real applications, you often want to read some numeric data from an external
 file or write out the results. NumPy provides useful functions to make
@@ -517,6 +565,13 @@ The text file `my_array_with_header.txt` will have:
 1,2,3
 4,5,6
 7,8,9
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+Import `my_array_with_header.txt` from the previous example into a spreadsheet,
+change the values, save and then read the updated file using `np.loadtxt`. 
 ```
 
 ## NumPy documentation
