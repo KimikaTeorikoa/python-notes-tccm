@@ -159,8 +159,9 @@ variable.
 ```
 
 ## Types of arguments
-So far we have used arguments in the simplest of ways. There
-can be functions without arguments, in which case the function
+So far we have used arguments in the simplest of ways, by passing
+variable names inside the parenthesis. There
+can be *functions without arguments*, in which case the function
 call would be done with an empty parenthesis. 
 ```{code-cell} python
 def say_hello():
@@ -233,6 +234,15 @@ def my_fun(*args, **kwargs):
         ...
 ```
 You see that the `kwargs` are being unwrapped like a **dictionary**.
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create a Python program with a function that uses arguments,
+default arguments and keyword arguments to calculate to return 
+the area of a square or a rectangle.
+```
 
 ## Anonymous functions
 In Python there is an alternative way of defining functions that
