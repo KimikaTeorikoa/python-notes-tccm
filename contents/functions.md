@@ -262,6 +262,14 @@ before using a few more. As you probably guessed, anonymous functions
 are particularly useful as one-liners, but may become cumbersome
 to use for more sofisticated actions.
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a one-liner Python program using an anonymous function (lambda) to concatenate two strings.
+
+```
+
 ## Documenting functions
 An important detail that we have left to the side so far is the need
 to write documentation for your functions. In Python, function
