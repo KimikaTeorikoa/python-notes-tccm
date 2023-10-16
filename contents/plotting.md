@@ -195,7 +195,7 @@ Let's see an example of each of these functions:
 ```{code-cell} python
 # Create a 2D array
 z = [[1,2],
-     [2,3]]
+     [3,4]]
 
 # Plot with imshow
 plt.imshow(z)
