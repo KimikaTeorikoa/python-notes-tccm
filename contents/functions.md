@@ -12,9 +12,11 @@ kernelspec:
 # Functions	
 We have already explored many things that can be done using Python, and
 specifically in the [previous chapter](flowcontrol.md), how to do
-them over and over again. Sometimes, as your code gets more complicated
+them over and over again. Sometimes, as your code gets more complicated,
 it will make sense to **abstract** some of the computations that you are doing
-and isolate them into a separate piece of code, called a **function**.
+and isolate them into a separate piece of code. This set of actions 
+will be performed by a **function**.
+
 Functions are useful for a number of reasons:
 * They make your code more *readable*.
 * Using functions you may *shorten* your code, avoiding repetitive actions.
@@ -25,7 +27,7 @@ Functions are useful for a number of reasons:
 In fact, we have been using functions since the beginning of our
 journey with Python. The functions that can be used in any moment
 in time just by typing them are called **built-in functions**.
-The first one we used is the `print()`function. Incidentally, since
+The first one we used is the `print()` function. Incidentally, since
 we have used it, we can check what type of object `print()` is
 ```{code-cell} python
 print (type(print))
@@ -38,7 +40,7 @@ documentation](https://docs.python.org/3/library/functions.html#built-in-functio
 
 As you see functions are always invoked with a parenthesis `()`
 where we include the function **arguments**. These arguments
-are the set of variables we pass on to a function for it to work with.
+are the *set of variables we pass on to a function* for it to work with.
 When we call a function, we typically expect something back. 
 In the case of the `print()` function we expect output in the `stdout`.
 In many other cases, what the function **returns** is sent into
@@ -52,27 +54,27 @@ into `y`.
 
 ## Writing functions
 But in addition to the built-in functions that are always available,
-you can write your own functions. The basic syntax is as follows:
+you can write your own functions. The basic syntax for functions
+in Python is as follows:
 ```python
 def my_function(arg1, arg2, ...):
     # A number of actions that take place inside the function
     ...
     return value1, value2
 ```
-As you see, to write a function we must first use the `def` statement,
-after which come the name of your function, with parenthesis, and its function
-arguments, `arg1` and `arg2`, will follow. Then starts an indented block 
-that can be as long
-as required. The function usually will end with a `return` statement, 
+As you see, to write a function we must first use the `def` *statement*,
+after which come the *name of your function*, with *parenthesis*, and 
+its *function arguments*, `arg1` and `arg2`, will follow. 
+Then starts an *indented block* that can be as long
+as required. The function usually will end with a `return` *statement*, 
 which can return one or multiple values, or nothing at all. We call this type
-of function with no returns **void function**.  When we write one of
-them  we can omit the `return` statement altogether.
+of function with no returns **void function**.  In a void function we can omit the `return` statement altogether.
 
-Functions must be defined before they are used. This will normally mean
-that the function is written *above* the main code we are running.
+Functions must be *defined before they are used*. This will normally mean
+that the function is written above the main code we are running.
 If one function calls another function, then it does not matter which
-order they appear as long as the code is not executed. For example,
-in this code, 
+order they appear as long as the code is not executed. 
+For example, in this code, 
 ```{code-cell} python
 def call_tell_me_yes():
     tell_me_yes()
@@ -84,6 +86,18 @@ call_tell_me_yes()
 ```
 it does not matter that the first function is calling the second
 function, as both are defined at runtime.
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Do you remember our first Python program called `hello_world.py`?
+Write a computer program that writes "hello world" using a function.
+Use a function argument to decide whether you write to your display 
+or to a file.
+
+```
+
 
 ## Scope of variables
 It is important to note that whatever happens outside the function
