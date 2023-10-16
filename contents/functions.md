@@ -98,13 +98,12 @@ or to a file.
 
 ```
 
-
 ## Scope of variables
-It is important to note that whatever happens outside the function
-is visible to the function, but not the other way around. 
+It is important to note that *whatever happens outside the function
+is visible to the function*, but not the other way around. 
 Variables defined in the main program are said to have **global scope**.
 But variables defined inside the function have **local scope**,
-so whatever happens in a function remains inside the function. To
+so *whatever happens in a function remains inside the function*. To
 make variables global in scope you can declare them as a **global** or
 return them as a result. To make a variable `x`inside a function global,
 you just need to type
@@ -142,6 +141,22 @@ two variables. However, when trying to print the other variable calculated
 by the function (`d = a - val`), we are getting a `NameError`. Because
 `d` is local in scope, it is not part of the **namespace** known to the main
 code.
+
+```{hint}
+In Python, it's important to use the `global` keyword if you want to
+ modify a global variable from within a function. Otherwise, 
+Python will treat it as a new local variable within that function.
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a Python program with a global variable and a function that attempts 
+to modify it without the global keyword. Then, demonstrate the use of the 
+global keyword in a separate function to successfully modify the global 
+variable.
+```
 
 ## Types of arguments
 So far we have used arguments in the simplest of ways. There
