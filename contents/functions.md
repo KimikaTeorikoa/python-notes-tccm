@@ -314,6 +314,43 @@ def tell_me_your_name(*args):
 print (tell_me_your_name.__doc__)
 ```
 
-## Advanced topics
-* Functional programming: `map`, `filter`
-* Recursion
+## Recursion
+Recursion is a powerful technique in Python where a function calls itself
+ to solve a problem. When using recursion, we typically consider a **base 
+case** that stops recursion. Without it, you risk running into endless loops
+(technically termed, "stack overflow"). Additionally, you will have to write
+a **recursive case**, where the function calls itself with modified data. 
+In this way, we are able to tackle complex problems by breaking them into
+ smaller, more manageable pieces. Recursion uses a call stack to keep track 
+of function calls. The stack unwinds as the base case is reached, combining 
+results from all the recursive calls.
+
+```{hint}
+Be careful to design your recursive functions so they move toward the base 
+case; otherwise, you might end up with infinite recursion errors.
+```
+
+You'll often use recursion to solve problems involving repetitive 
+subproblems, like computing factorials, Fibonacci sequences, and tree traversal.
+Below is an example of a factorial calculation
+
+```python
+def factorial(n):
+    # Base case
+    if n == 0:
+        return 1
+    # Recursive case
+    else:
+        return n * factorial(n - 1)
+
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a Python function to calculate the n-th term of the Fibonacci sequence 
+using recursion.
+
+![fibonacci](https://upload.wikimedia.org/wikipedia/commons/b/b9/Fibonacci_Spiral.svg)
+```
