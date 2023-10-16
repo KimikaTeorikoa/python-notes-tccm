@@ -266,7 +266,7 @@ to use for more sofisticated actions.
 :nonumber:
 :class: dropdown
 
-Write a one-liner Python program using an anonymous function (lambda) to concatenate two strings.
+Write a one-liner Python program using an anonymous function to concatenate two strings.
 
 ```
 
