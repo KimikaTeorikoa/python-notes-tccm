@@ -240,7 +240,7 @@ You see that the `kwargs` are being unwrapped like a **dictionary**.
 :class: dropdown
 
 Create a Python program with a function that uses arguments,
-default arguments and keyword arguments to calculate to return 
+default arguments and keyword arguments to calculate 
 the area of a square or a rectangle.
 ```
 
