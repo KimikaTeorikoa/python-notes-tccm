@@ -168,6 +168,21 @@ bool([]) # False
 bool([1, 2, 3]) # True
 ```
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a code that uses non-booleans in logical tests, and check
+how are they evaluated. You can follow the scheme below:
+
+```python
+if variable:
+    print("This variable evaluates to True")
+else:
+    print("The variable evaluates to False")
+```
+
+
 ## Loops (for / while)
 
 Loops play a crucial role in automating repetitive tasks. Many times, we
