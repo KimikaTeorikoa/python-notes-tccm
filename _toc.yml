@@ -8,6 +8,7 @@ chapters:
 - file: contents/fundamentals
 - file: contents/flowcontrol
 - file: contents/functions
+- file: contents/printing
 - file: contents/libraries
 - file: contents/numpy
 - file: contents/plotting
