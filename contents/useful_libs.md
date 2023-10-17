@@ -11,7 +11,11 @@ kernelspec:
 
 # Useful libraries for scientific computing
 
-In this section we review some additional libraries that are very useful for scientific computing.
+One of the strongest points of Python is the flourishing ecosystem of libraries it comes with. 
+We have already seen some of them, such as [`numpy`](numpy.md) and [`matplotlib`](plotting.md). 
+This chapter reviews other libraries that have become central for scientific computing. 
+We will mostly focus on `scipy`, highlighting some of its submodules that provide a huge set of 
+numerical algorithms, and also briefly mention other projects that you will likely find useful.
 
 ## `scipy` 
 
@@ -347,6 +351,7 @@ df
 ```
 
 Many other symbolic operations are possible, such as integrals, limits, series expansions, etc.
+Check the [documentation](https://docs.sympy.org/latest/index.html) for more details.
 
 ## `pandas`
 
