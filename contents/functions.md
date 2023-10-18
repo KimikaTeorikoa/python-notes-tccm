@@ -229,7 +229,7 @@ def my_fun(*args, **kwargs):
     for i in args:
         # do something
         ...
-    for k, v in kwargs:
+    for k, v in kwargs.items():
         # do something else
         ...
 ```
