@@ -44,9 +44,10 @@ import math
 You can then use functions and classes from the `math` module, such as `math.sqrt()` 
 for square root calculations. To learn what is available in the standard library 
 you can go to the [official Python documentation](https://docs.python.org/3/library/index.html).
+To use **third-party libraries**, you'll need to install them first (more on this at the end of this chapter). 
 
-To use **third-party libraries**, you'll need to install them first (usually via `pip`
- or `conda`). Once installed, you can import them using the `import` statement.
+
+Once installed, you can import them using the `import` statement.
 For instance, to import the popular NumPy library for numerical operations:
 
 ```python
@@ -116,6 +117,17 @@ print(sys.version)
 sys.exit()
 ```
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+
+Write a program using `sys.argv` to access command-line arguments 
+passed by the user.
+
+```
+
+
 ### `os`
 The `os` module provides a portable way of using operating system dependent 
 functionality. It provides functions for creating and removing files and directories,
@@ -164,77 +176,13 @@ for file_or_dir in files_and_dirs:
     print(file_or_dir)
 ```
 
-### `argparse` 
-Writing user-friendly command-line interfaces (CLIs) is easy thanks to the
- `argparse` module. The `argparse`module also generates help and usage messages,
- providing issue error when invalid arguments are given. It allows you to define
- and customize command-line options, arguments, and help messages, making it easier
- for users to interact with your code through the terminal.
+```{exercise}
+:nonumber:
+:class: dropdown
 
-`argparse` offers several advantages:
-
-1. **User-Friendly Interface:** It provides a user-friendly way for users to 
-provide input to your scripts or programs via the command line. 
-2. **Validation and Error Handling:** `argparse` automatically performs 
-validation and error handling for the command-line arguments. It checks for 
-required arguments, valid choices, and data types.
-3. **Flexibility:** You can define various types of arguments, including
- positional arguments, optional arguments (flags), and arguments with values. 
-4. **Documentation Generation:** `argparse` can automatically generate help messages
- and documentation for your script
-based on the argument definitions you provide.
-
-In order to create an CLI we first need to use the `ArgumentParser` class of 
-the `argparse` module.
-
-```python
-import argparse
-
-parser = argparse.ArgumentParser(description=’my custom command-line program’, 
-    usage = ’%(prog)s [options]’)
-
+Create a new directory and remove it using os.mkdir() and os.rmdir().
+ Handle potential exceptions like FileExistsError and OSError.
 ```
-The `description` parameter describes the program to help the user understand.
- In contrast, the parameter `usage` gives the user a usage message when they 
-run any command with the `help` flag.
-
-To add more parameters to the parser, we can add them using the `add_argument()`
- method.
-```python
-parser.add_argument(argument_default=None);
-parser.add_argument(epilog=’Information displayed at the end of the help message);
-```
-The `argument_default` sets the default value for all arguments. The `epilog`
-which displays a text at the end of the help message. Once it is done, the command
- line arguments are parsed using the `parse_args()` method.
-
-A basic example of how to use `argparse` in a Python script is presented below
-```python
-import argparse
-
-# Create an ArgumentParser object
-parser = argparse.ArgumentParser(description='A simple command-line tool.')
-
-# Add positional argument(s)
-parser.add_argument('input_file', help='Input file name')
-
-# Add optional argument(s)
-parser.add_argument('--output', '-o', help='Output file name')
-
-# Parse the command-line arguments
-args = parser.parse_args()
-
-# Access the values of the arguments
-input_file = args.input_file
-output_file = args.output
-```
-To run the script we type
-```python
-python script.py input.txt --output output.txt
-```
-where `input.txt` is provided as the value for the `input_file`
- positional argument and `--output` stands for an optional argument,
- being `output.txt` is provided as its value.
 
 ### `shutil`
 The ability to work with files is a mandatory skill when using Python. Proficiency in file
@@ -333,3 +281,168 @@ where
 `shutil.copytree()` returns the path of the newly created file. 
 
 To remove a directory we may use the `shutil.rmtree()` function.
+
+### `argparse` 
+Writing user-friendly command-line interfaces (CLIs) is easy thanks to the
+ `argparse` module. The `argparse`module also generates help and usage messages,
+ providing issue error when invalid arguments are given. It allows you to define
+ and customize command-line options, arguments, and help messages, making it easier
+ for users to interact with your code through the terminal.
+
+`argparse` offers several advantages:
+
+1. **User-Friendly Interface:** It provides a user-friendly way for users to 
+provide input to your scripts or programs via the command line. 
+2. **Validation and Error Handling:** `argparse` automatically performs 
+validation and error handling for the command-line arguments. It checks for 
+required arguments, valid choices, and data types.
+3. **Flexibility:** You can define various types of arguments, including
+ positional arguments, optional arguments (flags), and arguments with values. 
+4. **Documentation Generation:** `argparse` can automatically generate help messages
+ and documentation for your script
+based on the argument definitions you provide.
+
+In order to create an CLI we first need to use the `ArgumentParser` class of 
+the `argparse` module.
+
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description=’my custom command-line program’, 
+    usage = ’%(prog)s [options]’)
+
+```
+The `description` parameter describes the program to help the user understand.
+ In contrast, the parameter `usage` gives the user a usage message when they 
+run any command with the `help` flag.
+
+To add more parameters to the parser, we can add them using the `add_argument()`
+ method.
+```python
+parser.add_argument(argument_default=None);
+parser.add_argument(epilog=’Information displayed at the end of the help message);
+```
+The `argument_default` sets the default value for all arguments. The `epilog`
+which displays a text at the end of the help message. Once it is done, the command
+ line arguments are parsed using the `parse_args()` method.
+
+A basic example of how to use `argparse` in a Python script is presented below
+```python
+import argparse
+
+# Create an ArgumentParser object
+parser = argparse.ArgumentParser(description='A simple command-line tool.')
+
+# Add positional argument(s)
+parser.add_argument('input_file', help='Input file name')
+
+# Add optional argument(s)
+parser.add_argument('--output', '-o', help='Output file name')
+
+# Parse the command-line arguments
+args = parser.parse_args()
+
+# Access the values of the arguments
+input_file = args.input_file
+output_file = args.output
+```
+To run the script we type
+```python
+python script.py input.txt --output output.txt
+```
+where `input.txt` is provided as the value for the `input_file`
+ positional argument and `--output` stands for an optional argument,
+ being `output.txt` is provided as its value.
+
+## Installing third party libraries
+To install libraries in Python, you can use two commonly used 
+package managers: pip and conda. Using pip 
+([Python Package Manager](https://pip.pypa.io))
+you just have to open your command-line or terminal and run
+the following command:
+```bash
+python -m pip install library_name 
+```
+or alternatively
+```bash
+pip install library_name
+```
+When you invoke these commands, pip will fetch packages from [Python 
+Package Index](https://pypi.org/), a repository of software for the 
+Python programming language where anyone can upload packages.
+You can specify the specific version of the package you are interested
+in by typing 
+```bash
+pip install library_name==version_number
+```
+Using pip you can also install packages from a Github repository 
+```bash
+python -m pip install git+https://github.com/pypa/library_name.git@main
+```
+or from a file
+```bash
+python -m pip install library_name.tar.gz
+```
+Uninstalling packages is equally easy. You just have to type
+```bash
+python -m pip uninstall sampleproject
+```
+
+Because in this course we are using the Anaconda Python distribution,
+it is also useful for you to know that you can use its package manager
+to install libraries. Simply do
+```shell
+conda install library_name
+```
+You can find more information about this very powerful tool 
+[here](https://docs.conda.io/projects/conda/en/stable/).
+
+### Virtual environments in Conda
+At some point you may be working with multiple projects at
+the same time and the libraries or library versions
+you require for some of them may create conflicts with others.
+In order to isolate the sets of libraries that you install
+for specific projects, you may want to take advante to
+conda's virtual environments. 
+
+You can create a new virtual environment with the following 
+command:
+```shell
+conda create --name myenv
+```
+Once you have created an environment, you 
+can activate it using:
+```shell
+conda activate myenv
+```
+Once activated, you can install packages into the virtual
+ environment using `conda install` or `pip`.
+To deactivate the virtual environment and return to the base 
+environment, use:
+```shell
+conda deactivate
+```
+You can clone an existing environment to create a new one with the same dependencies:
+```shell
+conda create --name myenv_clone --clone myenv
+```
+You can list all your created environments with:
+```shell
+conda env list
+```
+To delete an environment, use:
+```shell
+conda env remove --name myenv
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Create a new Conda environment named "myenv" with Python 3.8.
+Inside "myenv," install numpy, pandas and matplotlib.
+Clone "myenv" into "newenv" and inside "newenv," upgrade 
+the version of numpy to the latest version.
+Check the version of numpy in "newenv."
+Compare this version with the one in "myenv."
+```
