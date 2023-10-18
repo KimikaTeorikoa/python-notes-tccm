@@ -269,7 +269,7 @@ while total_sum <= 10:
 print("The sum of numbers until the cumulative sum exceeds 10 is:", total_sum)
 ```
 
-```{warning}
+```{hint}
 Take care when using `while` loops, as they can easily lead to infinite loops.
 ```
 

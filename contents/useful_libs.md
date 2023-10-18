@@ -13,7 +13,8 @@ kernelspec:
 
 One of the strongest points of Python is the flourishing ecosystem of libraries it comes with. 
 We have already seen some of them, such as [`numpy`](numpy.md) and [`matplotlib`](plotting.md). 
-This chapter reviews other libraries that have become central for scientific computing. 
+This chapter reviews other libraries that have become central for scientific computing, 
+including computational chemistry.
 We will mostly focus on `scipy`, highlighting some of its submodules that provide a huge set of 
 numerical algorithms, and also briefly mention other projects that you will likely find useful.
 
@@ -97,6 +98,27 @@ mu = 0
 sigma = 1
 y = gaussian(x, mu, sigma)
 print(simps(y, x=x))
+```
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a program to check the orthogonality of the vibrational eigenfunctions of the
+harmonic oscillator.
+
+*Hint*: The eigenfunctions of the harmonic oscillator can be written as:
+
+$$
+\psi_n(Q) = 
+\frac{1}{\sqrt{2^n n!}} 
+\left(\frac{\omega}{\pi\hbar}\right)^{1/4} 
+e^{-\omega Q^2/2\hbar} 
+H_n\left(\sqrt{\frac{\omega}{\hbar}}Q\right)
+$$
+where $H_n$ are the Hermite polynomials, which can be evaluated with the function
+`scipy.special.eval_hermite`.
+
 ```
 
 Functions for multidimensional integration are also available:
