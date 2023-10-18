@@ -41,23 +41,9 @@ The submodules that normally fulfill the needs of a computational chemist are:
 - `linalg`: Linear algebra, which actually provides an interface to BLAS and LAPACK libraries.
 Note that it generally supports all `numpy.linalg` functions, and `scipy.linalg` versions are preferred.
 
-The list of submodules is completed with:
-
-- `cluster`: Clustering algorithms
-- `fft`: Fast Fourier Transform routines (this should replace the still existing `fftpack` module)
-- `ndimage`: N-dimensional image processing
-- `odr`: Orthogonal distance regression
-- `signal`: Signal processing
-- `sparse`: Sparse matrices and associated routines
-- `spatial`: Spatial data structures and algorithms
-- `special`: Special functions
-- `stats`: Statistical distributions and functions
-- `constants`: Physical and mathematical constants
-- `io`: Input and Output
-- `misc`: Miscellaneous utilities that don’t have another home.
-
-In the following, we will take a deeper look at the submodules
-`integrate`, `interpolate` and `optimize`.
+In this chapter we will focus on the first three submodules. The list of submodules is more extensive,
+including `fft` (Fast Fourier Transform), `special` (special functions, such as Hermite polynomials). 
+A complete list can be found in the [official documentation](https://docs.scipy.org/doc/scipy/reference/).
 
 ### `scipy.integrate`
 
@@ -121,11 +107,8 @@ where $H_n$ are the Hermite polynomials, which can be evaluated with the functio
 
 ```
 
-Functions for multidimensional integration are also available:
-
-- `dblquad`: General purpose double integration.
-- `tplquad`: General purpose triple integration.
-- `nquad`: General purpose n-integration.
+Functions for multidimensional integration are also available, such as `dblquad` (double integral),
+`tplquad` (triple integral) and `nquad` (integration over multiple variables).
 
 This submodule also provides methods to integrate **ordinary differential equations**. 
 The recommended method is `solve_ivp` (solve initial value problem), 
@@ -160,22 +143,8 @@ plt.plot(sol.t, sol.y[1], label='y')
 plt.legend()
 plt.show()
 ```
-The integration algorithm is set with the `method` attribute. Available methods are
-summarized in the following table.
-
-| Method | Description                                                                                                                      |
-| --- |----------------------------------------------------------------------------------------------------------------------------------|
-| `RK45` | Explicit Runge-Kutta method of order 5(4). This is the default method.                                                           |
-| `RK23` | Explicit Runge-Kutta method of order 3(2).                                                                                       |
-| `DOP853` | Explicit Runge-Kutta method of order 8.                                                                                          |
-| `Radau` | Implicit Runge-Kutta method of the Radau IIA family of order 5.                                                                  |
-| `BDF` | Implicit multi-step variable-order (1 to 5) method based on a backward differentiation formula for the derivative approximation. |
-| `LSODA` | Adams/BDF method with automatic stiffness detection and switching.                                                               |
-
-The  older `odeint` function is also available, and provides a robust integrator
-for ordinary differential equations based on the
-FORTRAN library [odepack](https://computing.llnl.gov/projects/odepack).
-It is still extensively used, mainly in legacy code.
+The integration algorithm is set with the `method` attribute, with the default 
+being `RK45` (Runge-Kutta 4th order).
 
 ### `scipy.interpolate`
 
@@ -202,18 +171,8 @@ plt.show()
 ```
 
 As shown in the above example, the `kind` argument specifies the type of interpolation. Possible
-values are indicated in the following table.
-
-| Kind | Description |
-| --- | --- |
-| `linear` | Linear interpolation (default). |
-| `nearest` | Nearest-neighbor interpolation. |
-| `zero` | Zero-order hold interpolation. |
-| `slinear` | Piecewise linear interpolation. |
-| `quadratic` | Piecewise quadratic interpolation. |
-| `cubic` | Piecewise cubic interpolation. |
-| `previous` | Use previous value. |
-| `next` | Use next value. |
+values include `linear` (which is the default), `quadratic` or `cubic` (a complete list
+can be found in the [official documentation](https://docs.scipy.org/doc/scipy/reference/interpolate.html)).
 
 For 2D interpolation, the most general function is `interp2d`. This function takes as arguments
 a 2D array of values, `Z`, and the two 1D arrays of coordinates, `x` and `y`. These arrays
@@ -292,12 +251,11 @@ attributes of the result object are `fun`, which contains the value of the funct
 minimum, `success`, which is a boolean indicating if the optimization was successful, or the
 number of iterations, `nit`, among others.
 
-Possible methods are `Nelder-Mead`, `Powell`, `CG`, `BFGS`, `Newton-CG`, `L-BFGS-B`, `TNC`,
-`COBYLA`, `SLSQP` and `trust-constr`. The default method is `BFGS`. The choice of the method
-depends on the problem (stiffness, dimensionality, etc.), and the need of adding constraints,
-as not all the methods are compatible with constraints.
-More details can
-be found in the [documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize).
+Different optimization algorithms can be used with the `method` argument, including `BFGS` (default
+for unconstrained problems) or `Newton-CG`. The choice of the method
+depends on the problem (stiffness, dimensionality, etc.), and the need of adding constraints
+A complete list is given in the 
+[documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize).
 
 For **root-finding** of scalar functions (univariate functions, i.e., which depend on only 
 one variable), we can use the general interface function `root_scalar`.
