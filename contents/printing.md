@@ -1,3 +1,14 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Additional notes on I/O
 
 At this point, we already acquired the basic skills to write a 
@@ -28,7 +39,7 @@ of variables is given). The default value is a space `' '.
 
 Another important keyword is `file`, which specifies the output
 stream. The argument must be a file object, generated with the
-`open` function. Note that it should be writtable. The default value 
+`open` function. Note that it should be writable. The default value 
 is `sys.stdout`, which is the standard output stream. 
 
 ```{exercise}
@@ -38,7 +49,23 @@ is `sys.stdout`, which is the standard output stream.
 Write a program that prints the numbers from 0 to 10 in the same line,
 waiting 1 second between each number. 
 
-Hint: use the `time.sleep` function to wait 1 second.
+*Hint*: use the `time.sleep` function to wait 1 second.
+```
+
+Before closing this section, we will look at an alternative way to
+print variables, i.e., through the `write` method of file objects.
+One of the main differences with the `print` function is that the
+`write` method does not add a newline character at the end.
+
+```python
+# Set file object to standard output
+f = sys.stdout
+
+# With write method
+f.write('Hello world!\n')
+
+# With print function
+print('Hello world!', file=f)
 ```
 
 ## Formatting your output
@@ -49,54 +76,65 @@ specify the number of decimals for a float). To do this, we need to
 generate a string that will contain the variables with the desired
 format. We then pass such a string to the `print` function.
 
-There are two ways to generate a string with variables. The first
-one is to use the `format` method of the string. The second one is
-to use the `f-strings` (formatted strings) introduced in Python 3.6.
-In both cases, the string is a template that contains placeholders
+There are three ways to generate a string with variables:
+
+- `format` method of the string.
+- `f-strings` (formatted strings, since Python 3.6).
+- String modulo operator (`%`).
+
+In the two first cases, the string is a template that contains placeholders
 for the variables identified by curly braces `{}`. The more general
 syntax is `{<variableID>:<format>}`. The way `<variableID>` is 
 specified depends on the method used to generate the string. Namely, 
 the `format` contains the variables as arguments, and `<variableID>`
 is the position of the variable in the argument list. If no idenfier
 is used, the variables are used in the order they appear in the 
-argument list. The `f-strings` are strigs defined with the `f`
+argument list. The `f-strings` are strings defined with the `f`
 modifier, `f"my_string"`. They are a bit more flexible, and allow to 
 directly use a variable, or any valid Python expression as `<variableID>`. 
-Let's take a look to some equivalent ways to print two variables with these 
-methods:
+
+The third method uses the `%` character as placeholder within the string,
+with syntax `%<format>`, where in this case `<format>` must be specified.
+The variables to substitute are given after the string, using a tuple
+if more than one is given.
 
 ```python
 # Using the format method
 print('The value of x is {} and the value of y is {}'.format(x, y))
-print('The value of x is {0} and the value of y is {1}'.format(x, y))
-print('The value of x is {1} and the value of y is {0}'.format(y, x))
 
 # Using f-strings
 print(f'The value of x is {x} and the value of y is {y}')
+
+# Using string modulo operator (%)
+print('The value of x is % and the value of y is %' % (x, y))
 ```
 
 The `<format>` is a string that specifies the format of the variable, 
-with details such as the total width, the number of decimals, 
-the alignment, etc. The most common syntax is `<align>W<type>`, where
-`<align>` is the alignment (optional), `W` is the total width (and may also 
+with details such as the total width, the number of decimals or
+the alignment. The most common syntax is `<align>W<type>`, where
+`<align>` is the alignment (not available with `%` method, and optional
+with the other two), `W` is the total width (and may also 
 include the number of positions after the period for floats as `W.n`), and 
-`<type>` is the type of the variable. The most common types are:
+`<type>` is the format type. The most common types are:
 
 * `s`: string (actually not necessary to specify, since it is the default)
 * `d`: integer (again, not necessary)
-* `f`: float
+* `f`: float in decimal format
 * `e`: float in scientific notation
-* `g`: float in scientific notation or decimal format, depending on the value
+* `g`: float in scientific notation or decimal format, or integer, depending on the value
 
 The alignment can be specified with the `<align>` part of the format, and the 
 most usual options are: `<` (left aligned), `>` (right aligned), and `^`
 (centered). The default is left aligned.
 
-Let's take a look to some examples:
+Let's take a look to the outcome of different formats for the same
+variables.
 
-```python
-print('The value of x is {:>10.2f} and the value of y is {:^10.2e}'.format(x, y))
-print(f'The value of x is {x:>10.2f} and the value of y is {y:^10.2e}')
+```{code-cell} python
+x,y = 1,2
+print(f'The value of x is {x:<10d} and the value of y is {y:<10}')
+print(f'The value of x is {x:^10.2f} and the value of y is {y:^10.2e}')
+print(f'The value of x is {x:>10.2g} and the value of y is {y:>10.2e}')
 ```
 
 ```{exercise}
@@ -114,32 +152,4 @@ $$
 Use 2 decimals for the time and 4 for the position.
 ```
 
-<!## Reading from files
-<!
-<!Once a file object is created with the `open` function, we can read
-<!its content with different approaches. First we can use some
-<!methods of the file object, such as:
-<!
-<!* `read`: reads the whole file as a single string
-<!* `readline`: reads a single line (returns a string)
-<!* `readlines`: reads the whole file as a list of lines (returns a list of strings)
-<!
-<!Note that both `read` and `readlines` read the whole file at once, so 
-<!we may run into memory problems if the file is too large. The `readline`
-<!needs to be called iteratively to read the whole file, line by line.
-<!
-<!Another approach is to iterate over the file object. Each iteration
-<!returns a line of the file. I.e., this is similar to use the `readline`
-<!over a loop, but looks more elegant. For example:
-<!
-<!```python
-<!with open('myfile.txt', 'r') as f:
-<!    for line in f:
-<!        # do something with line, e.g., print it:
-<!        print(line)
-<!        
-<!        # At each loop iteration, we can read additional lines
-<!        # with the readline method
-<!        line2 = f.readline()
-<!```
-<!
+
