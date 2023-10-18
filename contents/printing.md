@@ -41,7 +41,7 @@ waiting 1 second between each number.
 Hint: use the `time.sleep` function to wait 1 second.
 ```
 
-## Formatting you output
+## Formatting your output
 
 Note that while we can print any variable with the `print` function 
 it does not allow us to specify the format of the output (e.g., 
@@ -114,32 +114,32 @@ $$
 Use 2 decimals for the time and 4 for the position.
 ```
 
-## Reading from files
-
-Once a file object is created with the `open` function, we can read
-its content with different approaches. First we can use some
-methods of the file object, such as:
-
-* `read`: reads the whole file as a single string
-* `readline`: reads a single line (returns a string)
-* `readlines`: reads the whole file as a list of lines (returns a list of strings)
-
-Note that both `read` and `readlines` read the whole file at once, so 
-we may run into memory problems if the file is too large. The `readline`
-needs to be called iteratively to read the whole file, line by line.
-
-Another approach is to iterate over the file object. Each iteration
-returns a line of the file. I.e., this is similar to use the `readline`
-over a loop, but looks more elegant. For example:
-
-```python
-with open('myfile.txt', 'r') as f:
-    for line in f:
-        # do something with line, e.g., print it:
-        print(line)
-        
-        # At each loop iteration, we can read additional lines
-        # with the readline method
-        line2 = f.readline()
-```
-
+<!## Reading from files
+<!
+<!Once a file object is created with the `open` function, we can read
+<!its content with different approaches. First we can use some
+<!methods of the file object, such as:
+<!
+<!* `read`: reads the whole file as a single string
+<!* `readline`: reads a single line (returns a string)
+<!* `readlines`: reads the whole file as a list of lines (returns a list of strings)
+<!
+<!Note that both `read` and `readlines` read the whole file at once, so 
+<!we may run into memory problems if the file is too large. The `readline`
+<!needs to be called iteratively to read the whole file, line by line.
+<!
+<!Another approach is to iterate over the file object. Each iteration
+<!returns a line of the file. I.e., this is similar to use the `readline`
+<!over a loop, but looks more elegant. For example:
+<!
+<!```python
+<!with open('myfile.txt', 'r') as f:
+<!    for line in f:
+<!        # do something with line, e.g., print it:
+<!        print(line)
+<!        
+<!        # At each loop iteration, we can read additional lines
+<!        # with the readline method
+<!        line2 = f.readline()
+<!```
+<!
