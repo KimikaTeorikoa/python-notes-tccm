@@ -16,8 +16,7 @@ working Python code, including flow control. We have also got
 some basic knowledge on Input/Output in the Chapter on 
 [Python fundamentals](fundamentals.md).
 In this chapter, we give a closer look on how to print messages 
-and results to the screen  and files with a proper format, as well 
-as how to read data from files.
+and results to the screen  and files with a proper format.
 
 ## The `print` function
 
@@ -35,11 +34,12 @@ keyword. The default value is the newline character `\n` (new line),
 so if we use `end=''` we will get subsequent statements printed in 
 the same line. Another keyword that tune the output is `sep`, which
 specifies the string use as separator between variables (if a sequence 
-of variables is given). The default value is a space `' '.
+of variables is given). The default value is a space.
 
 Another important keyword is `file`, which specifies the output
-stream. The argument must be a file object, generated with the
-`open` function. Note that it should be writable. The default value 
+stream. The argument must be a file object, usually generated with the
+`open` function. Note that the file should be writable (i.e., using
+the keyword `w` on opening). The default value 
 is `sys.stdout`, which is the standard output stream. 
 
 ```{exercise}

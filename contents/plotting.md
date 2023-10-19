@@ -182,14 +182,12 @@ plt.show()
 In this example, we use `plt.errorbar` to create a plot with error bars. The
 `fmt='o'` argument specifies that we want to plot data points as circles.
 
-## 2D and 3D plots
+## 2D and 3D plots for bivariate functions
 
-Matplotlib also provides some basic plotting functions to represent bivariate 
-functions creating 2D and 3D plots. 
-
-A simple matrix (2D array) can be plotted point-by-point with functions like
-`plt.imshow` or `plt.pcolormesh`. It is also possible to generate a countour 
-plot of the underlying function with `plt.contour` or `plt.contourf`.
+Matplotlib is also quite good at plotting bivariate functions in 2D plots.
+Let's start with a simple matrix (2D array), which can be plotted point-by-point 
+with functions like `plt.imshow` or `plt.pcolormesh`. It is also possible to 
+generate a countour plot of the underlying function with `plt.contour` or `plt.contourf`.
 Let's see an example of each of these functions:
 
 ```{code-cell} python
@@ -214,22 +212,71 @@ plt.colorbar()
 plt.show()
 ```
 
-The first plot uses `plt.imshow` to plot the matrix as an image,
-while the second plot uses `plt.pcolormesh` to plot the matrix as a grid of
-colored cells, and the third plot uses `plt.contourf`, where the matrix is
-treated as a topographic surface and the values are plotted as contour lines.
-They also differ on the way data are arranged, with `plt.imshow` displaying the
-matrix as it is, while `plt.pcolormesh` and `plt.contourf` assumes that the matrix
-represents values over coordinates with the origin in the lower left corner
+The first to plots print the values of the matrix (in different arrangements),
+while the last one provides some kind of interpolation between to create a 
+contour plot filling the space between countour lines (an *empty* contour plot
+can also be generated with `plt.contour`).
+As we anticipated, they also differ on the way data are arranged, with 
+`plt.imshow` displaying the matrix as it is, while `plt.pcolormesh` and 
+`plt.contourf` assumes that the matrix represents values over coordinates 
+with the origin in the lower left corner
 (i.e., better suited to represent functions of two variables).
-We can also notice that `plt.imshow` renders a plot with equal aspect ratio , 
-while `plt.pcolormesh` and `plt.contourf` stretch the plot to fill the whole figure
-(this behaviour can also be tuned for these functions).
+We can also notice some differentces in the default color aspect ratio (only
+for `plt.imshow` keeps the *equal* ratio), but this is a behaviour that can
+be tuned for all the functions.
 
-Of course, a more useful usage of this feature is to plot the result of a
-function of two variables over a grid. In the following example, we first
-generate a grid with `np.meshgrid`, evaluate the function over the grid, and
-then plot the result using `plt.pcolormesh`:
+We were actually interested in plotting bivariate functions, for which we
+would identify the matrix elements with the grid points over the 2D coordinate
+space where the function is evaluated. Let's take a 3 by 3 grid, which
+is represented below:
+
+```{code-cell} python
+:tags: [remove-input]
+# This code is only here to generate the aux figure below
+null = plt.plot([1,2,3,1,2,3,1,2,3],[1,1,1,2,2,2,3,3,3],'o')
+null = plt.xticks([1,2,3],['x$_0$','x$_1$','x$_2$'])
+null = plt.yticks([1,2,3],['y$_0$','y$_1$','y$_2$'])
+plt.show()
+```
+
+Each point is characterized by different $x$ and $y$ coordinates at which the 
+function is evaluated. The function over the grid correspods to the matrix
+
+$$
+\left(
+\begin{array}{ccc}
+f(x_0,y_0) & f(x_1,y_0) & f(x_2,y_0)\\
+f(x_0,y_1) & f(x_1,y_1) & f(x_2,y_1)\\
+f(x_0,y_2) & f(x_1,y_2) & f(x_2,y_2)\\
+\end{array}
+\right)
+$$
+which can be generated using [broadcasting](broadcasting) on the 
+following matrices:
+
+$$
+\left(
+\begin{array}{ccc}
+x_0 & x_1 & x_2\\
+x_0 & x_1 & x_2\\
+x_0 & x_1 & x_2\\
+\end{array}
+\right)
+\qquad
+\qquad
+\left(
+\begin{array}{ccc}
+y_0 & y_0 & y_0\\
+y_1 & y_1 & y_1\\
+y_2 & y_2 & y_2\\
+\end{array}
+\right)
+$$
+
+Such matrices can be generated from $x$ and $y$ vectors with `np.meshgrid`.
+In the following code, we use this method to generate the grid where
+the function $f(x,y)=(\sin^2(x)+y^2)/(x^2+y^2)$ is evaluated and
+then plotted using `plt.pcolormesh`:
 
 ```{code-cell} python
 # Create a 2D array
@@ -240,7 +287,6 @@ z = np.sin(xx**2 + yy**2) / (xx**2 + yy**2)
 
 # Plot with pcolormesh
 plt.pcolormesh(x,y,z)
-plt.title('pcolormesh')
 plt.show()
 ```
 
@@ -253,7 +299,9 @@ It is also possible to plot bivariate functions in 3D using `plot_surface`
 function, which can be called as an method of an `Axes3D` object. Note that
 in this section, we have preferred to use the functional interface of Matplotlib,
 but it is also possible to use the object-oriented interface, which is more
-flexible and allows creating more complex plots. We are not going to go 
+flexible and allows creating more complex plots 
+(see more on this [here](https://matplotlib.org/matplotblog/posts/pyplot-vs-object-oriented-interface/)).
+We are not going to go 
 further on this topic, but simply show an example of a 3D plot for the records:
 
 ```{code-cell} python
@@ -275,11 +323,13 @@ somewhat limited. Actually, for 3D plotting, it is often better to use other
 libraries, such as [Mayavi](https://docs.enthought.com/mayavi/mayavi/).
 
 ## Saving Plots
-You can save your plots to various image formats using Matplotlib. For example,
-to save the above plot as a PNG file:
+In the codes shown throughout this section, we have used `plt.show()` to display
+the plots over the backend.
+You can instead save your plots to various image formats, such as PNG or PDF. For example,
+to save the last plot as a PNG file:
 
 ```python
-plt.savefig('error_bars_plot.png')
+plt.savefig('plot.png')
 ```
 
 

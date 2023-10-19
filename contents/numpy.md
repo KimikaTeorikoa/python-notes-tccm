@@ -281,6 +281,7 @@ print("NumPy array: ", numpy_time)
 As you can see, NumPy is about two orders of magnitude faster than pure 
 Python implementation.
 
+(broadcasting)=
 ## Broadcasting
 A very powerful feature of NumPy is array broadcasting. It allows to apply
 mathematical operations to arrays with different shapes and dimensions. One 
