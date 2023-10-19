@@ -174,6 +174,33 @@ As shown in the above example, the `kind` argument specifies the type of interpo
 values include `linear` (which is the default), `quadratic` or `cubic` (a complete list
 can be found in the [official documentation](https://docs.scipy.org/doc/scipy/reference/interpolate.html)).
 
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Write a program that sums two spectra defined over different 
+wavelength ranges. Use interpolation to generate a common wavelength
+grid, and then sum the spectra.
+
+*Note*: spectra to test your code can be obtained from 
+[PhotochemCAD](http://omlc.org/spectra/PhotochemCAD).
+You can use the `requests` module to download the files:
+
+```python
+import requests
+
+# Azobenzene
+URL = "https://omlc.org/spectra/PhotochemCAD/data/117-abs.txt"
+response = requests.get(URL)
+open("spc1.dat", "w").write(response.content)
+
+# 9,10-Diphenylanthracene
+URL = "https://omlc.org/spectra/PhotochemCAD/data/021-abs.txt"
+response = requests.get(URL)
+open("spc2.dat", "w").write(response.content)
+
+```
+
 For 2D interpolation, the most general function is `interp2d`. This function takes as arguments
 a 2D array of values, `Z`, and the two 1D arrays of coordinates, `x` and `y`. These arrays
 do not have to be equally spaced. As in the 1D case, it returns a function that can be evaluated 
