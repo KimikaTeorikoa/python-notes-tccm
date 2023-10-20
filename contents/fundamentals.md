@@ -157,6 +157,7 @@ and so are functions. On the other hand, classes, which
 we will learn about in the future, use the so-called
 CapWords style.
 
+(fundamentals.io)=
 ## Input / Output	
 In our first program `hello_world.py` above, we have already 
 written to something we call the "standard output", i.e. the 

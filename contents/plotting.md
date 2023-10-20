@@ -187,7 +187,7 @@ In this example, we use `plt.errorbar` to create a plot with error bars. The
 Matplotlib is also quite good at plotting bivariate functions in 2D plots.
 Let's start with a simple matrix (2D array), which can be plotted point-by-point 
 with functions like `plt.imshow` or `plt.pcolormesh`. It is also possible to 
-generate a countour plot of the underlying function with `plt.contour` or `plt.contourf`.
+generate a contour plot of the underlying function with `plt.contour` or `plt.contourf`.
 Let's see an example of each of these functions:
 
 ```{code-cell} python
@@ -213,22 +213,24 @@ plt.show()
 ```
 
 The first to plots print the values of the matrix (in different arrangements),
-while the last one provides some kind of interpolation between to create a 
-contour plot filling the space between countour lines (an *empty* contour plot
+while the last one provides some kind of interpolation to create a 
+contour plot filling the space between contour lines (an *empty* contour plot
 can also be generated with `plt.contour`).
 As we anticipated, they also differ on the way data are arranged, with 
-`plt.imshow` displaying the matrix as it is, while `plt.pcolormesh` and 
+`plt.imshow` displaying the matrix elements in the same position they have
+in the matrix, while `plt.pcolormesh` and 
 `plt.contourf` assumes that the matrix represents values over coordinates 
 with the origin in the lower left corner
 (i.e., better suited to represent functions of two variables).
-We can also notice some differentces in the default color aspect ratio (only
-for `plt.imshow` keeps the *equal* ratio), but this is a behaviour that can
+We can also notice some differences in the default color aspect ratio (only 
+`plt.imshow` keeps the *equal* ratio), but this is a behaviour that can
 be tuned for all the functions.
 
 We were actually interested in plotting bivariate functions, for which we
 would identify the matrix elements with the grid points over the 2D coordinate
 space where the function is evaluated. Let's take a 3 by 3 grid, which
-is represented below:
+is represented below (setting the origin in the lower left corner, as `plt.pcolormesh` 
+would do):
 
 ```{code-cell} python
 :tags: [remove-input]
@@ -240,7 +242,7 @@ plt.show()
 ```
 
 Each point is characterized by different $x$ and $y$ coordinates at which the 
-function is evaluated. The function over the grid correspods to the matrix
+function is evaluated. The function over the grid corresponds to the matrix
 
 $$
 \left(
@@ -273,7 +275,8 @@ y_2 & y_2 & y_2\\
 \right)
 $$
 
-Such matrices can be generated from $x$ and $y$ vectors with `np.meshgrid`.
+Such matrices can be generated from $(x_0,x_1,x_2)$ and $(y_0,y_1,y_2)$ 
+vectors with `np.meshgrid`.
 In the following code, we use this method to generate the grid where
 the function $f(x,y)=(\sin^2(x)+y^2)/(x^2+y^2)$ is evaluated and
 then plotted using `plt.pcolormesh`:
@@ -318,7 +321,7 @@ plt.title('plot_surface')
 plt.show()
 ```
 
-Compared to the powerful 2D features, matplotlib's 3D plotting capabilities are
+Compared to the powerful 2D features, Matplotlib's 3D plotting capabilities are
 somewhat limited. Actually, for 3D plotting, it is often better to use other
 libraries, such as [Mayavi](https://docs.enthought.com/mayavi/mayavi/).
 

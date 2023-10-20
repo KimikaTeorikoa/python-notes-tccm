@@ -13,8 +13,7 @@ kernelspec:
 
 At this point, we already acquired the basic skills to write a 
 working Python code, including flow control. We have also got
-some basic knowledge on Input/Output in the Chapter on 
-[Python fundamentals](fundamentals.md).
+some basic knowledge on [Input/Output](fundamentals.io).
 In this chapter, we give a closer look on how to print messages 
 and results to the screen  and files with a proper format.
 
