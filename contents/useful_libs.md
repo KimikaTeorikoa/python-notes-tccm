@@ -13,8 +13,8 @@ kernelspec:
 
 One of the strongest points of Python is the flourishing ecosystem of libraries it comes with. 
 We have already seen some of them, such as [`numpy`](numpy.md) and [`matplotlib`](plotting.md). 
-This chapter reviews other libraries that have become central for scientific computing, 
-including computational chemistry.
+This chapter reviews other libraries that are handy to code scientific computing applications, 
+including computational chemistry ones.
 We will mostly focus on `scipy`, highlighting some of its submodules that provide a huge set of 
 numerical algorithms, and also briefly mention other projects that you will likely find useful.
 
@@ -25,7 +25,7 @@ optimization, interpolation, linear algebra, statistics, and much more.
 It is built on top of `numpy`, i.e., it mainly uses numpy arrays as the main
 data structure.
 
-`scipy` is organized in submodules, each one with a specific purpose, which are imported separately as,
+`scipy` is organized in submodules, each one with a specific purpose, which can be imported separately as,
 
 ```python
 import scipy.submodulename
@@ -50,8 +50,9 @@ A complete list can be found in the [official documentation](https://docs.scipy.
 This submodule provides several integration routines, including an ordinary 
 differential equation integrator.
 
-**Integration** of a 1D function, can be done with the `quad` method, which uses the
-[QUADPACK](https://en.wikipedia.org/wiki/QUADPACK) Fortran library. For instance
+**Integration** of a 1D function, can be done with the `quad` method. It takes a function
+and the integration limits as arguments, and returns the integral and an estimate of the error.
+Let's see an example:
     
 ```{code-cell} python
 from scipy.integrate import quad
@@ -69,7 +70,9 @@ print(norm)
 Other methods to integrated 1D functions are `fixed_quad`, `quadrature` or `romberg`.
 
 Instead, integration of a discrete function (1D), i.e., a set of points,
-can be done with the `trapz`, `romb` and `simps` functions.
+can be done with the `trapz`, `romb` and `simps` functions. In the case, the
+functions take as arguments the `x` and `y` arrays with the grid and function values, 
+and return the integral.
 For instance,
 
 ```{code-cell} python
@@ -111,10 +114,9 @@ Functions for multidimensional integration are also available, such as `dblquad`
 `tplquad` (triple integral) and `nquad` (integration over multiple variables).
 
 This submodule also provides methods to integrate **ordinary differential equations**. 
-The recommended method is `solve_ivp` (solve initial value problem), 
-which is a modern integrator for ordinary differential equations.
-
-For instance, in order to integrate the following system of differential equations,
+The recommended method is `solve_ivp` (solve initial value problem),
+which gives an interface to different integration algorithms.
+For instance, in order to integrate the system of differential equations below,
 
 $$
 \begin{align}
@@ -144,13 +146,13 @@ plt.legend()
 plt.show()
 ```
 The integration algorithm is set with the `method` attribute, with the default 
-being `RK45` (Runge-Kutta 4th order).
+being `RK45` (Runge-Kutta of 4th order).
 
 ### `scipy.interpolate`
 
 This submodule provides several interpolation routines. In the case of 1D interpolation, i.e.
 from a discrete set of $(x,y)$ points, the most common method is `interp1d`. This function takes
-as arguments the `x` and `y` arrays, and returns a function that can be evaluated at any point,
+as arguments the `x` and `y` arrays, and returns a function object that can be evaluated at any point,
 within the range of `x` (values out of this range can be managed with the `fill_value` argument).
 For instance,
 
@@ -234,9 +236,9 @@ plt.show()
 
 As you can see, we use some kind of *advanced* `matplotlib` features in this example. 
 You can refresh them going back to the [previous chapter](plotting.md).
-We also use the `np.meshgrid` function, which is very useful to generate 2D arrays with 
-the grid points, (`x`,`y`), from the 1D arrays, `x` and `y`. The interpolation method is
-specified with the `kind` argument, which can take the same values as in the 1D case.
+For instance, use the `np.meshgrid` function, which generates 2D arrays with 
+the grid points, (`x`,`y`), from the corresponding 1D arrays, `x` and `y`. The interpolation 
+method is specified with the `kind` argument, which can take the same values as in the 1D case.
 
 The above example uses a regular grid, but this is not a requirement. Actually, in this case
 we can use the function `RectBivariateSpline`, which is more efficient. This function takes
@@ -340,10 +342,9 @@ of this function.
 
 ## `sympy`
 
-This module is a computer algebra system (CAS), such as [Maxima](https://maxima.sourceforge.io) 
-or Mathematica. In allows to perform symbolic calculations, such as derivatives, integrals,
-solving equations, etc. It might not be as powerful as the other CAS, but it is very useful 
-to integrate simple calculations in your python workflow.
+This module is a computer algebra system (CAS), similar to [Maxima](https://maxima.sourceforge.io) 
+or Mathematica. It allows performing symbolic calculations, such as derivatives, integrals,
+solving equations, etc.
 
 We will not go into details here, but we will show some examples of the capabilities of this
 module. For instance, lets compute the derivative of the function $f(x) = \sin(x) \cos(x)$:
