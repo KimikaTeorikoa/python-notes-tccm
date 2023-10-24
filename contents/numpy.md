@@ -10,14 +10,14 @@ kernelspec:
 ---
 # Numpy
 
-NumPy, which stands for Numerical Python, is a package for
-numerical computing in Python. It is a library that provides support for arrays
+NumPy, which stands for **Numerical Python**, is a *package for
+numerical computing in Python*. It is a library that provides support for **arrays**
 (including multidimensional arrays), as well as various of mathematical
 functions to operate on these arrays. With NumPy, scientific and mathematical
 computations are simpler and faster.
 
-One of the key advantages of NumPy is its efficiency. Under the hood, it uses
-optimized C and Fortran libraries, making it much faster than pure Python
+One of the key advantages of NumPy is its efficiency. *Under the hood, it uses
+optimized C and Fortran libraries*, making it much faster than pure Python
 code for numerical operations. This speed enables quicker data analysis,
 scientific computations, and other specialized tasks that involve numbers, 
 arrays, or matrices.
@@ -28,6 +28,7 @@ making it easy to learn and implement. NumPy also offers a robust set of
 functions to perform statistical analysis, linear algebra, Fourier transforms, 
 and more. This makes it a versatile tool that can handle a wide variety of 
 mathematical tasks, from simple calculations to complex scientific research. 
+
 Because of its extensive utility, NumPy forms the base for other scientific 
 libraries in Python. Moreover, the syntax of many machine learning libraries, 
 like PyTorch and JAX is based on numpy. So, once you know NumPy it will be very 
