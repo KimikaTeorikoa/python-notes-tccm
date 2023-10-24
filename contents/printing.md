@@ -12,9 +12,10 @@ kernelspec:
 # Additional notes on I/O
 
 At this point, we already acquired the basic skills to write a 
-working Python code, including flow control. We have also got
-some basic knowledge on [Input/Output](fundamentals.io).
-In this chapter, we give a closer look on how to print messages 
+working Python code. An important part of the code is reading external
+data and writeing results. We already learned the basics on 
+[Input/Output](fundamentals.io) and,
+in this chapter, we give a closer look on how to print messages 
 and results to the screen  and files with a proper format.
 
 ## The `print` function
@@ -85,11 +86,11 @@ In the two first cases, the string is a template that contains placeholders
 for the variables identified by curly braces `{}`. The more general
 syntax is `{<variableID>:<format>}`. The way `<variableID>` is 
 specified depends on the method used to generate the string. Namely, 
-the `format` contains the variables as arguments, and `<variableID>`
-is the position of the variable in the argument list. If no idenfier
+the `format()` function contains the variables as arguments, and `<variableID>`
+is the position of the variable in the argument list. If no identifier
 is used, the variables are used in the order they appear in the 
-argument list. The `f-strings` are strings defined with the `f`
-modifier, `f"my_string"`. They are a bit more flexible, and allow to 
+argument list. The `f-strings` are defined with the `f`
+modifier, i.e., `f"my_string"`. They are a bit more flexible, and allow to 
 directly use a variable, or any valid Python expression as `<variableID>`. 
 
 The third method uses the `%` character as placeholder within the string,
@@ -108,7 +109,7 @@ print(f'The value of x is {x} and the value of y is {y}')
 print('The value of x is % and the value of y is %' % (x, y))
 ```
 
-The `<format>` is a string that specifies the format of the variable, 
+The `<format>` field is a string that specifies the format of the variable, 
 with details such as the total width, the number of decimals or
 the alignment. The most common syntax is `<align>W<type>`, where
 `<align>` is the alignment (not available with `%` method, and optional
@@ -124,7 +125,8 @@ include the number of positions after the period for floats as `W.n`), and
 
 The alignment can be specified with the `<align>` part of the format, and the 
 most usual options are: `<` (left aligned), `>` (right aligned), and `^`
-(centered). The default is left aligned.
+(centered). The default is left alignment for strings, and right alignment
+for numbers.
 
 Let's take a look to the outcome of different formats for the same
 variables.
