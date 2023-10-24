@@ -151,4 +151,14 @@ $$
 Use 2 decimals for the time and 4 for the position.
 ```
 
+## Using specific libraries for I/O
+
+Through this chapter, we have seen how to read and write files using
+some python built-in functions. However, in many cases, you will find
+that, while working with specific file formats, some libraries will do 
+this task more conveniently. For example,
+arrays can be read/written with [NumPy's specific functions](numpy.io), 
+molecular structure with the [IO module of ASE](ase) and
+data frames can be read and written with [Pandas](pandas).
+You will see some examples of these libraries in the corresponding chapters.
 

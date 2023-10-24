@@ -361,9 +361,49 @@ df
 Many other symbolic operations are possible, such as integrals, limits, series expansions, etc.
 Check the [documentation](https://docs.sympy.org/latest/index.html) for more details.
 
+(pandas)=
 ## `pandas`
 
-This module provides high-performance, easy-to-use data structures and data analysis tools.
+This module provides high-performance, easy-to-use data structures and data analysis tools, allowing 
+to manipulate and analyze large amounts of data. You can read and write data sets from file formats such 
+as csv, excel, hdf5, etc. For instance, to read a csv file:
+
+```python
+import pandas as pd
+
+# Read a csv file
+df = pd.read_csv('file.csv')
+# Get the values of column labelled 'Col1' as a numpy array
+x = df['Col1'].values
+```
+
+You can check the [documentation](https://pandas.pydata.org/docs/)
+for more details.
+
+(ase)=
+## `ase`
+
+ASE stands for Atomic Simulation Environment. 
+This module provides a set of tools for setting up, manipulating, running,
+visualizing and analyzing atomistic simulations. It supports many
+codes through the `Calculator` interface, e.g. Gaussian or Gromacs, 
+allowing to perform a wide range of calculations from a single Python script.
+
+It also provides functions to read and write files in different formats (xyz, pdb...), 
+through the `ase.io` submodule. For instance, to read a file in xyz format:
+
+```python
+# The io submolude must be imported separately
+import ase.io
+
+# Generate an ASE Atom object from a file
+molec = ase.io.read('file.xyz')
+# Get the atomic coordinates as a numpy array:
+xyz = molec.get_positions()
+```
+
+You can take a further look into the powerful capabilities of this library in the
+[documentation](https://wiki.fysik.dtu.dk/ase/).
 
 ## `h5py`
 

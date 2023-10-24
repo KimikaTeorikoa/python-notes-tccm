@@ -483,7 +483,7 @@ Create a random 5x5 matrix and show that a product of this matrix with its
 inverse is an identity matrix.
 ```
 
-
+(numpy.io)=
 ## Input/Output
 In real applications, you often want to read some numeric data from an external
 file or write out the results. NumPy provides useful functions to make
@@ -508,6 +508,11 @@ print(data)
 [[1. 2. 3.]
  [4. 5. 6.]
  [7. 8. 9.]]
+```
+
+```{hint}
+Note that when using `loadtxt`, you don't need to care about file objects or
+opening and closing the file. NumPy takes care of that for you.
 ```
 
 Often values in the text files are separated by some delimiter and have some 
