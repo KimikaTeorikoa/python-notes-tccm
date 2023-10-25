@@ -241,8 +241,8 @@ the grid points, (`x`,`y`), from the corresponding 1D arrays, `x` and `y`. The i
 method is specified with the `kind` argument, which can take the same values as in the 1D case.
 
 The above example uses a regular grid, but this is not a requirement. Actually, in this case
-we can use the function `RectBivariateSpline`, which is more efficient. This function takes
-the same arguments as `interp2d`.
+we can use the function `RectBivariateSpline`, which is more efficient but is restricted to
+regular grids. This function takes the same arguments as `interp2d`.
 
 To interpolate unstructured data we can use the function `griddata`. 
 It takes as arguments the coordinates of the data points as a tuple of 1D arrays,

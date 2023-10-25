@@ -5,3 +5,4 @@ scipy
 sympy
 sphinx
 sphinx-exercise
+docutils==0.17.1
