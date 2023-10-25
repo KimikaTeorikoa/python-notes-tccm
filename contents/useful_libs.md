@@ -393,7 +393,7 @@ It also provides functions to read and write files in different formats (xyz, pd
 through the `ase.io` submodule. For instance, to read a file in xyz format:
 
 ```python
-# The io submolude must be imported separately
+# The io submodule must be imported separately
 import ase.io
 
 # Generate an ASE Atom object from a file

@@ -260,7 +260,7 @@ print (power(2,3))
 You see that we have compressed into a single line what we were doing 
 before using a few more. As you probably guessed, anonymous functions
 are particularly useful as one-liners, but may become cumbersome
-to use for more sofisticated actions.
+to use for more sophisticated actions.
 
 ```{exercise}
 :nonumber:

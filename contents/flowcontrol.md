@@ -157,7 +157,9 @@ as `True` or `False`. For instance, the number `0` is evaluated as `False`, whil
 any other number is evaluated as `True`. Similarly, the empty string `""` is evaluated
 as `False`, while any other string is evaluated as `True`. An empty list also evaluates
 as `False`, while any other list evaluates as `True`.
-Such equivalences can be made explicit using the `bool` function.
+We can directly use such non-booleans as logical tests within `if` statements, which are 
+first converted to booleans. The resulting boolean can be made explicit using the 
+`bool` function.
 
 ```python
 bool(0) # False
@@ -308,7 +310,7 @@ print(next(a))
 
 while True:
     try:
-        print(next(a)) # fetch the the position in the array
+        print(next(a)) # fetch the position in the array
     except: 
         break # exit the loop on error
 ```

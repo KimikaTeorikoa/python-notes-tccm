@@ -15,8 +15,7 @@ some general notions that will make you understand how a Python
 program looks. Then we will go through how to 
 write basic instructions for reading and writing
 inside a computer program. We will also explain the types
-of variables we can use. Finally we will introduce
-the basics of writing functions.
+of variables we can use.
 
 ## Introduction
 Python is a **high-level programming language**,

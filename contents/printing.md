@@ -13,7 +13,7 @@ kernelspec:
 
 At this point, we already acquired the basic skills to write a 
 working Python code. An important part of the code is reading external
-data and writeing results. We already learned the basics on 
+data and writing results. We already learned the basics on 
 [Input/Output](fundamentals.io) and,
 in this chapter, we give a closer look on how to print messages 
 and results to the screen  and files with a proper format.

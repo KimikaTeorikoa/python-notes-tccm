@@ -299,7 +299,7 @@ and `yy`). In the latter case, the arrays must have the same shape as `z`, and
 the values in the arrays are used to label the axes.
 
 It is also possible to plot bivariate functions in 3D using `plot_surface` 
-function, which can be called as an method of an `Axes3D` object. Note that
+function, which can be called as a method of an `Axes3D` object. Note that
 in this section, we have preferred to use the functional interface of Matplotlib,
 but it is also possible to use the object-oriented interface, which is more
 flexible and allows creating more complex plots 
