@@ -136,17 +136,17 @@ from scipy.integrate import solve_ivp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f(t, z):
-    return [-z[1], z[0]]
+def f(t, y):
+    return [-y[1], y[0]]
     
 t0 = 0
 tf = 10
-z0 = [1, 0]
+y0 = [1, 0]
 t_eval = np.linspace(t0, tf, 100)
-sol = solve_ivp(f, [t0, tf], z0, t_eval=t_eval)
+sol = solve_ivp(f, [t0, tf], y0, t_eval=t_eval)
 
-plt.plot(sol.t, sol.z[0], label='x')
-plt.plot(sol.t, sol.z[1], label='y')
+plt.plot(sol.t, sol.y[0], label='x')
+plt.plot(sol.t, sol.y[1], label='y')
 plt.legend()
 plt.show()
 ```
