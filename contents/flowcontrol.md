@@ -82,6 +82,7 @@ else:
     ...
 ```
 
+(flowcontrol.logicaltests)=
 ### Logical tests and conditional operators
 
 At this point, some words on logical tests and conditional operators are in order.
@@ -133,8 +134,8 @@ x is y # False
 So, in general, we use `==` to compare values (i.e., what we normally intend to do) and `is` to compare objects.
 :::
 
-Another useful operator is `in`, which checks if a value is contained in a list,
-tuple or dictionary.
+Another useful operator we have already seen is `in` (a *membership* operator), which checks if a value is 
+contained in a list, tuple or dictionary (or a string).
 
 For instance:
 ```python
@@ -385,9 +386,9 @@ In summary, both iterators and generators allow you to work with sequences of da
 ## 	Comprehensions
 
 Lists and dictionaries can be created in a very compact way using comprehensions.
-The list is created based on another list, dictionary or iterable object. 
-A condition can be added to filter the elements that are included in the new list.
-The syntax is as follows:
+They consist on one-liner expression, where a list (or dictionary) is created based on 
+another iterable object. A condition can be added to filter the elements that are included 
+in the new list. The syntax is as follows:
 
 ```python
 new_list = [expression for item in iterable if condition == True]
@@ -400,8 +401,8 @@ as follows:
 squares = [x**2 for x in range(1, 11)]
 ```
 
-We can also create a list with the squares of the even numbers from 1 to 10
-as follows:
+If only the squares of even numbers from 1 to 10 shall be included, we can tune the output 
+adding a condition:
 
 ```python
 squares = [x**2 for x in range(1, 11) if x % 2 == 0]
@@ -412,27 +413,30 @@ Comprehensions can also be used to create dictionaries. For instance, we can cre
 squares = {x: x**2 for x in range(1, 11)}
 ```
 
-Note that we need to iterate over keys and values. This can also be done generating 
-a list of tuples in-place. For instance, we can create a dictionary that maps letters
-to their position in the alphabet as follows:
+Note that we need to iterate over keys (`x` in our example) and values (`x**2`). We can for instance
+run over tuples that contain `(key, value)` pairs. 
+In the following example, we generate in-place a list of tuples containing the letters
+and their position in the alphabet:
 
 ```{code-cell} python
-letters = { chr(j):i for (i,j) in enumerate(range(65,65+26), start=1) }
+letters = { chr(j):i for (i,j) in enumerate(range(65,91), start=1) }
 print('A:',letters['A'])
 print('Z:',letters['Z'])
 ```
 
 In the above example, `enumerate` is a built-in function that returns a list of tuples
-(actually an iterator)
-over a sequence of values (in this case, another iterator, `range`), together with 
-their index (starting from 1 as specified with the `start` argument). The `chr()` function
-converts an integer to the corresponding ASCII character.
+(actually an iterator) on top of an iterable object (in this case the iterator generated
+by `range()`), adding a counter along with each element.
+The counter is started at 0 by default and can be tuned with the `start` argument. 
+We also used the `chr()` function
+converts an integer to the corresponding ASCII character
+(the ASCII codes for upper case letters go from 65 to 90).
 
 ```{exercise}
 :nonumber:
 :class: dropdown
 
-Write a list comprehension that generates a list of squares for even numbers from 1 to 10.
+Write a list comprehension that generates a list of squares for odd numbers from 1 to 10.
 
 ```
 
