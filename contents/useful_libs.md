@@ -11,12 +11,17 @@ kernelspec:
 
 # Useful libraries for scientific computing
 
-One of the strongest points of Python is the flourishing ecosystem of libraries it comes with. 
-We have already seen some of them, such as [`numpy`](numpy.md) and [`matplotlib`](plotting.md). 
-This chapter reviews other libraries that are handy to code scientific computing applications, 
-including computational chemistry ones.
-We will mostly focus on `scipy`, highlighting some of its submodules that provide a huge set of 
-numerical algorithms, and also briefly mention other projects that you will likely find useful.
+One of the strongest points of Python is the flourishing *ecosystem* of libraries it 
+comes with. We have already seen some of them, such as [`numpy`](numpy.md) and
+ [`matplotlib`](plotting.md). This chapter reviews other libraries that are handy 
+to code scientific computing applications, including computational chemistry ones.
+We will mostly focus on `scipy`, highlighting some of its submodules that provide 
+a huge set of numerical algorithms, and also briefly mention other projects that
+ you will likely find useful.
+The classification of these libraries as integral components of Python's core or
+ specialized tools might provoke debate, yet you'll undoubtedly benefit from
+ the diverse array of supplementary features accessible across various layers. 
+![ecosystem](https://jupytearth.org/_images/python-stack.png)
 
 ## `scipy` 
 
@@ -131,17 +136,17 @@ from scipy.integrate import solve_ivp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f(t, y):
-    return [-y[1], y[0]]
+def f(t, z):
+    return [-z[1], z[0]]
     
 t0 = 0
 tf = 10
-y0 = [1, 0]
+z0 = [1, 0]
 t_eval = np.linspace(t0, tf, 100)
-sol = solve_ivp(f, [t0, tf], y0, t_eval=t_eval)
+sol = solve_ivp(f, [t0, tf], z0, t_eval=t_eval)
 
-plt.plot(sol.t, sol.y[0], label='x')
-plt.plot(sol.t, sol.y[1], label='y')
+plt.plot(sol.t, sol.z[0], label='x')
+plt.plot(sol.t, sol.z[1], label='y')
 plt.legend()
 plt.show()
 ```
