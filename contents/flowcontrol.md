@@ -286,6 +286,44 @@ Compare the results obtained from both loops.
 
 ```
 
+## Pattern Matching (`match` statement)
+Starting from **Python 3.10**, Python introduced the **`match`** statement, 
+which allows for **pattern matching**. This is similar to the `switch` or `select case` statements in other programming languages. It provides an elegant way to match values against a series of patterns and execute code based on which pattern is matched.
+
+The basic syntax in Python is as follows:
+```python
+match variable:
+    case pattern1:
+        # Actions if variable matches pattern1
+        ...
+    case pattern2:
+        # Actions if variable matches pattern2
+        ...
+    case _:
+        # Actions if none of the above patterns match
+        ...
+```
+
+In this structure, Python tries to match the value of variable with the specified patterns. The underscore **`(_)`** 
+serves as a wildcard pattern, which catches any value that doesn’t match the previous cases. This acts similarly to an 
+**`else`** statement in conditionals.
+
+For example:
+
+```python
+def check_number(n):
+    match n:
+        case 1:
+            print("n is 1")
+        case 2:
+            print("n is 2")
+        case _:
+            print("n is something else")
+```
+
+In the example above, the function **`check_number`** uses match to determine the value of n and execute the corresponding 
+block of code. The **`match`** statement enhances code clarity and reduces the need for long chains of 
+**`if-elif-else`** statements.
 
 ## 	Iterators and generators
 
