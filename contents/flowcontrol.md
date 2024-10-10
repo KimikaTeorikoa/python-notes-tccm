@@ -255,6 +255,15 @@ In this example, the `range(5)` generates a sequence from 0 to 4, and the for lo
 4
 ```
 
+The `for` loops can also be used with any kind of variables
+
+```python
+fruits=['apple', 'lemon','watermelon']
+
+for fruit in fruits:
+    print(fruit)
+```
+
 **While loops**
 
 Now, we consider a scenario where you want to find the sum of numbers until a certain condition is met. 
@@ -323,7 +332,7 @@ def check_number(n):
 ```
 
 In the example above, the function `check_number` uses match to determine the value of n and execute the corresponding 
-block of code. The `match` statement enhances code clarity and reduces the need for long chains of 
+block of code. The `match` statement enhances code clarity and reduces the need `for` long chains of 
 `if-elif-else` statements.
 
 ## 	Iterators and generators
