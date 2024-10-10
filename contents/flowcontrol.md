@@ -288,7 +288,8 @@ Compare the results obtained from both loops.
 
 ## Pattern Matching (`match` statement)
 Starting from **Python 3.10**, Python introduced the **`match`** statement, 
-which allows for **pattern matching**. This is similar to the `switch` or `select case` statements in other programming languages. It provides an elegant way to match values against a series of patterns and execute code based on which pattern is matched.
+which allows for **pattern matching**. This is similar to the `switch` or `select case` statements in other programming 
+languages. It provides an elegant way to match values against a series of patterns and execute code based on which pattern is matched.
 
 The basic syntax in Python is as follows:
 ```python
@@ -306,7 +307,7 @@ match variable:
 
 In this structure, Python tries to match the value of variable with the specified patterns. The underscore **`(_)`** 
 serves as a wildcard pattern, which catches any value that doesn’t match the previous cases. This acts similarly to an 
-**`else`** statement in conditionals.
+`else` statement in conditionals.
 
 For example:
 
@@ -321,9 +322,9 @@ def check_number(n):
             print("n is something else")
 ```
 
-In the example above, the function **`check_number`** uses match to determine the value of n and execute the corresponding 
-block of code. The **`match`** statement enhances code clarity and reduces the need for long chains of 
-**`if-elif-else`** statements.
+In the example above, the function `check_number` uses match to determine the value of n and execute the corresponding 
+block of code. The `match` statement enhances code clarity and reduces the need for long chains of 
+`if-elif-else` statements.
 
 ## 	Iterators and generators
 
