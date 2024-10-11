@@ -49,7 +49,9 @@ is `sys.stdout`, which is the standard output stream.
 Write a program that prints the numbers from 0 to 10 in the same line,
 waiting 1 second between each number. 
 
-*Hint*: use the `time.sleep` function to wait 1 second.
+*Hint*: use the `time.sleep` function to wait 1 second. 
+You may also need to add the `flush=True` keyword to the `print` function
+to avoid buffering the output.
 ```
 
 Before closing this section, we will look at an alternative way to

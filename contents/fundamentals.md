@@ -537,6 +537,7 @@ Pi rounded to two decimal places is 3.14.
 ```
 
 In this example, the `.2f` format specifier rounds pi to two decimal places.
+We will see more on F-strings in when reviewing [printing](printing) methods more in detail.
 
 ### Lists, tuples and dictionaries
 **Lists** are a very important type of **sequence**, which
