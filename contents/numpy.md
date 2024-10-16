@@ -159,6 +159,48 @@ first three elements of the second column of the matrix and print them.
 Hint: use `np.random.rand` to generate a random matrix
 ```
 
+### Reshaping arrays
+
+NumPy arrays can be reshaped into different shapes using the `reshape` method, 
+which takes the new shape as argument.
+Imagine you have a 1D array with 4 elements and you want to reshape it into a
+2x2 2D array. You can do this as follows:
+```{code-cell} python
+a = np.array([1, 2, 3, 4])
+
+# Reshape the array into a 2x2 matrix
+b = a.reshape(2, 2)
+print(b)
+```
+
+```{hint}
+Many array methods, as `reshape`, are also available as functions in the numpy
+module. For example, `np.reshape(a, (2, 2))` is equivalent to `a.reshape(2, 2)`.
+```
+
+The order of the elements in the reshaped array is by default first filling 
+by row, as shown in the example above. Such a behaviour can be tuned
+however with the `order` argument of the `reshape` method. The two possible
+values are `order=C` (default) and `order=F` (for Fortran-like order), which
+fill the reshaped array by column.
+
+It is also possible to reshape a multidimensional array into a 1D array. In the
+above example, we can reshape the 2x2 array `b` back into a 1D array with 
+`b.reshape(4)`. Alternatively, you can use the `flatten` method to achieve the
+same result.
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+Given the following vector containing the X,Y, and Z atomic coordinates of a water molecule:
+
+`-2.34   2.71  0.00  -1.43  2.71  0.00  -2.71  3.58  0.28` 
+
+Reshape it to a 3x3 matrix, containing the X, Y, and Z coordinates of each atom 
+on each row.
+```
+
 ## NumPy array built-in properties and functions
 There are multiple properties on NumPy arrays that are not available for 
 Python lists. For example:
