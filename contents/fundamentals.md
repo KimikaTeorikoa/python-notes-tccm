@@ -456,7 +456,6 @@ s.upper()
 ```
 You can also split a string into parts, based on a given
 element.
-hable
 ```{code-cell} python
 s = 'bread, butter, flour, milk'
 s.split(',')
