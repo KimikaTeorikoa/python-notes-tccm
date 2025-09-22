@@ -677,7 +677,7 @@ to good use.
 :nonumber:
 :class: dropdown
 
-Create a dictionary called student with your name and age.
+Create a dictionary called student with your name and age 10.
 Print the student dictionary. Update the age to your current age.
 Add your university as a new key.
 Remove the "age" key. Print the updated student dictionary.
