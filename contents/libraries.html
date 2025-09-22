@@ -1,0 +1,962 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using libraries &#8212; Programming in Python Lecture Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/libraries';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Numpy" href="numpy.html" />
+    <link rel="prev" title="Additional notes on I/O" href="printing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/tccm.png" class="logo__image only-light" alt="Programming in Python Lecture Notes - Home"/>
+    <script>document.write(`<img src="../_static/tccm.png" class="logo__image only-dark" alt="Programming in Python Lecture Notes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flowcontrol.html">Control structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="printing.html">Additional notes on I/O</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_libs.html">Useful libraries for scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ooprogramming.html">Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Creating Python Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm/issues/new?title=Issue%20on%20page%20%2Fcontents/libraries.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/libraries.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using libraries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">Importing libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-modules-from-the-standard-library">Useful modules from the standard library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys"><code class="docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os"><code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shutil"><code class="docutils literal notranslate"><span class="pre">shutil</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argparse"><code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-third-party-libraries">Installing third party libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments-in-conda">Virtual environments in Conda</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-libraries">
+<h1>Using libraries<a class="headerlink" href="#using-libraries" title="Permalink to this heading">#</a></h1>
+<p>As we have already said, Python is known for its simplicity and readability.
+One of the primary reasons for Python’s popularity is its extensive library
+ecosystem. Python libraries are collections of code and functions that can
+be easily imported into your programs. These libraries cover many
+functionalities, making possible to perform complex tasks without investing time
+on coding what has been coded already by someone else.</p>
+<p>Using libraries has many advantages:</p>
+<ol class="arabic simple">
+<li><p><strong>Code Reusability:</strong> Python libraries contain well-tested and optimized
+code for various tasks, such as data manipulation, mathematical calculations,
+web development, and more.</p></li>
+<li><p><strong>Increased Productivity:</strong> Libraries offer a wealth of functionality
+that accelerates development. You can access powerful tools, algorithms, and
+data structures without writing them from scratch.</p></li>
+<li><p><strong>Community Support:</strong> Python’s vast and active community constantly develops
+and maintains libraries. This ensures that libraries stay up-to-date,
+reliable, and compatible with the latest versions of Python.</p></li>
+<li><p><strong>Ecosystem Integration:</strong> Many libraries are integrate with each other,
+allowing you to combine their capabilities. For example, you can use libraries
+like Matplotlib for data visualization along with Pandas for data analysis.</p></li>
+</ol>
+<section id="importing-libraries">
+<h2>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this heading">#</a></h2>
+<p>Importing a library in Python is a straightforward process, involving the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement.</p>
+<p>Python comes with a rich <strong>standard library</strong> that covers fundamental functionalities.
+You can import standard library modules like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">module_name</span>
+</pre></div>
+</div>
+<p>For example, to import the <code class="docutils literal notranslate"><span class="pre">math</span></code> module for mathematical operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+</div>
+<p>You can then use functions and classes from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, such as <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>
+for square root calculations. To learn what is available in the standard library
+you can go to the <a class="reference external" href="https://docs.python.org/3/library/index.html">official Python documentation</a>.
+To use <strong>third-party libraries</strong>, you’ll need to install them first (more on this at the end of this chapter).</p>
+<p>Once installed, you can import them using the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement.
+For instance, to import the popular NumPy library for numerical operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
+</pre></div>
+</div>
+<p>Using an <strong>alias</strong> like <code class="docutils literal notranslate"><span class="pre">np</span></code> is common for libraries with long names, as it
+makes code more readable.</p>
+<p>A quick way to include all the functions and classes in you code you may use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">library_name</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>This approach allows you to use the imported items <em>without specifying the library
+name</em>. Although you are likely to find this syntax in your programming journey,
+it is not recommended.</p>
+<p>On the other hand, if you only need specific functions or classes from a library,
+you can import them directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">library_name</span><span class="w"> </span><span class="kn">import</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">class_name</span>
+</pre></div>
+</div>
+<p>For instance</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+</pre></div>
+</div>
+<p>Now, you can use <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> directly without referencing the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p>
+</section>
+<section id="useful-modules-from-the-standard-library">
+<h2>Useful modules from the standard library<a class="headerlink" href="#useful-modules-from-the-standard-library" title="Permalink to this heading">#</a></h2>
+<p>Among the huge variety of libraries in the Python ecosystem, let us remark some of
+the most basic, which are commonly used in many areas</p>
+<section id="sys">
+<h3><code class="docutils literal notranslate"><span class="pre">sys</span></code><a class="headerlink" href="#sys" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">sys</span></code> module provides access to some variables used or maintained by the
+interpreter and to functions that interact strongly with the interpreter.
+It is always available. The <code class="docutils literal notranslate"><span class="pre">sys</span></code> module can be used to obtain information
+about the Python runtime environment, such as the version of the interpreter,
+the command-line arguments passed to the program, and the amount of free memory
+on the system. The <code class="docutils literal notranslate"><span class="pre">sys</span></code> module can also be used to control the behavior of the
+interpreter, such as setting the recursion limit and exiting the interpreter.</p>
+<p>Some useful calls are</p>
+<ul class="simple">
+<li><p><strong>Get information about the Python runtime environment:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.version</span></code>: Returns the version number of the Python interpreter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>: Returns a list of the command-line arguments passed to the program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.gettotalrefcount()</span></code>: Returns the amount of free memory on the system.</p></li>
+</ul>
+</li>
+<li><p><strong>Control the behavior of the interpreter:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code>: Exits the Python interpreter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.setrecursionlimit()</span></code>: Sets the maximum depth of the Python interpreter stack.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code>: Writes a string to standard output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.stdin.readline()</span></code>: Reads a line from standard input.</p></li>
+</ul>
+</li>
+</ul>
+<p>Below is an example of the use of the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Get the version number of the Python interpreter</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+
+<span class="c1"># Exit the Python interpreter</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="exercise dropdown admonition" id="contents/libraries-exercise-0">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a program using <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> to access command-line arguments
+passed by the user.</p>
+</section>
+</div></section>
+<section id="os">
+<h3><code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#os" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module provides a portable way of using operating system dependent
+functionality. It provides functions for creating and removing files and directories,
+navigating the file system, changing the current working directory,
+and more.</p>
+<p>Some common uses are:</p>
+<ul class="simple">
+<li><p><strong>Create and remove files and directories:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code>: Creates a new directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.rmdir()</span></code>: Removes a directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.open()</span></code>: Opens a file for reading or writing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.close()</span></code>: Closes a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.remove()</span></code>: Removes a file.</p></li>
+</ul>
+</li>
+<li><p><strong>Navigate the file system:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code>: Returns the current working directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.chdir()</span></code>: Changes the current working directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code>: Returns a list of the files and directories in the current directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code>: Joins two or more path components together.</p></li>
+</ul>
+</li>
+<li><p><strong>Other common functions:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.getenv()</span></code>: Gets the value of an environment variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.system()</span></code>: Executes a shell command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os.sleep()</span></code>: Suspends execution for a specified period of time.</p></li>
+</ul>
+</li>
+</ul>
+<p>Here is an example of how to use the <code class="docutils literal notranslate"><span class="pre">os</span></code> module to create a new directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Create a new directory called &quot;my_dir&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;my_dir&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is an example of how to use the os module to read the contents of a directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Get a list of the files and directories in the current directory</span>
+<span class="n">files_and_dirs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+
+<span class="c1"># Print the list of files and directories</span>
+<span class="k">for</span> <span class="n">file_or_dir</span> <span class="ow">in</span> <span class="n">files_and_dirs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file_or_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="exercise dropdown admonition" id="contents/libraries-exercise-1">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Create a new directory and remove it using os.mkdir() and os.rmdir().
+Handle potential exceptions like FileExistsError and OSError.</p>
+</section>
+</div></section>
+<section id="shutil">
+<h3><code class="docutils literal notranslate"><span class="pre">shutil</span></code><a class="headerlink" href="#shutil" title="Permalink to this heading">#</a></h3>
+<p>The ability to work with files is a mandatory skill when using Python. Proficiency in file
+manipulation, which includes tasks like copying, creating, and updating files through code, enables automation. Here we briefly explain the strength of <code class="docutils literal notranslate"><span class="pre">shutil</span></code> to manage this issues,
+which you may use in the same way you would use your favourite shell in the command
+line.</p>
+<p>First of all we need to import the <code class="docutils literal notranslate"><span class="pre">shutil</span></code> library</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+</pre></div>
+</div>
+<p>Some of the useful functionalities include <code class="docutils literal notranslate"><span class="pre">copy()</span></code>, <code class="docutils literal notranslate"><span class="pre">copy2()</span></code>, <code class="docutils literal notranslate"><span class="pre">copystat()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">which()</span></code>, <code class="docutils literal notranslate"><span class="pre">copytree()</span></code>, among others.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">shutil.copy()</span></code> function in Python is used to duplicate the contents
+of a source file to either a destination file or  directory. While the file’s
+permission mode is preserved during the copying process, other metadata such
+as the file’s creation and modification timestamps are not retained.
+It’s important to note that the source must be a file, but the destination can be
+either a file or a directory. If the destination is a directory, the file will
+be copied into the directory while retaining its original filename.
+Additionally, ensure that the final destination is writable. If the destination is
+an existing file, it will be replaced by the source file; otherwise, a new file
+will be created. The syntax is as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">follow_symlinks</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code>: represents the source file path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dest</span></code>: represents the path of the destination</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">follow_symlinks</span></code>: This is an optional parameter, specific to the case where
+instead of files we are finding a symbolic link.</p></li>
+</ul>
+<p>Below we show an example of <code class="docutils literal notranslate"><span class="pre">shutil.copy</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The destination directory contents before&quot;</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;./Apurv/Work&#39;</span><span class="p">))</span>
+<span class="n">src</span> <span class="o">=</span> <span class="s1">&#39;./Docs/A.txt&#39;</span>
+<span class="n">dest</span> <span class="o">=</span> <span class="s1">&#39;./Docs/Work&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="n">dest</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The destination directory contents after&quot;</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;./Apurv/Work&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and the output</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">destination</span> <span class="n">directory</span> <span class="n">contents</span> <span class="n">before</span> <span class="p">[</span><span class="s1">&#39;Hi&#39;</span><span class="p">]</span>
+<span class="o">./</span><span class="n">Docs</span><span class="o">/</span><span class="n">Work</span>\<span class="n">A</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">The</span> <span class="n">destination</span> <span class="n">directory</span> <span class="n">contents</span> <span class="n">after</span> <span class="p">[</span><span class="s1">&#39;A.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">shutil.copy2()</span></code> function in Python is designed to duplicate the
+contents of a source file to a specified destination, whether it’s a file
+or a directory. This function shares similarities with shutil.copy(),
+but it goes a step further by attempting to preserve the original file’s
+metadata during the copying process.</p>
+<p>Python also offers the <code class="docutils literal notranslate"><span class="pre">shutil.copyfile()</span></code> function, which serves the
+purpose of duplicating the contents of a source file into a designated
+destination file. During this process, the file’s metadata is not transferred.
+It’s important to note that both the source and the destination must be
+file paths, and the destination must have write permissions. If the destination
+file already exists, it will be replaced by the source file; otherwise,
+a new file will be generated. If the source and destination files are identical,
+the <code class="docutils literal notranslate"><span class="pre">SameFileError</span></code> exception is thrown.</p>
+<p>The syntax is similar to <code class="docutils literal notranslate"><span class="pre">shutil.copy()</span></code> and <code class="docutils literal notranslate"><span class="pre">shutil.copy2()</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">shutil</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="s1">&#39;./Docs/A.txt&#39;</span>
+<span class="n">dest</span> <span class="o">=</span> <span class="s1">&#39;./Docs/Work/B.txt&#39;</span>
+
+<span class="n">final</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="n">dest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Destination: &quot;</span><span class="p">,</span><span class="n">final</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Resulting in</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Destination</span><span class="p">:</span>  <span class="o">./</span><span class="n">Docs</span><span class="o">/</span><span class="n">Work</span><span class="o">/</span><span class="n">B</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>If we move to directories, we find very useful tools as <code class="docutils literal notranslate"><span class="pre">shutil.copytree()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">shutil.rmtree()</span></code>.  The <code class="docutils literal notranslate"><span class="pre">shutil.copytree()</span></code> function is used to replicate an
+entire directory tree that originates from a  specified source and place it
+into a target destination directory. This process is conducted recursively,
+ensuring that all contents within the source directory are copied. The syntax
+is as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">symlinks</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ignore</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">copy_function</span> <span class="o">=</span> <span class="n">copy2</span><span class="p">,</span> <span class="n">ignore_dangling_symlinks</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code>: represents the source file path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dest</span></code>: represents the path of the destination</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shutil.copytree()</span></code> returns the path of the newly created file.</p>
+<p>To remove a directory we may use the <code class="docutils literal notranslate"><span class="pre">shutil.rmtree()</span></code> function.</p>
+</section>
+<section id="argparse">
+<h3><code class="docutils literal notranslate"><span class="pre">argparse</span></code><a class="headerlink" href="#argparse" title="Permalink to this heading">#</a></h3>
+<p>Writing user-friendly command-line interfaces (CLIs) is easy thanks to the
+<code class="docutils literal notranslate"><span class="pre">argparse</span></code> module. The <code class="docutils literal notranslate"><span class="pre">argparse</span></code>module also generates help and usage messages,
+providing issue error when invalid arguments are given. It allows you to define
+and customize command-line options, arguments, and help messages, making it easier
+for users to interact with your code through the terminal.</p>
+<p><code class="docutils literal notranslate"><span class="pre">argparse</span></code> offers several advantages:</p>
+<ol class="arabic simple">
+<li><p><strong>User-Friendly Interface:</strong> It provides a user-friendly way for users to
+provide input to your scripts or programs via the command line.</p></li>
+<li><p><strong>Validation and Error Handling:</strong> <code class="docutils literal notranslate"><span class="pre">argparse</span></code> automatically performs
+validation and error handling for the command-line arguments. It checks for
+required arguments, valid choices, and data types.</p></li>
+<li><p><strong>Flexibility:</strong> You can define various types of arguments, including
+positional arguments, optional arguments (flags), and arguments with values.</p></li>
+<li><p><strong>Documentation Generation:</strong> <code class="docutils literal notranslate"><span class="pre">argparse</span></code> can automatically generate help messages
+and documentation for your script
+based on the argument definitions you provide.</p></li>
+</ol>
+<p>In order to create an CLI we first need to use the <code class="docutils literal notranslate"><span class="pre">ArgumentParser</span></code> class of
+the <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import argparse
+
+parser = argparse.ArgumentParser(description=’my custom command-line program’, 
+    usage = ’%(prog)s [options]’)
+
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">description</span></code> parameter describes the program to help the user understand.
+In contrast, the parameter <code class="docutils literal notranslate"><span class="pre">usage</span></code> gives the user a usage message when they
+run any command with the <code class="docutils literal notranslate"><span class="pre">help</span></code> flag.</p>
+<p>To add more parameters to the parser, we can add them using the <code class="docutils literal notranslate"><span class="pre">add_argument()</span></code>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>parser.add_argument(argument_default=None);
+parser.add_argument(epilog=’Information displayed at the end of the help message);
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">argument_default</span></code> sets the default value for all arguments. The <code class="docutils literal notranslate"><span class="pre">epilog</span></code>
+which displays a text at the end of the help message. Once it is done, the command
+line arguments are parsed using the <code class="docutils literal notranslate"><span class="pre">parse_args()</span></code> method.</p>
+<p>A basic example of how to use <code class="docutils literal notranslate"><span class="pre">argparse</span></code> in a Python script is presented below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+
+<span class="c1"># Create an ArgumentParser object</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;A simple command-line tool.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add positional argument(s)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;input_file&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Input file name&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add optional argument(s)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Output file name&#39;</span><span class="p">)</span>
+
+<span class="c1"># Parse the command-line arguments</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="c1"># Access the values of the arguments</span>
+<span class="n">input_file</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">input_file</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">output</span>
+</pre></div>
+</div>
+<p>To run the script we type</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">output</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">input.txt</span></code> is provided as the value for the <code class="docutils literal notranslate"><span class="pre">input_file</span></code>
+positional argument and <code class="docutils literal notranslate"><span class="pre">--output</span></code> stands for an optional argument,
+being <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> is provided as its value.</p>
+</section>
+</section>
+<section id="installing-third-party-libraries">
+<h2>Installing third party libraries<a class="headerlink" href="#installing-third-party-libraries" title="Permalink to this heading">#</a></h2>
+<p>To install libraries in Python, you can use two commonly used
+package managers: pip and conda. Using pip
+(<a class="reference external" href="https://pip.pypa.io">Python Package Manager</a>)
+you just have to open your command-line or terminal and run
+the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>library_name<span class="w"> </span>
+</pre></div>
+</div>
+<p>or alternatively</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>library_name
+</pre></div>
+</div>
+<p>When you invoke these commands, pip will fetch packages from <a class="reference external" href="https://pypi.org/">Python
+Package Index</a>, a repository of software for the
+Python programming language where anyone can upload packages.
+You can specify the specific version of the package you are interested
+in by typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">library_name</span><span class="o">==</span>version_number
+</pre></div>
+</div>
+<p>Using pip you can also install packages from a Github repository</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/pypa/library_name.git@main
+</pre></div>
+</div>
+<p>or from a file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>library_name.tar.gz
+</pre></div>
+</div>
+<p>Uninstalling packages is equally easy. You just have to type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>sampleproject
+</pre></div>
+</div>
+<p>Because in this course we are using the Anaconda Python distribution,
+it is also useful for you to know that you can use its package manager
+to install libraries. Simply do</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>library_name
+</pre></div>
+</div>
+<p>You can find more information about this very powerful tool
+<a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/">here</a>.</p>
+<section id="virtual-environments-in-conda">
+<h3>Virtual environments in Conda<a class="headerlink" href="#virtual-environments-in-conda" title="Permalink to this heading">#</a></h3>
+<p>At some point you may be working with multiple projects at
+the same time and the libraries or library versions
+you require for some of them may create conflicts with others.
+In order to isolate the sets of libraries that you install
+for specific projects, you may want to take advante to
+conda’s virtual environments.</p>
+<p>You can create a new virtual environment with the following
+command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv
+</pre></div>
+</div>
+<p>Once you have created an environment, you
+can activate it using:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</pre></div>
+</div>
+<p>Once activated, you can install packages into the virtual
+environment using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span></code>.
+To deactivate the virtual environment and return to the base
+environment, use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<p>You can clone an existing environment to create a new one with the same dependencies:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myenv_clone<span class="w"> </span>--clone<span class="w"> </span>myenv
+</pre></div>
+</div>
+<p>You can list all your created environments with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+</pre></div>
+</div>
+<p>To delete an environment, use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>myenv
+</pre></div>
+</div>
+<div class="exercise dropdown admonition" id="contents/libraries-exercise-2">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Create a new Conda environment named “myenv” with Python 3.8.
+Inside “myenv,” install numpy, pandas and matplotlib.
+Clone “myenv” into “newenv” and inside “newenv,” upgrade
+the version of numpy to the latest version.
+Check the version of numpy in “newenv.”
+Compare this version with the one in “myenv.”</p>
+</section>
+</div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="printing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Additional notes on I/O</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="numpy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numpy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">Importing libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-modules-from-the-standard-library">Useful modules from the standard library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys"><code class="docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os"><code class="docutils literal notranslate"><span class="pre">os</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shutil"><code class="docutils literal notranslate"><span class="pre">shutil</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argparse"><code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-third-party-libraries">Installing third party libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments-in-conda">Virtual environments in Conda</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By  
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright By the authors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Programming in Python Lecture Notes is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
