@@ -106,7 +106,7 @@ print('The value of x is {} and the value of y is {}'.format(x, y))
 print(f'The value of x is {x} and the value of y is {y}')
 
 # Using string modulo operator (%)
-print('The value of x is % and the value of y is %' % (x, y))
+print('The value of x is %s and the value of y is %s' % (x, y))
 ```
 
 The `<format>` field is a string that specifies the format of the variable, 
@@ -117,8 +117,8 @@ with the other two), `W` is the total width (and may also
 include the number of positions after the period for floats as `W.n`), and 
 `<type>` is the format type. The most common types are:
 
-* `s`: string (actually not necessary to specify, since it is the default)
-* `d`: integer (again, not necessary)
+* `s`: string (actually not necessary with {} place-holders, since it is the default)
+* `d`: integer (again, not necessary with {})
 * `f`: float in decimal format
 * `e`: float in scientific notation
 * `g`: float in scientific notation or decimal format, or integer, depending on the value
