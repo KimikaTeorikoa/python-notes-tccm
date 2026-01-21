@@ -456,7 +456,6 @@ s.upper()
 ```
 You can also split a string into parts, based on a given
 element.
-hable
 ```{code-cell} python
 s = 'bread, butter, flour, milk'
 s.split(',')
@@ -480,6 +479,64 @@ text values. Concatenate `str1` and `str2` to create a new string.
 
 * Use the `split()` method to split the text variable into a list of words.
 ```
+
+### F-Strings: Formatted String Literals
+
+In addition to basic string operations, Python offers a powerful feature called **f-strings** (formatted string literals) that allows for more dynamic and readable string formatting. F-strings were introduced in Python 3.6 and provide an intuitive way to embed expressions directly within string literals.
+
+To create an f-string, simply prefix your string with the letter `f` or `F`. You can include variables or expressions inside curly braces `{}` within the string, which will be evaluated at runtime.
+
+For instance, consider the following code:
+```python
+event_name = "Python Workshop"
+date = "October 15, 2024"
+location = "Community Center"
+event_details = f"The {event_name} will be held on {date} at the {location}."
+print(event_details)
+```
+
+the output is
+
+```python
+The Python Workshop will be held on October 15, 2024 at the Community Center.
+```
+
+In this example, the variables `event_name`, `date`, and `location` are directly embedded in the string, providing clear 
+information about the event.
+
+F-strings also allow you to include expressions. For example:
+
+```python
+width = 10
+height = 5
+area = f"The area of the rectangle is {width * height} square units."
+print(area)
+```
+
+gives the output
+
+```python
+The area of the rectangle is 50 square units.
+```
+
+Here, the expression `width * height` is evaluated, and its result is included in the f-string.
+
+Moreover, f-strings support formatting options, making it easy to control how numbers are displayed:
+
+```python
+pi = 3.14159
+formatted_pi = f"Pi rounded to two decimal places is {pi:.2f}."
+print(formatted_pi)
+```
+
+and the output is
+
+```python
+Pi rounded to two decimal places is 3.14.
+```
+
+In this example, the `.2f` format specifier rounds pi to two decimal places.
+We will see more on F-strings in when reviewing [printing](printing) methods more in detail.
 
 ### Lists, tuples and dictionaries
 **Lists** are a very important type of **sequence**, which
@@ -620,7 +677,7 @@ to good use.
 :nonumber:
 :class: dropdown
 
-Create a dictionary called student with your name and age.
+Create a dictionary called student with your name and age 10.
 Print the student dictionary. Update the age to your current age.
 Add your university as a new key.
 Remove the "age" key. Print the updated student dictionary.
