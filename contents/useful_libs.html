@@ -1,0 +1,1022 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Useful libraries for scientific computing &#8212; Programming in Python Lecture Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/useful_libs';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Object Oriented Programming" href="ooprogramming.html" />
+    <link rel="prev" title="Plotting in Python" href="plotting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/tccm.png" class="logo__image only-light" alt="Programming in Python Lecture Notes - Home"/>
+    <script>document.write(`<img src="../_static/tccm.png" class="logo__image only-dark" alt="Programming in Python Lecture Notes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flowcontrol.html">Control structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="printing.html">Additional notes on I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libraries.html">Using libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Useful libraries for scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ooprogramming.html">Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Creating Python Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/KimikaTeorikoa/python-notes-tccm/blob/master/contents/useful_libs.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm/issues/new?title=Issue%20on%20page%20%2Fcontents/useful_libs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/useful_libs.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/contents/useful_libs.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Useful libraries for scientific computing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy"><code class="docutils literal notranslate"><span class="pre">scipy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-integrate"><code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-interpolate"><code class="docutils literal notranslate"><span class="pre">scipy.interpolate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-optimize"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy"><code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ase"><code class="docutils literal notranslate"><span class="pre">ase</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h5py"><code class="docutils literal notranslate"><span class="pre">h5py</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="useful-libraries-for-scientific-computing">
+<h1>Useful libraries for scientific computing<a class="headerlink" href="#useful-libraries-for-scientific-computing" title="Permalink to this heading">#</a></h1>
+<p>One of the strongest points of Python is the flourishing <em>ecosystem</em> of libraries it
+comes with. We have already seen some of them, such as <a class="reference internal" href="numpy.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></span></a> and
+<a class="reference internal" href="plotting.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></span></a>. This chapter reviews other libraries that are handy
+to code scientific computing applications, including computational chemistry ones.
+We will mostly focus on <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, highlighting some of its submodules that provide
+a huge set of numerical algorithms, and also briefly mention other projects that
+you will likely find useful.
+The classification of these libraries as integral components of Python’s core or
+specialized tools might provoke debate, yet you’ll undoubtedly benefit from
+the diverse array of supplementary features accessible across various layers.
+<img alt="ecosystem" src="https://jupytearth.org/_images/python-stack.png" /></p>
+<section id="scipy">
+<h2><code class="docutils literal notranslate"><span class="pre">scipy</span></code><a class="headerlink" href="#scipy" title="Permalink to this heading">#</a></h2>
+<p>This module contains a collection of numerical algorithms such as integration,
+optimization, interpolation, linear algebra, statistics, and much more.
+It is built on top of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, i.e., it mainly uses numpy arrays as the main
+data structure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scipy</span></code> is organized in submodules, each one with a specific purpose, which can be imported separately as,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.submodulename</span>
+<span class="c1">#or</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">submodulename</span>
+</pre></div>
+</div>
+<p>The submodules that normally fulfill the needs of a computational chemist are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate</span></code>: Integration and ordinary differential equation solvers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interpolate</span></code>: Interpolation and smoothing splines</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optimize</span></code>: Optimization and root-finding routines</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linalg</span></code>: Linear algebra, which actually provides an interface to BLAS and LAPACK libraries.
+Note that it generally supports all <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> functions, and <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> versions are preferred.</p></li>
+</ul>
+<p>In this chapter we will focus on the first three submodules. The list of submodules is more extensive,
+including <code class="docutils literal notranslate"><span class="pre">fft</span></code> (Fast Fourier Transform), <code class="docutils literal notranslate"><span class="pre">special</span></code> (special functions, such as Hermite polynomials).
+A complete list can be found in the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">official documentation</a>.</p>
+<section id="scipy-integrate">
+<h3><code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code><a class="headerlink" href="#scipy-integrate" title="Permalink to this heading">#</a></h3>
+<p>This submodule provides several integration routines, including an ordinary
+differential equation integrator.</p>
+<p><strong>Integration</strong> of a 1D function, can be done with the <code class="docutils literal notranslate"><span class="pre">quad</span></code> method. It takes a function
+and the integration limits as arguments, and returns the integral and an estimate of the error.
+Let’s see an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">norm</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">gaussian</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999997
+</pre></div>
+</div>
+</div>
+</div>
+<p>Other methods to integrated 1D functions are <code class="docutils literal notranslate"><span class="pre">fixed_quad</span></code>, <code class="docutils literal notranslate"><span class="pre">quadrature</span></code> or <code class="docutils literal notranslate"><span class="pre">romberg</span></code>.</p>
+<p>Instead, integration of a discrete function (1D), i.e., a set of points,
+can be done with the <code class="docutils literal notranslate"><span class="pre">trapz</span></code>, <code class="docutils literal notranslate"><span class="pre">romb</span></code> and <code class="docutils literal notranslate"><span class="pre">simps</span></code> functions. In the case, the
+functions take as arguments the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arrays with the grid and function values,
+and return the integral.
+For instance,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">simps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simps</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise dropdown admonition" id="contents/useful_libs-exercise-0">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a program to check the orthogonality of the vibrational eigenfunctions of the
+harmonic oscillator.</p>
+<p><em>Hint</em>: The eigenfunctions of the harmonic oscillator can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi_n(Q) = 
+\frac{1}{\sqrt{2^n n!}} 
+\left(\frac{\omega}{\pi\hbar}\right)^{1/4} 
+e^{-\omega Q^2/2\hbar} 
+H_n\left(\sqrt{\frac{\omega}{\hbar}}Q\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_n\)</span> are the Hermite polynomials, which can be evaluated with the function
+<code class="docutils literal notranslate"><span class="pre">scipy.special.eval_hermite</span></code>.</p>
+</section>
+</div><p>Functions for multidimensional integration are also available, such as <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> (double integral),
+<code class="docutils literal notranslate"><span class="pre">tplquad</span></code> (triple integral) and <code class="docutils literal notranslate"><span class="pre">nquad</span></code> (integration over multiple variables).</p>
+<p>This submodule also provides methods to integrate <strong>ordinary differential equations</strong>.
+The recommended method is <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> (solve initial value problem),
+which gives an interface to different integration algorithms.
+For instance, in order to integrate the system of differential equations below,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dx}{dt} &amp;= -y \\
+\frac{dy}{dt} &amp;= x
+\end{align}
+\end{split}\]</div>
+<p>we can use the following code,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    
+<span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/116d992cbfbd9b8dfbee918bb134ab3943d2292f1aafa3d3b79ed526c4eae9e2.png" src="../_images/116d992cbfbd9b8dfbee918bb134ab3943d2292f1aafa3d3b79ed526c4eae9e2.png" />
+</div>
+</div>
+<p>The integration algorithm is set with the <code class="docutils literal notranslate"><span class="pre">method</span></code> attribute, with the default
+being <code class="docutils literal notranslate"><span class="pre">RK45</span></code> (Runge-Kutta of 4th order).</p>
+</section>
+<section id="scipy-interpolate">
+<h3><code class="docutils literal notranslate"><span class="pre">scipy.interpolate</span></code><a class="headerlink" href="#scipy-interpolate" title="Permalink to this heading">#</a></h3>
+<p>This submodule provides several interpolation routines. In the case of 1D interpolation, i.e.
+from a discrete set of <span class="math notranslate nohighlight">\((x,y)\)</span> points, the most common method is <code class="docutils literal notranslate"><span class="pre">interp1d</span></code>. This function takes
+as arguments the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arrays, and returns a function object that can be evaluated at any point,
+within the range of <code class="docutils literal notranslate"><span class="pre">x</span></code> (values out of this range can be managed with the <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> argument).
+For instance,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+
+<span class="n">xnew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ynew</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a5497805629e13d143fa301ab1103126460dc848c50767b8e4b1e8d612a8e2aa.png" src="../_images/a5497805629e13d143fa301ab1103126460dc848c50767b8e4b1e8d612a8e2aa.png" />
+</div>
+</div>
+<p>As shown in the above example, the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument specifies the type of interpolation. Possible
+values include <code class="docutils literal notranslate"><span class="pre">linear</span></code> (which is the default), <code class="docutils literal notranslate"><span class="pre">quadratic</span></code> or <code class="docutils literal notranslate"><span class="pre">cubic</span></code> (a complete list
+can be found in the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html">official documentation</a>).</p>
+<div class="exercise dropdown admonition" id="contents/useful_libs-exercise-1">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a program that sums two spectra defined over different
+wavelength ranges. Use interpolation to generate a common wavelength
+grid, and then sum the spectra.</p>
+<p><em>Note</em>: spectra to test your code can be obtained from
+<a class="reference external" href="http://omlc.org/spectra/PhotochemCAD">PhotochemCAD</a>.
+You can use the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module to download the files:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># Azobenzene</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://omlc.org/spectra/PhotochemCAD/data/117-abs.txt&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="nb">open</span><span class="p">(</span><span class="s2">&quot;spc1.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># 9,10-Diphenylanthracene</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://omlc.org/spectra/PhotochemCAD/data/021-abs.txt&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="nb">open</span><span class="p">(</span><span class="s2">&quot;spc2.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div><p>For 2D interpolation, the most general function is <code class="docutils literal notranslate"><span class="pre">interp2d</span></code>. This function takes as arguments
+a 2D array of values, <code class="docutils literal notranslate"><span class="pre">Z</span></code>, and the two 1D arrays of coordinates, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. These arrays
+do not have to be equally spaced. As in the 1D case, it returns a function that can be evaluated
+at any point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp2d</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+
+<span class="n">xnew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ynew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">znew</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span><span class="p">,</span> <span class="n">znew</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Interpolated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/db850b2285ab1327c08bba513a7922bbeca90d7243955a35b6e4fd49548eafda.png" src="../_images/db850b2285ab1327c08bba513a7922bbeca90d7243955a35b6e4fd49548eafda.png" />
+<img alt="../_images/8e259033c5956407420ac0ee5a6ebdc92db112b31d8e269ad0758a19ac596701.png" src="../_images/8e259033c5956407420ac0ee5a6ebdc92db112b31d8e269ad0758a19ac596701.png" />
+</div>
+</div>
+<p>As you can see, we use some kind of <em>advanced</em> <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> features in this example.
+You can refresh them going back to the <a class="reference internal" href="plotting.html"><span class="doc std std-doc">previous chapter</span></a>.
+For instance, use the <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code> function, which generates 2D arrays with
+the grid points, (<code class="docutils literal notranslate"><span class="pre">x</span></code>,<code class="docutils literal notranslate"><span class="pre">y</span></code>), from the corresponding 1D arrays, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. The interpolation
+method is specified with the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument, which can take the same values as in the 1D case.</p>
+<p>The above example uses a regular grid, but this is not a requirement. Actually, in this case
+we can use the function <code class="docutils literal notranslate"><span class="pre">RectBivariateSpline</span></code>, which is more efficient but is restricted to
+regular grids. This function takes the same arguments as <code class="docutils literal notranslate"><span class="pre">interp2d</span></code>.</p>
+<p>To interpolate unstructured data we can use the function <code class="docutils literal notranslate"><span class="pre">griddata</span></code>.
+It takes as arguments the coordinates of the data points as a tuple of 1D arrays,
+<code class="docutils literal notranslate"><span class="pre">(x,y)</span></code> and the values at these points, <code class="docutils literal notranslate"><span class="pre">z</span></code>, also a 1D array.
+It also takes the coordinates of the points where the interpolation is required, <code class="docutils literal notranslate"><span class="pre">(Xi,Yi)</span></code>.
+In this case, it returns the interpolated values at these points as a 2D array <code class="docutils literal notranslate"><span class="pre">Zi</span></code>.
+The interpolation method is specified with the <code class="docutils literal notranslate"><span class="pre">method</span></code> argument. Possible values are <code class="docutils literal notranslate"><span class="pre">linear</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nearest</span></code> and <code class="docutils literal notranslate"><span class="pre">cubic</span></code>.</p>
+</section>
+<section id="scipy-optimize">
+<h3><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code><a class="headerlink" href="#scipy-optimize" title="Permalink to this heading">#</a></h3>
+<p>This module provides several algorithms for optimization (locating minima and maxima) and
+root-finding.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">minimize</span></code> provides a common interface to all the <strong>optimization</strong> algorithms.
+It takes as arguments the function to be minimized, <code class="docutils literal notranslate"><span class="pre">f(x)</span></code>, the initial guess, <code class="docutils literal notranslate"><span class="pre">x0</span></code>, and
+the method to be used, <code class="docutils literal notranslate"><span class="pre">method</span></code>. The function to be minimized must take as argument a 1D array
+with the values of the variables to be optimized, and return a scalar. For instance,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-4.80659631e-05 -1.10944154e-05 -1.86599703e-05]
+</pre></div>
+</div>
+</div>
+</div>
+<p>As shown above, the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> function returns an object with the results of the optimization.
+The <code class="docutils literal notranslate"><span class="pre">x</span></code> attribute contains the values of the variables that minimize the function. Other
+attributes of the result object are <code class="docutils literal notranslate"><span class="pre">fun</span></code>, which contains the value of the function at the
+minimum, <code class="docutils literal notranslate"><span class="pre">success</span></code>, which is a boolean indicating if the optimization was successful, or the
+number of iterations, <code class="docutils literal notranslate"><span class="pre">nit</span></code>, among others.</p>
+<p>Different optimization algorithms can be used with the <code class="docutils literal notranslate"><span class="pre">method</span></code> argument, including <code class="docutils literal notranslate"><span class="pre">BFGS</span></code> (default
+for unconstrained problems) or <code class="docutils literal notranslate"><span class="pre">Newton-CG</span></code>. The choice of the method
+depends on the problem (stiffness, dimensionality, etc.), and the need of adding constraints
+A complete list is given in the
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">documentation</a>.</p>
+<p>For <strong>root-finding</strong> of scalar functions (univariate functions, i.e., which depend on only
+one variable), we can use the general interface function <code class="docutils literal notranslate"><span class="pre">root_scalar</span></code>.
+It takes as arguments the function to be solved, <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> and some other arguments depending
+on the method to be used, <code class="docutils literal notranslate"><span class="pre">method</span></code>. For instance, with <code class="docutils literal notranslate"><span class="pre">method=bisect</span></code>, we need to provide
+the closed interval where the solution lies, <code class="docutils literal notranslate"><span class="pre">bracket</span></code>. Other methods may require the
+derivative of the function, <code class="docutils literal notranslate"><span class="pre">fprime</span></code> and/or an initial guess, <code class="docutils literal notranslate"><span class="pre">x0</span></code>.
+The function to be solved must take as argument a scalar
+and return a scalar. For instance,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root_scalar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+    
+<span class="n">res</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bisect&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.5671432904109679
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, the <code class="docutils literal notranslate"><span class="pre">root_scalar</span></code> function returns an object with the results of the root-finding.
+The <code class="docutils literal notranslate"><span class="pre">root</span></code> attribute contains the value of the variable that solves the equation.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">root</span></code> provides a common interface to all the root-finding algorithms
+for vector functions (i.e, a system of <code class="docutils literal notranslate"><span class="pre">N</span></code> equations that depend on <code class="docutils literal notranslate"><span class="pre">N</span></code> variables).
+It takes as arguments the function to be solved, <code class="docutils literal notranslate"><span class="pre">f(x)</span></code>, which depends on a 1D array (vector)
+of <code class="docutils literal notranslate"><span class="pre">N</span></code> variables, <code class="docutils literal notranslate"><span class="pre">x</span></code>, the initial guess, <code class="docutils literal notranslate"><span class="pre">x0</span></code>, and
+the method to be used, <code class="docutils literal notranslate"><span class="pre">method</span></code>. The function to be solved must take as argument a 1D array
+with the values of the variables to be solved, and returns a 1D array with the same shape.
+For instance, the following system of equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+x^2 + y^2 = 1 \\
+x - y = 0
+\end{align}
+\end{split}\]</div>
+<p>can be solved as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;hybr&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.70710678 0.70710678]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Available methods are summarized in the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html#root-finding">documentation</a>
+of this function.</p>
+</section>
+</section>
+<section id="sympy">
+<h2><code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#sympy" title="Permalink to this heading">#</a></h2>
+<p>This module is a computer algebra system (CAS), similar to <a class="reference external" href="https://maxima.sourceforge.io">Maxima</a>
+or Mathematica. It allows performing symbolic calculations, such as derivatives, integrals,
+solving equations, etc.</p>
+<p>We will not go into details here, but we will show some examples of the capabilities of this
+module. For instance, lets compute the derivative of the function <span class="math notranslate nohighlight">\(f(x) = \sin(x) \cos(x)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">diff</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \sin^{2}{\left(x \right)} + \cos^{2}{\left(x \right)}\]</div>
+</div>
+</div>
+<p>Many other symbolic operations are possible, such as integrals, limits, series expansions, etc.
+Check the <a class="reference external" href="https://docs.sympy.org/latest/index.html">documentation</a> for more details.</p>
+</section>
+<section id="pandas">
+<span id="id1"></span><h2><code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+<p>This module provides high-performance, easy-to-use data structures and data analysis tools, allowing
+to manipulate and analyze large amounts of data. You can read and write data sets from file formats such
+as csv, excel, hdf5, etc. For instance, to read a csv file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Read a csv file</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Get the values of column labelled &#39;Col1&#39; as a numpy array</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Col1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+<p>You can check the <a class="reference external" href="https://pandas.pydata.org/docs/">documentation</a>
+for more details.</p>
+</section>
+<section id="ase">
+<span id="id2"></span><h2><code class="docutils literal notranslate"><span class="pre">ase</span></code><a class="headerlink" href="#ase" title="Permalink to this heading">#</a></h2>
+<p>ASE stands for Atomic Simulation Environment.
+This module provides a set of tools for setting up, manipulating, running,
+visualizing and analyzing atomistic simulations. It supports many
+codes through the <code class="docutils literal notranslate"><span class="pre">Calculator</span></code> interface, e.g. Gaussian or Gromacs,
+allowing to perform a wide range of calculations from a single Python script.</p>
+<p>It also provides functions to read and write files in different formats (xyz, pdb…),
+through the <code class="docutils literal notranslate"><span class="pre">ase.io</span></code> submodule. For instance, to read a file in xyz format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The io submodule must be imported separately</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ase.io</span>
+
+<span class="c1"># Generate an ASE Atom object from a file</span>
+<span class="n">molec</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;file.xyz&#39;</span><span class="p">)</span>
+<span class="c1"># Get the atomic coordinates as a numpy array:</span>
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">molec</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can take a further look into the powerful capabilities of this library in the
+<a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">documentation</a>.</p>
+</section>
+<section id="h5py">
+<h2><code class="docutils literal notranslate"><span class="pre">h5py</span></code><a class="headerlink" href="#h5py" title="Permalink to this heading">#</a></h2>
+<p>This module provides support to manipulate <a class="reference external" href="https://en.wikipedia.org/wiki/HDF5">HDF5</a> files,
+a format specifically designed to store large amounts of numerical data.
+There are other formats that are also very useful for this purpose, such as
+<a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/">netCDF</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> or
+<a class="reference external" href="https://en.wikipedia.org/wiki/XML">XML</a>, which are also supported by Python modules.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plotting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Plotting in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ooprogramming.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Object Oriented Programming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy"><code class="docutils literal notranslate"><span class="pre">scipy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-integrate"><code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-interpolate"><code class="docutils literal notranslate"><span class="pre">scipy.interpolate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-optimize"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy"><code class="docutils literal notranslate"><span class="pre">sympy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ase"><code class="docutils literal notranslate"><span class="pre">ase</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h5py"><code class="docutils literal notranslate"><span class="pre">h5py</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By  
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright By the authors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Programming in Python Lecture Notes is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
