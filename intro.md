@@ -45,7 +45,7 @@ references that we recommend.
 These notes have been written by
 * [David De Sancho](https://github.com/daviddesancho) (UPV-EHU)
 * [Kirill Zinovjev](https://github.com/kzinovjev) (UV)
-* [Javier Cerezo](https://github.com/jcerezochem) (UAM)
+* [Javier Cerezo](https://github.com/jcerezochem) (UMU)
 * [Juan Jose Omiste](https://github.com/jjomiste) (UCM)
 * [Txema Mercero Larraza](https://github.com/pobmelat) (UPV-EHU)
 
