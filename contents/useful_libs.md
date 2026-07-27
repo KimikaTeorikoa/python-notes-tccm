@@ -75,13 +75,13 @@ print(norm)
 Other methods to integrated 1D functions are `fixed_quad`, `quadrature` or `romberg`.
 
 Instead, integration of a discrete function (1D), i.e., a set of points,
-can be done with the `trapz`, `romb` and `simps` functions. In the case, the
+can be done with the `trapz`, `romb` and `simpson` functions. In the case, the
 functions take as arguments the `x` and `y` arrays with the grid and function values, 
 and return the integral.
 For instance,
 
 ```{code-cell} python
-from scipy.integrate import simps
+from scipy.integrate import simpson
 import numpy as np
 
 def gaussian(x, mu, sigma):
@@ -91,7 +91,7 @@ x = np.linspace(-100, 100, 5000)
 mu = 0
 sigma = 1
 y = gaussian(x, mu, sigma)
-print(simps(y, x=x))
+print(simpson(y, x=x))
 ```
 
 ```{exercise}
