@@ -1,0 +1,1208 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Control structures &#8212; Programming in Python Lecture Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/flowcontrol';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="Python Fundamentals" href="fundamentals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/tccm.png" class="logo__image only-light" alt="Programming in Python Lecture Notes - Home"/>
+    <script>document.write(`<img src="../_static/tccm.png" class="logo__image only-dark" alt="Programming in Python Lecture Notes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Control structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="printing.html">Additional notes on I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libraries.html">Using libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_libs.html">Useful libraries for scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ooprogramming.html">Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Creating Python Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/KimikaTeorikoa/python-notes-tccm/blob/master/contents/flowcontrol.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm/issues/new?title=Issue%20on%20page%20%2Fcontents/flowcontrol.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/flowcontrol.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/contents/flowcontrol.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Control structures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-indentation">A note on indentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-if-statements">Conditionals (if statements)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-tests-and-conditional-operators">Logical tests and conditional operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-for-while">Loops (for / while)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">For loops</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-matching-match-statement">Pattern Matching (<code class="docutils literal notranslate"><span class="pre">match</span></code> statement)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterators-and-generators">Iterators and generators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterators">Iterators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-and-exception-handling">Error and exception handling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="control-structures">
+<h1>Control structures<a class="headerlink" href="#control-structures" title="Permalink to this heading">#</a></h1>
+<p>Now that we have learnt the different types of data that
+we can use in Python programs, it is time to start working
+with them in <strong>statements</strong> that perform actions. Using flow
+control, we may be able to repeat something written in a
+statement for a number of iterations or act in one
+way or another depending on the fulfillment of a condition.</p>
+<section id="a-note-on-indentation">
+<h2>A note on indentation<a class="headerlink" href="#a-note-on-indentation" title="Permalink to this heading">#</a></h2>
+<p>In Python, the way that a program looks is
+very much determined by <strong>indentation</strong>. This
+differs from what we will find in other languages
+like Fortran or C, where formatting is not so
+important. In this chapter we will use indentation
+exhaustively, because as you will see it is essential
+for flow control.</p>
+<p>Let’s look at an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement in
+Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, we have indented the <code class="docutils literal notranslate"><span class="pre">print</span></code>
+statement four positions to the right.
+Had we not done this, the code simply would not run.</p>
+<div class="exercise dropdown admonition" id="contents/flowcontrol-exercise-0">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Explore what happens when you do not respect
+indentation. Can you use more or less spaces?
+Can you write the code in a single line?</p>
+</section>
+</div><p>Different levels of indentation start where
+we have colons (<code class="docutils literal notranslate"><span class="pre">:</span></code>), and these have to be
+indented with respect to the previous level
+of indentation. Be
+careful not to add white spaces where they do not
+belong and use consistently tabs or spaces
+(4 spaces is the preferred option in
+<a class="reference external" href="https://peps.python.org/pep-0008/#indentation">PEP8</a>).</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This may feel like a nuisance if you have
+experience in some other programming language, but
+will help orient yourself when reading code in the
+long run.</p>
+</div>
+</section>
+<section id="conditionals-if-statements">
+<h2>Conditionals (if statements)<a class="headerlink" href="#conditionals-if-statements" title="Permalink to this heading">#</a></h2>
+<p>In many cases, we want to execute a piece of code
+depending on the results of one or more conditions.
+We will call this type of statement <strong>logical tests</strong>.
+This is one of the main control flow structures in Python and
+most other programming languages.</p>
+<p>The basic syntax in Python is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="c1"># Actions that take place if condition1 is True</span>
+    <span class="o">...</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="c1"># Actions that take place if condition2 is True</span>
+    <span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Actions that take place if none of the above is True</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<section id="logical-tests-and-conditional-operators">
+<span id="flowcontrol-logicaltests"></span><h3>Logical tests and conditional operators<a class="headerlink" href="#logical-tests-and-conditional-operators" title="Permalink to this heading">#</a></h3>
+<p>At this point, some words on logical tests and conditional operators are in order.
+Logical tests are expressions that evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>
+and correspond to variables of type <code class="docutils literal notranslate"><span class="pre">bool</span></code> (Booleans, as seen in the
+<a class="reference internal" href="fundamentals.html"><span class="doc std std-doc">previous chapter</span></a>).</p>
+<p>Logical tests are built using conditional operators.
+The most common ones are <code class="docutils literal notranslate"><span class="pre">==</span></code> (equal), <code class="docutils literal notranslate"><span class="pre">!=</span></code> (not equal), <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (greater than),
+<code class="docutils literal notranslate"><span class="pre">&lt;</span></code> (less than), <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> (greater than or equal to), <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> (less than or equal to).
+As you would expect, these comparison operators give the following results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span> <span class="c1"># False</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span> <span class="c1"># True</span>
+<span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="c1"># True</span>
+<span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is another operator, <code class="docutils literal notranslate"><span class="pre">is</span></code>, that is similar to <code class="docutils literal notranslate"><span class="pre">==</span></code> but checks if two variables
+are the same <strong>object</strong> (point to the same address in memory).
+In general, for two different variables with the same value, this operator evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+For instance, if we compare two different float variables with the same value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="c1"># True</span>
+<span class="n">x</span> <span class="ow">is</span> <span class="n">y</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+<p>But this is not always the case for integers, because Python caches the most commonly used
+integers, so that they are the same object in memory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="c1"># True</span>
+<span class="n">x</span> <span class="ow">is</span> <span class="n">y</span> <span class="c1"># True</span>
+
+<span class="c1"># But with larger integers this is not the case:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1554223641</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1554223641</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="c1"># True</span>
+<span class="n">x</span> <span class="ow">is</span> <span class="n">y</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+<p>So, in general, we use <code class="docutils literal notranslate"><span class="pre">==</span></code> to compare values (i.e., what we normally intend to do) and <code class="docutils literal notranslate"><span class="pre">is</span></code> to compare objects.</p>
+</div>
+<p>Another useful operator we have already seen is <code class="docutils literal notranslate"><span class="pre">in</span></code> (a <em>membership</em> operator), which checks if a value is
+contained in a list, tuple or dictionary (or a string).</p>
+<p>For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># True</span>
+<span class="mi">1</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+<p>Logical tests can be combined using the logical operators <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>.
+They work as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span> <span class="c1"># False</span>
+<span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span> <span class="c1"># True</span>
+<span class="ow">not</span> <span class="kc">True</span> <span class="c1"># False</span>
+<span class="ow">not</span> <span class="kc">False</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+<p>Finally, it is also worth mentioning that some non-boolean values can be evaluated
+as <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. For instance, the number <code class="docutils literal notranslate"><span class="pre">0</span></code> is evaluated as <code class="docutils literal notranslate"><span class="pre">False</span></code>, while
+any other number is evaluated as <code class="docutils literal notranslate"><span class="pre">True</span></code>. Similarly, the empty string <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> is evaluated
+as <code class="docutils literal notranslate"><span class="pre">False</span></code>, while any other string is evaluated as <code class="docutils literal notranslate"><span class="pre">True</span></code>. An empty list also evaluates
+as <code class="docutils literal notranslate"><span class="pre">False</span></code>, while any other list evaluates as <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+We can directly use such non-booleans as logical tests within <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, which are
+first converted to booleans. The resulting boolean can be made explicit using the
+<code class="docutils literal notranslate"><span class="pre">bool</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="nb">bool</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">bool</span><span class="p">([])</span> <span class="c1"># False</span>
+<span class="nb">bool</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+<div class="exercise dropdown admonition" id="contents/flowcontrol-exercise-1">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a code that uses non-booleans in logical tests, and check
+how are they evaluated. You can follow the scheme below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">variable</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This variable evaluates to True&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The variable evaluates to False&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+</section>
+<section id="loops-for-while">
+<h2>Loops (for / while)<a class="headerlink" href="#loops-for-while" title="Permalink to this heading">#</a></h2>
+<p>Loops play a crucial role in automating repetitive tasks. Many times, we
+will want to do the same thing over and over. Occasionally, we may want to
+stop when a condition is or is not fulfilled. In these situations, loops become
+essential tools for processing data and performing calculations.</p>
+<p>Imagine you have a list of numbers, and you want to calculate their sum.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To find the sum of these numbers, you could manually add them up:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">Sum</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>However, what if you had a list with hundreds or thousands of numbers?
+Performing this calculation manually would be
+impractical. This is precisely where loops come into play.</p>
+<section id="for-loops">
+<h3>For loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h3>
+<p>Let’s explore a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in Python to calculate the sum of numbers in a list.
+The for loop iterates over each element
+in the list and accumulates the sum.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Initialize the sum</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="n">total_sum</span> <span class="o">+</span> <span class="n">num</span>  <span class="c1"># Add each number to the sum</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of numbers is:&quot;</span><span class="p">,</span> <span class="n">total_sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop allows us to automate the process of summing the elements in the list,
+making it efficient and scalable. Note that the indentation is required and the colon at the end of the line.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function is often used in conjunction
+with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to create a sequence of numbers that you can iterate through. The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function generates a sequence
+of numbers based on the parameters you provide. It has three possible forms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">range(stop)</span></code>: Creates a sequence from 0 up to (but not including) the <code class="docutils literal notranslate"><span class="pre">stop</span></code> value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop)</span></code>: Creates a sequence from start up to (but not including) the stop value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>: Creates a sequence from start up to (but not including) the stop value,
+with a specified step size.</p></li>
+</ul>
+<p>You then use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate over the elements in the generated sequence. In each iteration of the loop,
+a variable takes on the value of the current element in the sequence.</p>
+<p>Here’s a basic example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> generates a sequence from 0 to 4, and the for loop iterates through these values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loops can also be used with any kind of variables</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">,</span><span class="s1">&#39;watermelon&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>While loops</strong></p>
+<p>Now, we consider a scenario where you want to find the sum of numbers until a certain condition is met.
+For instance, you want to find the sum of numbers until the cumulative sum exceeds 10.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">total_sum</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="n">total_sum</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sum of numbers until the cumulative sum exceeds 10 is:&quot;</span><span class="p">,</span> <span class="n">total_sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Take care when using <code class="docutils literal notranslate"><span class="pre">while</span></code> loops, as they can easily lead to infinite loops.</p>
+</div>
+<div class="exercise dropdown admonition" id="contents/flowcontrol-exercise-2">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a code snippet that calculates and prints the sum of all even numbers from 1 to
+a given positive integer using both a for loop and a while loop.
+Compare the results obtained from both loops.</p>
+</section>
+</div></section>
+</section>
+<section id="pattern-matching-match-statement">
+<h2>Pattern Matching (<code class="docutils literal notranslate"><span class="pre">match</span></code> statement)<a class="headerlink" href="#pattern-matching-match-statement" title="Permalink to this heading">#</a></h2>
+<p>Starting from <strong>Python 3.10</strong>, Python introduced the <strong><code class="docutils literal notranslate"><span class="pre">match</span></code></strong> statement,
+which allows for <strong>pattern matching</strong>. This is similar to the <code class="docutils literal notranslate"><span class="pre">switch</span></code> or <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">case</span></code> statements in other programming
+languages. It provides an elegant way to match values against a series of patterns and execute code based on which pattern is matched.</p>
+<p>The basic syntax in Python is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">match</span> <span class="n">variable</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">pattern1</span><span class="p">:</span>
+        <span class="c1"># Actions if variable matches pattern1</span>
+        <span class="o">...</span>
+    <span class="k">case</span> <span class="n">pattern2</span><span class="p">:</span>
+        <span class="c1"># Actions if variable matches pattern2</span>
+        <span class="o">...</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+        <span class="c1"># Actions if none of the above patterns match</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>In this structure, Python tries to match the value of variable with the specified patterns. The underscore <strong><code class="docutils literal notranslate"><span class="pre">(_)</span></code></strong>
+serves as a wildcard pattern, which catches any value that doesn’t match the previous cases. This acts similarly to an
+<code class="docutils literal notranslate"><span class="pre">else</span></code> statement in conditionals.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">match</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n is 1&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n is 2&quot;</span><span class="p">)</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n is something else&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the example above, the function <code class="docutils literal notranslate"><span class="pre">check_number</span></code> uses match to determine the value of n and execute the corresponding
+block of code. The <code class="docutils literal notranslate"><span class="pre">match</span></code> statement enhances code clarity and reduces the need <code class="docutils literal notranslate"><span class="pre">for</span></code> long chains of
+<code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> statements.</p>
+</section>
+<section id="iterators-and-generators">
+<h2>Iterators and generators<a class="headerlink" href="#iterators-and-generators" title="Permalink to this heading">#</a></h2>
+<p><strong>Iterators</strong> and <strong>generators</strong> are both mechanisms in Python for working with sequences of data. They allow you to iterate through a collection of items one at a time.
+They both allow you to loop through a sequence of values, but they differ in how they are implemented and when they generate values.</p>
+<section id="iterators">
+<h3>Iterators<a class="headerlink" href="#iterators" title="Permalink to this heading">#</a></h3>
+<p>An iterator is an object that represents a <em>stream of data</em>.
+It allows you to traverse a sequence of elements one at a time without loading the entire sequence into memory.
+In Python, an iterator is implemented using two methods: <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__next__()</span></code>
+.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__iter__()</span></code>: Returns the iterator object itself and is called when you create an iterator from an iterable object (e.g., a list or a custom class).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__next__()</span></code>: Retrieves the next element from the iterator and raises the <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception when there are no more elements.</p></li>
+</ul>
+<p>Below is an example of a simple iterator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Charles&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;pato&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># fetch the position in the array</span>
+    <span class="k">except</span><span class="p">:</span> 
+        <span class="k">break</span> <span class="c1"># exit the loop on error</span>
+</pre></div>
+</div>
+<p>You can also create your own custom iterators by defining <strong>classes</strong>
+with <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> methods, or you can use built-in Python functions like <code class="docutils literal notranslate"><span class="pre">iter()</span></code> and <code class="docutils literal notranslate"><span class="pre">next()</span></code> with iterable objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Doublen</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">StopIteration</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">my_iterator</span> <span class="o">=</span> <span class="n">Doublen</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_iterator</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">my_iterator</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output will be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Doublen</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x106b4de10</span><span class="o">&gt;</span>
+<span class="mi">2</span>
+<span class="mi">4</span>
+<span class="mi">6</span>
+<span class="mi">8</span>
+<span class="mi">10</span>
+<span class="mi">12</span>
+<span class="mi">14</span>
+<span class="mi">16</span>
+</pre></div>
+</div>
+<p>We will look in greater detail into how to write your own classes in the
+<a class="reference internal" href="ooprogramming.html"><span class="doc std std-doc">Object Oriented Programming</span></a> chapter.</p>
+</section>
+<section id="generators">
+<h3>Generators<a class="headerlink" href="#generators" title="Permalink to this heading">#</a></h3>
+<p>A generator is a concise way to create iterators.
+The main difference is that a generator is a function that contains one or more <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements.
+When you call a generator function, it returns a generator object, which you can use to iterate through the values produced by the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements.
+Generator functions use the <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword to yield values one at a time, and they automatically retain their execution state between calls.</p>
+<p>You may create a generator function by defining a function with one or more <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements.
+When you call this function, it doesn’t execute immediately but returns a generator object.
+You can then iterate through the values by
+calling the generator’s <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> method or using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">number_generator</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">current</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">current</span> <span class="o">+</span> <span class="mi">1</span>
+        
+<span class="n">my_generator</span> <span class="o">=</span> <span class="n">number_generator</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_generator</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">my_generator</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In summary, both iterators and generators allow you to work with sequences of data, but generators provide a more concise and memory-efficient way to create iterators, especially for situations where data generation is dynamic or resource-intensive.</p>
+</section>
+</section>
+<section id="comprehensions">
+<h2>Comprehensions<a class="headerlink" href="#comprehensions" title="Permalink to this heading">#</a></h2>
+<p>Lists and dictionaries can be created in a very compact way using comprehensions.
+They consist on one-liner expression, where a list (or dictionary) is created based on
+another iterable object. A condition can be added to filter the elements that are included
+in the new list. The syntax is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For instance, we can create a list with the squares of the numbers from 1 to 10
+as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If only the squares of even numbers from 1 to 10 shall be included, we can tune the output
+adding a condition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Comprehensions can also be used to create dictionaries. For instance, we can create</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>Note that we need to iterate over keys (<code class="docutils literal notranslate"><span class="pre">x</span></code> in our example) and values (<code class="docutils literal notranslate"><span class="pre">x**2</span></code>). We can for instance
+run over tuples that contain <code class="docutils literal notranslate"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs.
+In the following example, we generate in-place a list of tuples containing the letters
+and their position in the alphabet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">letters</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">chr</span><span class="p">(</span><span class="n">j</span><span class="p">):</span><span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span><span class="mi">91</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A:&#39;</span><span class="p">,</span><span class="n">letters</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z:&#39;</span><span class="p">,</span><span class="n">letters</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A: 1
+Z: 26
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example, <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> is a built-in function that returns a list of tuples
+(actually an iterator) on top of an iterable object (in this case the iterator generated
+by <code class="docutils literal notranslate"><span class="pre">range()</span></code>), adding a counter along with each element.
+The counter is started at 0 by default and can be tuned with the <code class="docutils literal notranslate"><span class="pre">start</span></code> argument.
+We also used the <code class="docutils literal notranslate"><span class="pre">chr()</span></code> function
+converts an integer to the corresponding ASCII character
+(the ASCII codes for upper case letters go from 65 to 90).</p>
+<div class="exercise dropdown admonition" id="contents/flowcontrol-exercise-3">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a list comprehension that generates a list of squares for odd numbers from 1 to 10.</p>
+</section>
+</div></section>
+<section id="error-and-exception-handling">
+<h2>Error and exception handling<a class="headerlink" href="#error-and-exception-handling" title="Permalink to this heading">#</a></h2>
+<p>While running your code, some errors are bound to occur.
+For example, when you divide
+a value by zero or when you try to open a non-existing file…
+Python raises a specific object that identifies the error.
+These are called <strong>exceptions</strong>.
+Exceptions are a crucial mechanism for dealing with errors, unexpected behavior, and exceptional cases in Python programs.
+For instance, the <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> exception is raised
+when trying to divide by zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="ne">ZeroDivisionError</span>: division by zero
+</pre></div>
+</div>
+</div>
+</div>
+<p>And <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> is raised when trying to open a non-existing file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing_file.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing_file.txt&#39;</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/__setup_conda/lib/python3.8/site-packages/IPython/core/interactiveshell.py:284,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">284</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;missing_file.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As shown above, when an exception is raised, the code stops running and an informative error
+message is printed.
+Some context information is also provided, e.g. the call stack, which shows
+the sequence of function calls that led to the error.</p>
+<p>Built-in exceptions are listed in the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">Python documentation</a>.
+Some of the most commonly raised exception classes are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>: raised when trying to divide by zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: raised when a variable is not defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code>: raised when an operation or function is applied to an object of inappropriate type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code>: raised when a built-in operation or function receives an argument that has the
+right type but an inappropriate value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: raised when trying to access an element in a list using an invalid index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OSError</span></code>: raised when a system function returns a system-related error, including I/O failures such as “file not found” or “disk full”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: raised when a dictionary key is not found.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code>: raised when trying to open a non-existing file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ImportError</span></code>: raised when an import statement fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: raised when there is an error in Python syntax.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IndentationError</span></code>: raised when indentation is not correct.</p></li>
+</ul>
+<p>Errors raised while running the code can be caught and handled using the <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> statements.
+The basic syntax is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Code that may raise an exception</span>
+    <span class="o">...</span>
+<span class="k">except</span> <span class="n">ExceptionName</span><span class="p">:</span>
+    <span class="c1"># Code that is executed if the exception ExceptionName is raised</span>
+</pre></div>
+</div>
+<p>For instance, we can handle a division by zero error as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division by zero!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you see, when an exception is handled, the code continues running
+without crashing the program.
+However, we may be missing some information from the original error message.
+In this type of situations we may use a slightly different syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;non_existent_file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you see, using <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">&lt;ExceptionType&gt;</span> <span class="pre">as</span> <span class="pre">e</span></code> we are catching the exception and
+printing the original error message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">try</span></code> block contains the code that might raise an exception,
+and it can be followed by multiple <code class="docutils literal notranslate"><span class="pre">except</span></code> statements to handle different
+types of exceptions with specific actions.
+If no exception is specified, the <code class="docutils literal notranslate"><span class="pre">except</span></code> statement
+will handle any exception.</p>
+<p>In the example below, we handle a division by zero error and a
+name error specifically, and then any other exception:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division by zero!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Incorrect type!&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something else went wrong!&quot;</span><span class="p">)</span>
+    <span class="c1"># In this case we had a NameError, but we don&#39;t handle it specifically</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Something else went wrong!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Moreover, <code class="docutils literal notranslate"><span class="pre">else</span></code> and <code class="docutils literal notranslate"><span class="pre">finally</span></code> statements can also be added to the
+<code class="docutils literal notranslate"><span class="pre">try</span></code> statement. The <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is executed if no exception is raised, and the
+<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement is always executed, regardless of whether an exception is raised or not.
+The general syntax is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Code that may raise an exception</span>
+    <span class="o">...</span>
+<span class="k">except</span> <span class="n">ExceptionName1</span><span class="p">:</span>
+    <span class="c1"># Executed if the exception ExceptionName1 is raised</span>
+    <span class="o">...</span>
+<span class="k">except</span> <span class="n">ExceptionName2</span><span class="p">:</span>
+    <span class="c1"># Executed if the exception ExceptionName2 is raised</span>
+    <span class="o">...</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># Executed if any other exception is raised</span>
+    <span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Executed if no exception is raised</span>
+    <span class="o">...</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># Always executed, regardless of whether an exception is raised or not</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>We can also raise exceptions in our code using the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement, using one of the built-in exceptions or a custom exception (we are not going to cover custom exceptions in this course).
+For instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;x cannot be negative&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;x cannot be negative&quot;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: x cannot be negative
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fundamentals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Fundamentals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-indentation">A note on indentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-if-statements">Conditionals (if statements)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-tests-and-conditional-operators">Logical tests and conditional operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-for-while">Loops (for / while)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">For loops</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-matching-match-statement">Pattern Matching (<code class="docutils literal notranslate"><span class="pre">match</span></code> statement)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterators-and-generators">Iterators and generators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterators">Iterators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-and-exception-handling">Error and exception handling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By  
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright By the authors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Programming in Python Lecture Notes is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

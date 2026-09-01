@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Additional notes on I/O &#8212; Programming in Python Lecture Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/printing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using libraries" href="libraries.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/tccm.png" class="logo__image only-light" alt="Programming in Python Lecture Notes - Home"/>
+    <script>document.write(`<img src="../_static/tccm.png" class="logo__image only-dark" alt="Programming in Python Lecture Notes - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting yourself up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Python Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flowcontrol.html">Control structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Additional notes on I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libraries.html">Using libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_libs.html">Useful libraries for scientific computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ooprogramming.html">Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Creating Python Packages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/KimikaTeorikoa/python-notes-tccm/blob/master/contents/printing.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/KimikaTeorikoa/python-notes-tccm/issues/new?title=Issue%20on%20page%20%2Fcontents/printing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/printing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/contents/printing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Additional notes on I/O</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-print-function">The <code class="docutils literal notranslate"><span class="pre">print</span></code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-your-output">Formatting your output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-specific-libraries-for-i-o">Using specific libraries for I/O</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="additional-notes-on-i-o">
+<h1>Additional notes on I/O<a class="headerlink" href="#additional-notes-on-i-o" title="Permalink to this heading">#</a></h1>
+<p>At this point, we already acquired the basic skills to write a
+working Python code. An important part of the code is reading external
+data and writing results. We already learned the basics on
+<a class="reference internal" href="fundamentals.html#fundamentals-io"><span class="std std-ref">Input/Output</span></a> and,
+in this chapter, we give a closer look on how to print messages
+and results to the screen  and files with a proper format.</p>
+<section id="the-print-function">
+<h2>The <code class="docutils literal notranslate"><span class="pre">print</span></code> function<a class="headerlink" href="#the-print-function" title="Permalink to this heading">#</a></h2>
+<p>The central function for printing in Python is <code class="docutils literal notranslate"><span class="pre">print</span></code>. It can be
+used to print a single variable (of any kind) or a sequence of
+variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; | &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Some keyword arguments can be used to modify the output. For example,
+we can specify the character(s) at the end of the line with the <code class="docutils literal notranslate"><span class="pre">end</span></code>
+keyword. The default value is the newline character <code class="docutils literal notranslate"><span class="pre">\n</span></code> (new line),
+so if we use <code class="docutils literal notranslate"><span class="pre">end=''</span></code> we will get subsequent statements printed in
+the same line. Another keyword that tune the output is <code class="docutils literal notranslate"><span class="pre">sep</span></code>, which
+specifies the string use as separator between variables (if a sequence
+of variables is given). The default value is a space.</p>
+<p>Another important keyword is <code class="docutils literal notranslate"><span class="pre">file</span></code>, which specifies the output
+stream. The argument must be a file object, usually generated with the
+<code class="docutils literal notranslate"><span class="pre">open</span></code> function. Note that the file should be writable (i.e., using
+the keyword <code class="docutils literal notranslate"><span class="pre">w</span></code> on opening). The default value
+is <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>, which is the standard output stream.</p>
+<div class="exercise dropdown admonition" id="contents/printing-exercise-0">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a program that prints the numbers from 0 to 10 in the same line,
+waiting 1 second between each number.</p>
+<p><em>Hint</em>: use the <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> function to wait 1 second.
+You may also need to add the <code class="docutils literal notranslate"><span class="pre">flush=True</span></code> keyword to the <code class="docutils literal notranslate"><span class="pre">print</span></code> function
+to avoid buffering the output.</p>
+</section>
+</div><p>Before closing this section, we will look at an alternative way to
+print variables, i.e., through the <code class="docutils literal notranslate"><span class="pre">write</span></code> method of file objects.
+One of the main differences with the <code class="docutils literal notranslate"><span class="pre">print</span></code> function is that the
+<code class="docutils literal notranslate"><span class="pre">write</span></code> method does not add a newline character at the end.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set file object to standard output</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+
+<span class="c1"># With write method</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello world!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># With print function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="formatting-your-output">
+<h2>Formatting your output<a class="headerlink" href="#formatting-your-output" title="Permalink to this heading">#</a></h2>
+<p>Note that while we can print any variable with the <code class="docutils literal notranslate"><span class="pre">print</span></code> function
+it does not allow us to specify the format of the output (e.g.,
+specify the number of decimals for a float). To do this, we need to
+generate a string that will contain the variables with the desired
+format. We then pass such a string to the <code class="docutils literal notranslate"><span class="pre">print</span></code> function.</p>
+<p>There are three ways to generate a string with variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> method of the string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f-strings</span></code> (formatted strings, since Python 3.6).</p></li>
+<li><p>String modulo operator (<code class="docutils literal notranslate"><span class="pre">%</span></code>).</p></li>
+</ul>
+<p>In the two first cases, the string is a template that contains placeholders
+for the variables identified by curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>. The more general
+syntax is <code class="docutils literal notranslate"><span class="pre">{&lt;variableID&gt;:&lt;format&gt;}</span></code>. The way <code class="docutils literal notranslate"><span class="pre">&lt;variableID&gt;</span></code> is
+specified depends on the method used to generate the string. Namely,
+the <code class="docutils literal notranslate"><span class="pre">format()</span></code> function contains the variables as arguments, and <code class="docutils literal notranslate"><span class="pre">&lt;variableID&gt;</span></code>
+is the position of the variable in the argument list. If no identifier
+is used, the variables are used in the order they appear in the
+argument list. The <code class="docutils literal notranslate"><span class="pre">f-strings</span></code> are defined with the <code class="docutils literal notranslate"><span class="pre">f</span></code>
+modifier, i.e., <code class="docutils literal notranslate"><span class="pre">f&quot;my_string&quot;</span></code>. They are a bit more flexible, and allow to
+directly use a variable, or any valid Python expression as <code class="docutils literal notranslate"><span class="pre">&lt;variableID&gt;</span></code>.</p>
+<p>The third method uses the <code class="docutils literal notranslate"><span class="pre">%</span></code> character as placeholder within the string,
+with syntax <code class="docutils literal notranslate"><span class="pre">%&lt;format&gt;</span></code>, where in this case <code class="docutils literal notranslate"><span class="pre">&lt;format&gt;</span></code> must be specified.
+The variables to substitute are given after the string, using a tuple
+if more than one is given.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the format method</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of x is </span><span class="si">{}</span><span class="s1"> and the value of y is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Using f-strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> and the value of y is </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Using string modulo operator (%)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of x is </span><span class="si">%s</span><span class="s1"> and the value of y is </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;format&gt;</span></code> field is a string that specifies the format of the variable,
+with details such as the total width, the number of decimals or
+the alignment. The most common syntax is <code class="docutils literal notranslate"><span class="pre">&lt;align&gt;W&lt;type&gt;</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">&lt;align&gt;</span></code> is the alignment (not available with <code class="docutils literal notranslate"><span class="pre">%</span></code> method, and optional
+with the other two), <code class="docutils literal notranslate"><span class="pre">W</span></code> is the total width (and may also
+include the number of positions after the period for floats as <code class="docutils literal notranslate"><span class="pre">W.n</span></code>), and
+<code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> is the format type. The most common types are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: string (actually not necessary with {} place-holders, since it is the default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: integer (again, not necessary with {})</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>: float in decimal format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code>: float in scientific notation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span></code>: float in scientific notation or decimal format, or integer, depending on the value</p></li>
+</ul>
+<p>The alignment can be specified with the <code class="docutils literal notranslate"><span class="pre">&lt;align&gt;</span></code> part of the format, and the
+most usual options are: <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> (left aligned), <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (right aligned), and <code class="docutils literal notranslate"><span class="pre">^</span></code>
+(centered). The default is left alignment for strings, and right alignment
+for numbers.</p>
+<p>Let’s take a look to the outcome of different formats for the same
+variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">&lt;10d</span><span class="si">}</span><span class="s1"> and the value of y is </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">&lt;10</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">^10.2f</span><span class="si">}</span><span class="s1"> and the value of y is </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">^10.2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">&gt;10.2g</span><span class="si">}</span><span class="s1"> and the value of y is </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s1">&gt;10.2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of x is 1          and the value of y is 2         
+The value of x is    1.00    and the value of y is  2.00e+00 
+The value of x is          1 and the value of y is   2.00e+00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise dropdown admonition" id="contents/printing-exercise-1">
+
+<p class="admonition-title">Exercise</p>
+<section id="exercise-content">
+<p>Write a code snippet that prints two columns with the values of the
+time and the position from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=10\)</span> every <span class="math notranslate nohighlight">\(dt=0.2\)</span>,
+following the equation</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) =  -1.5 + 2.0 t + \frac{1}{2} 0.5 t^2
+\]</div>
+<p>Use 2 decimals for the time and 4 for the position.</p>
+</section>
+</div></section>
+<section id="using-specific-libraries-for-i-o">
+<h2>Using specific libraries for I/O<a class="headerlink" href="#using-specific-libraries-for-i-o" title="Permalink to this heading">#</a></h2>
+<p>Through this chapter, we have seen how to read and write files using
+some python built-in functions. However, in many cases, you will find
+that, while working with specific file formats, some libraries will do
+this task more conveniently. For example,
+arrays can be read/written with <a class="reference internal" href="numpy.html#numpy-io"><span class="std std-ref">NumPy’s specific functions</span></a>,
+molecular structure with the <a class="reference internal" href="useful_libs.html#ase"><span class="std std-ref">IO module of ASE</span></a> and
+data frames can be read and written with <a class="reference internal" href="useful_libs.html#pandas"><span class="std std-ref">Pandas</span></a>.
+You will see some examples of these libraries in the corresponding chapters.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="libraries.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using libraries</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-print-function">The <code class="docutils literal notranslate"><span class="pre">print</span></code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-your-output">Formatting your output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-specific-libraries-for-i-o">Using specific libraries for I/O</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By  
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright By the authors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Programming in Python Lecture Notes is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
