@@ -13,7 +13,7 @@ jobs:
   deploy-book:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
 
     - name: setup python
       uses: s-weigand/setup-conda@v1
@@ -29,7 +29,7 @@ jobs:
         jupyter-book build .
 
     - name: Push html to github-pages        
-      uses: peaceiris/actions-gh-pages@v3.9.0
+      uses: peaceiris/actions-gh-pages@v4.1.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./_build/html
