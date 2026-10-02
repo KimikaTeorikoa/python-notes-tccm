@@ -238,6 +238,7 @@ file using both `open` and an iterator and write its contents
 as text. Pay attention to how these are written.
 ```
 
+(data-types)=
 ## Data Types
 Variables in Python can be of many different types,
 including **text strings**, **lists**, **integers**, **floats**

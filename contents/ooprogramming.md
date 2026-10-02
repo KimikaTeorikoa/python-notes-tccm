@@ -13,7 +13,7 @@ For as long as we have been working with Python, we have been using
 **objects**. In fact, everything in Python is an object, which
 makes using objects naturally inescapable. Specifically, when we 
 introduced the different types of 
-[variables](fundamentals.md#Data-Types)
+{ref}`variables <data-types>`
 that we can define, we saw that each of them was associated to 
 specific **methods**, which varied depending of the data type.
 Here, we will make explicit what we have been using intuitively

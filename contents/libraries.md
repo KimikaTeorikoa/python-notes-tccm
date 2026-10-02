@@ -308,22 +308,23 @@ the `argparse` module.
 ```python
 import argparse
 
-parser = argparse.ArgumentParser(description=’my custom command-line program’, 
-    usage = ’%(prog)s [options]’)
+parser = argparse.ArgumentParser(description='my custom command-line program', 
+    usage='%(prog)s [options]')
 
 ```
 The `description` parameter describes the program to help the user understand.
  In contrast, the parameter `usage` gives the user a usage message when they 
 run any command with the `help` flag.
 
-To add more parameters to the parser, we can add them using the `add_argument()`
- method.
+Other options can also be passed when creating the parser.
 ```python
-parser.add_argument(argument_default=None);
-parser.add_argument(epilog=’Information displayed at the end of the help message);
+parser = argparse.ArgumentParser(description='my custom command-line program', 
+    usage='%(prog)s [options]', argument_default=None,
+    epilog='Information displayed at the end of the help message')
 ```
 The `argument_default` sets the default value for all arguments. The `epilog`
-which displays a text at the end of the help message. Once it is done, the command
+displays a text at the end of the help message. Arguments are then added to the
+parser using the `add_argument()` method. Once it is done, the command
  line arguments are parsed using the `parse_args()` method.
 
 A basic example of how to use `argparse` in a Python script is presented below

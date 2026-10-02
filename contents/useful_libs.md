@@ -72,10 +72,10 @@ norm, err = quad(gaussian, -np.inf, np.inf, args=(mu, sigma))
 print(norm)
 ```
 
-Other methods to integrated 1D functions are `fixed_quad`, `quadrature` or `romberg`.
+Another method to integrate 1D functions is `fixed_quad`.
 
 Instead, integration of a discrete function (1D), i.e., a set of points,
-can be done with the `trapz`, `romb` and `simpson` functions. In the case, the
+can be done with the `trapezoid`, `romb` and `simpson` functions. In the case, the
 functions take as arguments the `x` and `y` arrays with the grid and function values, 
 and return the integral.
 For instance,
