@@ -75,16 +75,38 @@ Windows](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10).
 ```
 ````
 
-## The Anaconda Python distribution 
+## Installing Python with conda 
 Your computer may have a native Python installed with the operative
 system. However, in addition to this vanilla Python configuration
 that comes in Unix-based systems, you may want to install additional
 libraries or packages, as we will see later. This is made easy by 
-other Python distributions, which include different sets of packages.
-We strongly recommend that you install the 
-[**Anaconda Python distribution**](https://www.anaconda.com/products/distribution), 
-which comes with all you are likely to need
-in your first encounter with Python. Also, make sure that you 
+other Python distributions, which come with the package and environment
+manager **conda**. There are two options that will work for this course:
+
+* [**Miniforge**](https://conda-forge.org/download/) (our recommended
+default) is a minimal installer that gives you Python and conda, 
+configured to install packages from the community-maintained 
+[conda-forge](https://conda-forge.org/) channel. It is free for 
+everyone, with no restrictions. You install additional packages as you 
+need them, e.g. `conda install numpy scipy matplotlib jupyterlab`.
+* The [**Anaconda distribution**](https://www.anaconda.com/download) 
+comes with hundreds of scientific packages preinstalled, so it is 
+convenient for a first encounter with Python, but it is a much 
+larger download.
+
+```{note}
+Why is Miniforge now our default? In 2024 Anaconda Inc. changed the
+[terms of service](https://www.anaconda.com/pricing/terms-of-service-faqs)
+of its distribution and package channel: organisations with more than 
+200 employees need a paid license. Use within university course 
+curricula, like this one, remains free, so Anaconda is fine for the 
+course. However, once you use conda in a research group, a company or
+any other institution, you may no longer be covered. Miniforge only 
+uses conda-forge, which carries no such restrictions, so the habits 
+you learn here will carry over anywhere.
+```
+
+Whichever you choose, make sure that you 
 have **Python 3.x**. You may still find programs written in Python
 2.7, but this version is no longer maintained and the syntax has
 changed somewhat.
@@ -100,7 +122,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 As you can see, we immediately start a Python session and we are 
 prompted with the version of Python we are running. If you do not 
-see the `packaged by conda-forge` bit, it is likely you are using
+see the `packaged by conda-forge` bit (or `Anaconda`, if you chose that
+distribution), it is likely you are using
 the native Python installation instead of the one you just installed.
 Fixing this will require fiddling with configuration files for your
 terminal.
@@ -162,8 +185,9 @@ need a browser like Chrome, Safari or Firefox.
 
 In your terminal, type 
 ```bash
-foo@bar:~$ jupyter-notebook
+foo@bar:~$ jupyter notebook
 ```
+or `jupyter lab` to launch Jupyter-lab.
 Normally, you will see some information appearing in your terminal and
 a web browser window will pop up. It will look something like this
 
