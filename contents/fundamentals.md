@@ -32,7 +32,7 @@ If you have ever done any programming before using
 languages like Fortran, C or C++, you surely adopted
 a workflow where you first wrote code and then 
 compiled it using another program called **compiler**,
-wich generated a binary, machine-readable file. 
+which generated a binary, machine-readable file. 
 It would look something like this
 
 ![compiling](https://hpc-wiki.info/mediawiki/hpc_images/8/8a/Compiler_Shematic.png)
@@ -52,7 +52,7 @@ could be when written in Fortran, C or C++.
 Below you can see a comparison between speeds of various
 programming languages 
 
-![performance-speed](https://niklas-heer.github.io/speed-comparison/assets/latest/combined_results.png)
+![performance-speed](https://speed-comparison.vercel.app/report-images/latest.png)
 
 ```{hint}
 Clearly, Python is not the fastest language in town. There
@@ -124,12 +124,18 @@ and try to run it, you will get a `SyntaxError`. The same thing
 will happen if you try to use one of the many keywords in
 Python. These include
 ```
-and     del     from        not     while
-as      elif    global      or      with
-assert  else    if          pass    yield
-break   except  import      print   class
-in      raise   continue    is      return
-def     for     lambda      try
+False   await     else      import    pass
+None    break     except    in        raise
+True    class     finally   is        return
+and     continue  for       lambda    try
+as      def       from      nonlocal  while
+assert  del       global    not       with
+async   elif      if        or        yield
+```
+You do not need to memorize them: Python can list them for you
+```{code-cell} python
+import keyword
+print (keyword.kwlist)
 ```
 
 It is convenient to choose **variable names** that
@@ -192,7 +198,7 @@ the processing **mode**. There are different modes available:
 
 Depending on the type of data in the file and what you intend to use 
 the file for, you will choose one of these ways of opening the file. 
-As a good programming habbit, remember to close files once you no 
+As a good programming habit, remember to close files once you no 
 longer need to access them:
 ```python
 f.close()
@@ -301,8 +307,8 @@ types in Python, **integers**, which lack a decimal part,
 and **floating-point** numbers.
 Using floats and integers you can do all sorts of computations in Python,
  very much like you would in a regular calculator. You can for example 
-use operators like `+` and `-`, which are called **unary operators**, 
-because they act on a single numeric value. You can perform multiplications,
+use the **arithmetic operators** `+` and `-` for addition and
+ subtraction. You can perform multiplications,
  using the operator `*`, divisions with `/`, and integer divisions with `//`.
 Using `%` you will obtain the remainder of a division. Also you can 
 exponentiate using the operator `**`.
@@ -333,7 +339,7 @@ however, nothing wrong with that result. It is the consequence
 of the way real numbers are stored in your machine, which 
 results in **round-off or truncation errors**. Specifically,
 floats are written using 53 bits of precision. Because 0.1 and
-0.5 are truncated in floating-point representation, the result
+0.05 are truncated in floating-point representation, the result
 is not exactly what you would expect. When writing a program,
 you should think about whether this actually matters for the
 problem at hand.
@@ -579,7 +585,7 @@ or
 (1, 2)*3
 ```
 Membership operators are also similar to what we saw for
-lists
+strings
 ```{code-cell} python
 1 in [10, 20, 30]
 ```
@@ -650,9 +656,9 @@ remove a fruit. At every stage, print the length of the fruits list.
 
 ```
 
-**Dictionaries** are a more sofisticated type of sequence,
-with elements having multiple entries called **keys** and
-their corresponing **values**. Their structure is hence
+**Dictionaries** are a different type of collection. Rather
+than being ordered by a position index, like sequences, their
+elements are pairs of **keys** and their corresponding **values**. Their structure is hence
 ```python
 mydict = {key1: val1, key2: val2, key3: val3}
 ```
@@ -670,6 +676,18 @@ presidents = {'Adolfo': [1976, 1977, 1979], 'Leopoldo': [1981], \
 print (presidents.items())
 print (presidents.keys())
 print (presidents.values())
+```
+Values are accessed with their key, and the same syntax lets you
+change an existing entry or add a new one. To remove an entry, use
+`del` or the `pop()` method
+```{code-cell} python
+presidents = {'Adolfo': [1976, 1977, 1979], 'Leopoldo': [1981], \
+              'Felipe': [1982, 1986, 1989, 1993]}
+print (presidents['Leopoldo'])
+presidents['Leopoldo'] = [1981, 1982]   # change an existing value
+presidents['Jose Maria'] = [1996, 2000] # add a new key
+del presidents['Adolfo']                # remove a key
+print (presidents)
 ```
 In the next few lessons we will put all these data structures 
 to good use.
