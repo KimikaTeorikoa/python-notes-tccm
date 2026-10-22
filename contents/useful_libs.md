@@ -181,6 +181,13 @@ As shown in the above example, the `kind` argument specifies the type of interpo
 values include `linear` (which is the default), `quadratic` or `cubic` (a complete list
 can be found in the [official documentation](https://docs.scipy.org/doc/scipy/reference/interpolate.html)).
 
+```{note}
+Recent versions of SciPy label `interp1d` as *legacy*: it still works, but it will not
+receive new features. For new code, the recommended alternatives are `np.interp` (linear),
+`CubicSpline` or `make_interp_spline` (splines), all of which return values or callable
+objects in the same way.
+```
+
 ```{exercise}
 :nonumber:
 :class: dropdown
@@ -191,7 +198,10 @@ grid, and then sum the spectra.
 
 *Note*: spectra to test your code can be obtained from 
 [PhotochemCAD](http://omlc.org/spectra/PhotochemCAD).
-You can use the `requests` module to download the files:
+You can use the `requests` module to download the files (install it
+with `conda install requests` if it is not in your environment).
+Note that `response.content` is *bytes*, so the file must be opened in binary
+mode, `"wb"`:
 
 ```python
 import requests
@@ -199,35 +209,39 @@ import requests
 # Azobenzene
 URL = "https://omlc.org/spectra/PhotochemCAD/data/117-abs.txt"
 response = requests.get(URL)
-open("spc1.dat", "w").write(response.content)
+with open("spc1.dat", "wb") as f:
+    f.write(response.content)
 
 # 9,10-Diphenylanthracene
 URL = "https://omlc.org/spectra/PhotochemCAD/data/021-abs.txt"
 response = requests.get(URL)
-open("spc2.dat", "w").write(response.content)
+with open("spc2.dat", "wb") as f:
+    f.write(response.content)
 
 ```
 
-For 2D interpolation, the most general function is `interp2d`. This function takes as arguments
-a 2D array of values, `Z`, and the two 1D arrays of coordinates, `x` and `y`. These arrays
-do not have to be equally spaced. As in the 1D case, it returns a function that can be evaluated 
-at any point.
+For 2D interpolation of data on a rectangular grid we can use `RectBivariateSpline`
+(older material uses `interp2d`, which was removed in SciPy 1.14).
+This function takes as arguments the two 1D arrays of coordinates, `x` and `y`, which
+do not have to be equally spaced, and a 2D array of values, `z`, with shape
+`(len(x), len(y))`. As in the 1D case, it returns an object that can be evaluated
+at any point within the grid.
 
 ```{code-cell} python
-from scipy.interpolate import interp2d
+from scipy.interpolate import RectBivariateSpline
 import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.linspace(0, 10, 10)
 y = np.linspace(0, 10, 10)
 X, Y = np.meshgrid(x, y)
-Z = np.sin(X) + np.cos(Y)
+Z = np.sin(X) + np.cos(Y)   # shape (len(y), len(x))
 
-f = interp2d(x, y, Z, kind='cubic')
+f = RectBivariateSpline(x, y, Z.T, kx=3, ky=3)   # cubic in x and y
 
 xnew = np.linspace(0, 10, 100)
 ynew = np.linspace(0, 10, 100)
-znew = f(xnew, ynew)
+znew = f(xnew, ynew).T      # back to shape (len(ynew), len(xnew)) for plotting
 
 plt.pcolormesh(X, Y, Z)
 plt.colorbar()
@@ -242,12 +256,12 @@ plt.show()
 As you can see, we use some kind of *advanced* `matplotlib` features in this example. 
 You can refresh them going back to the [previous chapter](plotting.md).
 For instance, use the `np.meshgrid` function, which generates 2D arrays with 
-the grid points, (`x`,`y`), from the corresponding 1D arrays, `x` and `y`. The interpolation 
-method is specified with the `kind` argument, which can take the same values as in the 1D case.
-
-The above example uses a regular grid, but this is not a requirement. Actually, in this case
-we can use the function `RectBivariateSpline`, which is more efficient but is restricted to
-regular grids. This function takes the same arguments as `interp2d`.
+the grid points, (`x`,`y`), from the corresponding 1D arrays, `x` and `y`. Note that
+`meshgrid` returns arrays with shape `(len(y), len(x))`, while `RectBivariateSpline` expects
+`(len(x), len(y))`, hence the transposes (`.T`). The degree of the spline in each direction
+is set with `kx` and `ky` (1 for linear, 3 for cubic).
+An alternative with the same purpose is `RegularGridInterpolator`, which also works in more
+than two dimensions.
 
 To interpolate unstructured data we can use the function `griddata`. 
 It takes as arguments the coordinates of the data points as a tuple of 1D arrays,
@@ -290,6 +304,46 @@ for unconstrained problems) or `Newton-CG`. The choice of the method
 depends on the problem (stiffness, dimensionality, etc.), and the need of adding constraints
 A complete list is given in the 
 [documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize).
+
+A very common problem in science is **fitting** a model with some parameters to data.
+The function `curve_fit` does a (non-linear) least-squares fit. It takes as arguments the
+model function, whose first argument is the independent variable followed by the parameters,
+and the arrays of data, `xdata` and `ydata`. An initial guess for the parameters, `p0`, is
+optional, but for non-linear models it is often needed to get a sensible result.
+For instance, we can fit a Morse potential,
+$V(r) = D_e \left(1 - e^{-a(r - r_e)}\right)^2$, to some noisy synthetic data:
+
+```{code-cell} python
+from scipy.optimize import curve_fit
+import numpy as np
+import matplotlib.pyplot as plt
+
+def morse(r, De, a, re):
+    return De*(1 - np.exp(-a*(r - re)))**2
+
+# synthetic data with some random noise
+rng = np.random.default_rng(42)
+r = np.linspace(0.5, 3.0, 30)
+V = morse(r, 4.7, 1.9, 0.74) + rng.normal(0, 0.1, r.size)
+
+popt, pcov = curve_fit(morse, r, V, p0=[5.0, 2.0, 0.7])
+perr = np.sqrt(np.diag(pcov))
+for name, value, error in zip(["De", "a", "re"], popt, perr):
+    print(f"{name} = {value:.3f} +/- {error:.3f}")
+
+rfit = np.linspace(0.5, 3.0, 200)
+plt.plot(r, V, 'o', label='data')
+plt.plot(rfit, morse(rfit, *popt), '-', label='Morse fit')
+plt.xlabel('r')
+plt.ylabel('V(r)')
+plt.legend()
+plt.show()
+```
+
+`curve_fit` returns two arrays: `popt`, with the optimal values of the parameters, and `pcov`,
+their covariance matrix. The square roots of the diagonal of `pcov` are estimates of
+the standard errors of the parameters. Try a bad initial guess, such as `p0=[1, 1, 3]`
+(an equilibrium distance beyond the minimum), and check what happens to the fit.
 
 For **root-finding** of scalar functions (univariate functions, i.e., which depend on only 
 one variable), we can use the general interface function `root_scalar`.
