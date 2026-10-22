@@ -335,6 +335,15 @@ to save the last plot as a PNG file:
 plt.savefig('plot.png')
 ```
 
+The format is deduced from the extension (`.png`, `.pdf`, `.svg`...), and the resolution of
+bitmap formats can be set with the `dpi` argument, e.g. `plt.savefig('plot.png', dpi=300)`.
+Vector formats such as PDF are preferred for publications.
+
+```{warning}
+Call `plt.savefig()` **before** `plt.show()`. In a script, `plt.show()` displays the figure
+and then closes it, so a `savefig` placed after it will write an empty image.
+```
+
 
 ## Conclusion
 
