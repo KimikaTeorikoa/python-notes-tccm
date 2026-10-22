@@ -60,6 +60,8 @@ One of the main differences with the `print` function is that the
 `write` method does not add a newline character at the end.
 
 ```python
+import sys
+
 # Set file object to standard output
 f = sys.stdout
 
@@ -101,6 +103,8 @@ The variables to substitute are given after the string, using a tuple
 if more than one is given.
 
 ```python
+x, y = 1, 2
+
 # Using the format method
 print('The value of x is {} and the value of y is {}'.format(x, y))
 
