@@ -88,8 +88,8 @@ The `sys` module provides access to some variables used or maintained by the
  interpreter and to functions that interact strongly with the interpreter. 
 It is always available. The `sys` module can be used to obtain information 
 about the Python runtime environment, such as the version of the interpreter, 
-the command-line arguments passed to the program, and the amount of free memory
- on the system. The `sys` module can also be used to control the behavior of the
+the command-line arguments passed to the program, or the location of the
+ Python executable that is running your code. The `sys` module can also be used to control the behavior of the
 interpreter, such as setting the recursion limit and exiting the interpreter.
 
 Some useful calls are
@@ -97,7 +97,8 @@ Some useful calls are
 * **Get information about the Python runtime environment:**
     * `sys.version`: Returns the version number of the Python interpreter.
     * `sys.argv`: Returns a list of the command-line arguments passed to the program.
-    * `sys.gettotalrefcount()`: Returns the amount of free memory on the system.
+    * `sys.executable`: Returns the path of the Python interpreter that is running
+      the program (useful to check which conda environment you are using).
 
 * **Control the behavior of the interpreter:**
     * `sys.exit()`: Exits the Python interpreter.
@@ -348,7 +349,7 @@ input_file = args.input_file
 output_file = args.output
 ```
 To run the script we type
-```python
+```bash
 python script.py input.txt --output output.txt
 ```
 where `input.txt` is provided as the value for the `input_file`
@@ -389,9 +390,9 @@ Uninstalling packages is equally easy. You just have to type
 python -m pip uninstall sampleproject
 ```
 
-Because in this course we are using the Anaconda Python distribution,
-it is also useful for you to know that you can use its package manager
-to install libraries. Simply do
+Because in this course we are using a conda-based Python distribution
+(Miniforge or Anaconda), it is also useful for you to know that you can
+use its package manager to install libraries. Simply do
 ```shell
 conda install library_name
 ```
@@ -440,7 +441,7 @@ conda env remove --name myenv
 :nonumber:
 :class: dropdown
 
-Create a new Conda environment named "myenv" with Python 3.8.
+Create a new Conda environment named "myenv" with Python 3.12.
 Inside "myenv," install numpy, pandas and matplotlib.
 Clone "myenv" into "newenv" and inside "newenv," upgrade 
 the version of numpy to the latest version.
