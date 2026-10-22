@@ -121,37 +121,75 @@ Functions for multidimensional integration are also available, such as `dblquad`
 This submodule also provides methods to integrate **ordinary differential equations**. 
 The recommended method is `solve_ivp` (solve initial value problem),
 which gives an interface to different integration algorithms.
-For instance, in order to integrate the system of differential equations below,
+As an example, consider a **harmonic oscillator**: a particle of mass $m$ attached to a
+spring with force constant $k$. Newton's equation, $m\,\ddot{x} = -kx$, is a second-order
+equation, but `solve_ivp` only handles first-order ones. The standard trick is to use the
+velocity, $v = \dot{x}$, as a second variable, so that the *state* of the oscillator is the
+pair $(x, v)$ and the equations of motion become
 
 $$
 \begin{align}
-\frac{dx}{dt} &= -y \\
-\frac{dy}{dt} &= x
+\frac{dx}{dt} &= v \\
+\frac{dv}{dt} &= -\frac{k}{m}\,x
 \end{align}
 $$
-we can use the following code,
+
+Starting from rest at $x(0) = 1$, the exact solution is $x(t) = \cos(\omega t)$, with
+$\omega = \sqrt{k/m}$. We can integrate these equations with the following code,
 
 ```{code-cell} python
 from scipy.integrate import solve_ivp
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f(t, y):
-    return [-y[1], y[0]]
-    
-t0 = 0
-tf = 10
-y0 = [1, 0]
-t_eval = np.linspace(t0, tf, 100)
-sol = solve_ivp(f, [t0, tf], y0, t_eval=t_eval)
+def harmonic(t, state, m, k):
+    x, v = state            # unpack the state vector
+    dxdt = v
+    dvdt = -k/m*x
+    return [dxdt, dvdt]
 
-plt.plot(sol.t, sol.y[0], label='x')
-plt.plot(sol.t, sol.y[1], label='y')
+m = 1.0                     # mass
+k = 1.0                     # force constant
+state0 = [1.0, 0.0]         # initial position and velocity
+t0, tf = 0, 10
+t_eval = np.linspace(t0, tf, 100)
+
+sol = solve_ivp(harmonic, [t0, tf], state0, t_eval=t_eval, args=(m, k))
+
+x, v = sol.y                # sol.y has one row per variable
+plt.plot(sol.t, x, label='position, x')
+plt.plot(sol.t, v, label='velocity, v')
+plt.xlabel('t')
 plt.legend()
 plt.show()
 ```
-The integration algorithm is set with the `method` attribute, with the default 
-being `RK45` (Runge-Kutta of 4th order).
+
+A few things to note in this example:
+
+- The function with the equations of motion must take the time `t` as its **first** argument,
+  even if, as here, it does not use it, followed by the state vector. Extra parameters (`m`
+  and `k`) are passed with `args`, as we did with `quad`.
+- The function returns the **derivatives** of the state, $(\dot{x}, \dot{v})$. The solver
+  works out the state itself.
+- `t_eval` only sets the times at which the solution is reported. The solver chooses its own
+  (adaptive) time steps internally.
+- `sol.t` contains the times and `sol.y` the solution, with **one row per variable** and one
+  column per time. Note this is the opposite of the layout returned by `np.loadtxt`.
+
+The integration algorithm is set with the `method` argument. The default, `RK45`, is an
+explicit Runge-Kutta method of order 5(4), which adapts the time step to keep the error
+estimate within the tolerances `rtol` and `atol`. By default these are rather loose
+(`rtol=1e-3`, `atol=1e-6`).
+
+```{exercise}
+:nonumber:
+:class: dropdown
+
+The total energy of the oscillator, $E = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$, should be
+conserved. Compute $E(t)$ from the solution above and plot it. Then integrate for a much
+longer time (e.g. `tf = 1000`) and check how $E$ drifts. How does this change if you
+use tighter tolerances, e.g. `rtol=1e-8, atol=1e-10`?
+```
 
 ### `scipy.interpolate`
 
