@@ -56,6 +56,54 @@ As you can see, here we are making use of the
 [`setuptools`](http://pypi.python.org/pypi/setuptools) package.
 When your package is installed, `numpy` will also be installed automatically.
 
+### The modern alternative: `pyproject.toml`
+You will find `setup.py` files in many existing packages, but nowadays the
+recommended way of describing a package is a `pyproject.toml` file. Instead
+of a Python script, it is a plain configuration file written in the
+[TOML](https://toml.io/) format. It sits in the project folder, next to (not
+inside) the package directory:
+```
+my_project/
+├── pyproject.toml
+├── README.md
+└── my_package/
+    ├── __init__.py
+    ├── module1.py
+    └── module2.py
+```
+The equivalent of the `setup.py` file above, with a few useful additions, is:
+```toml
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_package"
+version = "1.0.0"
+description = "A short description of what the package does"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["numpy"]
+
+[project.scripts]
+my_command = "my_package.module1:main"
+```
+The `[build-system]` table tells `pip` which tool builds the package (here,
+again, `setuptools`). The `[project]` table contains the name, the version
+and the dependencies, which play the role of `install_requires`. The optional
+`[project.scripts]` table creates a command, `my_command`, that runs the function
+`main()` in `my_package/module1.py`. This is how you turn your code into a program
+you can run from the terminal.
+
+To install the package, run the following from the `my_project/` folder:
+```
+pip install -e .
+```
+The `-e` ("editable") option means that changes you make to the code are used
+straight away, without reinstalling. This is what you want while you are still
+developing the package. Once installed, you can `import my_package` from any
+folder, notebook or script.
+
 You can include many other things in your package. We recommend writing a `README`
 file, where you can describe what the package does, who are the developers
 and provide some installation instructions. Additionally, it is often useful
@@ -94,6 +142,8 @@ archives using the following command:
 ```python
 python setup.py sdist bdist_wheel
 ```
+If your package uses a `pyproject.toml` file, the equivalent is to install the
+`build` package (`pip install build`) and run `python -m build`.
 
 This will create two files in the `dist/` directory:
 * `my_package-1.0.0.tar.gz`: This is the source distribution archive. It can be 
