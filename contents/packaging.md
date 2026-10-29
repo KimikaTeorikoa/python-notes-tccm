@@ -138,12 +138,14 @@ SOFTWARE.
 
 ## Deployment
 Once you have created your package structure and written your code, you can generate the distribution 
-archives using the following command:
-```python
-python setup.py sdist bdist_wheel
+archives with the [`build`](https://build.pypa.io/) package. Install it
+with `pip install build` and run the following from the `my_project/` folder:
 ```
-If your package uses a `pyproject.toml` file, the equivalent is to install the
-`build` package (`pip install build`) and run `python -m build`.
+python -m build
+```
+This works both with `pyproject.toml` and with `setup.py`. In older
+instructions you may find the command `python setup.py sdist bdist_wheel`
+instead, which is deprecated.
 
 This will create two files in the `dist/` directory:
 * `my_package-1.0.0.tar.gz`: This is the source distribution archive. It can be 
@@ -320,8 +322,8 @@ jobs:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install the package and the test tools
@@ -330,9 +332,19 @@ jobs:
         run: pytest --cov=my_package
 ```
 The `steps` are what you would type yourself on a new computer: get the
-code, install Python, install the package and run `pytest`. The `matrix`
-repeats the whole job for each Python version. You can follow the result
-of each run in the *Actions* tab of your repository on GitHub.
+code, install Python, install the package and run `pytest`. A step either
+runs a shell command (`run:`) or uses an *action* (`uses:`), a ready-made
+step published by someone else in a GitHub repository. Here
+[`actions/checkout`](https://github.com/actions/checkout) copies the code
+of your repository into the cloud machine, which starts empty every time,
+and [`actions/setup-python`](https://github.com/actions/setup-python)
+installs the version of Python given in `with:`. The `@v7` at the end
+fixes the major version of the action, so that a future release that
+changes its behaviour does not break your workflow without warning. The
+`matrix` repeats the whole job for each Python version, and
+`${{ matrix.python-version }}` is replaced by each of them in turn. You
+can follow the result of each run in the *Actions* tab of your repository
+on GitHub.
 
 In fact, the book you are reading is built in exactly this way: every time
 we push a change, a GitHub Actions workflow
