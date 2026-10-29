@@ -249,7 +249,7 @@ functions that are related to the class but do not require access
 to your specific instance of the class. 
 
 Here we define a class `MathUtils` with a static attribute `pi`, 
-representing the value of the mathematical constant $pi$ and
+representing the value of the mathematical constant $\pi$ and
 a static method that calculates the factorial of a number
 recursively
 ```{code-cell} python
@@ -263,7 +263,7 @@ class MathUtils:
         else:
             return n * MathUtils.factorial(n - 1)
 ```
-We can hence access the value of $pi$
+We can hence access the value of $\pi$
 ```{code-cell} python
 print("Value of pi:", MathUtils.pi)
 ```
